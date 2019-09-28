@@ -1,0 +1,57 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+ <title>左侧导航</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link href="style/adminStyle.css" rel="stylesheet" type="text/css" />
+ <script src="js/jquery.js"></script>
+ <script src="js/public.js"></script>
+</head>
+<body style="background:#313131">
+<div class="menu-list">
+ <a href="main" target="mainCont" class="block menu-list-title center" style="border:none;margin-bottom:8px;color:#fff;">起始页</a>
+ <ul id="uu">
+ </ul>
+</div>
+</body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+ $(function(){
+  $.post("permission",{},function(data){
+   for(var i = 0;i < data.length; i++){
+    if(data[i].status == 1){
+     var li1 = $("<li><span>"+data[i].pname+"</span><i>◢</i></li>");
+     li1.attr("class","menu-list-title");
+     li1.click(function(){
+      $(this).next('li').toggle('1500');
+     });
+     var li2 = $("<li></li>");
+     var ul1 = $("<ul></ul>");
+     ul1.attr("class","menu-children");
+     for(var j = 0; j < data.length; j++){
+      if(data[j].pid == data[i].id){
+       var li3 = $("<li></li>");
+
+       var aa = $("<a>"+data[j].pname+"<a>");
+       aa.attr("target","mainCont");
+       aa.attr("title",data[j].pname);
+       aa.attr("href",data[j].url);
+       li3.append(aa);
+       ul1.append(li3);
+       /*  $('.menu-list-title').click(function(){
+              $(this).next('li').toggle('1500');
+             });
+       $(".menu-children li").click(function(){
+            $(".menu-children li").css({background:'none'});
+            $(this).css({background:'#f35844'});
+           }); */
+      }
+     }
+     li2.append(ul1);
+     $("#uu").append(li1);
+     $("#uu").append(li2);
+    }
+   }
+  });
+ })
+</script>
+</html>
