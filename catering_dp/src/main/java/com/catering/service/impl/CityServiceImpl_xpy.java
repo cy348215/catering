@@ -16,4 +16,9 @@ public class CityServiceImpl_xpy implements CityService_xpy {
     public List<City> findAll() {
         return cityMapper.findAll();
     }
+
+    @Override
+    public int getCityId(String name) {
+        return cityMapper.getCityId(name);
+    }
 }
