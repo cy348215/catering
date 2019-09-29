@@ -16,14 +16,10 @@ import java.util.List;
 public class CateringDpApplicationTests {
     @Autowired
     private PermissionMapper permissionMapper;
-   /* @Test
+    @Test
     public void contextLoads() {
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        List<StorePermission> permissions = permissionMapper.findByid(list);
-        System.out.println(permissions);
-    }*/
+        List<StorePermission> byid = permissionMapper.findByid(1);
+        System.out.println(byid);
+    }
 
 }

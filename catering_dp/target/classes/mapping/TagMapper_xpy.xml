@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catering.mapper.TagMapper_xpy">
+    <resultMap id="TagResult" type="com.catering.pojo.Tag">
+        <id property="cuisineId" column="cuisine_id" />
+        <result property="cuisineName" column="cuisine_name"/>
+    </resultMap>
+    <select id="findAll" resultMap="TagResult">
+        select
+        *
+        from
+        tag
+    </select>
+</mapper>
