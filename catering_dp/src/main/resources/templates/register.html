@@ -57,9 +57,9 @@
                     <div class="item col-xs-12">
                         <span class="intelligent-label f-fl"><b class="ftx04">*</b>店铺负责人：</span>
                         <div class="f-fl item-ifo">
-                            <input  type="text" maxlength="20" class="txt03 f-r3 required" tabindex="1" data-valid="isNonEmpty||between:3-20||isUname" data-error="负责人不能为空||负责人长度2-20位||只能输入中文、字母、数字、下划线，且以中文或字母开头" id="storemaster" />                            <span class="ie8 icon-close close hide"></span>
+                            <input  type="text" maxlength="20" class="txt03 f-r3 required" tabindex="1" data-valid="isNonEmpty||between:3-20||isUname" data-error="负责人不能为空||负责人长度2-20位||以中文或字母开头" id="storemaster" />                            <span class="ie8 icon-close close hide"></span>
                             <label class="icon-sucessfill blank hide"></label>
-                            <label class="focus"><span>2-20位，中文、字母、数字、下划线的组合，以中文或字母开头</span></label>
+                            <label class="focus"><span>请输入负责人姓名</span></label>
                             <label class="focus valid"></label>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         <div class="f-fl item-ifo">
                             <input  type="text" maxlength="20" class="txt03 f-r3 required" tabindex="1" data-valid="isNonEmpty||between:13||isUname" data-error="营业执照编号不能为空||营业执照编号长度13位||只能输入字母、数字、下划线" id="storemember" />                            <span class="ie8 icon-close close hide"></span>
                             <label class="icon-sucessfill blank hide"></label>
-                            <label class="focus"><span>3-20位，中文、字母、数字、下划线的组合，以中文或字母开头</span></label>
+                            <label class="focus"><span>13位，字母、数字、下划线的组合，以数字或字母开头</span></label>
                             <label class="focus valid"></label>
                         </div>
                     </div>
@@ -102,9 +102,21 @@
                     <div class="item col-xs-12">
                         <span class="intelligent-label f-fl"><b class="ftx04">*</b>详细地址：</span>
                         <div class="f-fl item-ifo">
-                            <input type="text" class="txt03 f-r3 required" tabindex="2" id="adress" />
+                            <input type="text" class="txt03 f-r3 required" tabindex="2" id="adress"  data-valid="isNonEmpty" data-error="地址不能为空"/>
                             <span class="ie8 icon-close close hide"></span>
                             <label class="icon-sucessfill blank hide"></label>
+                            <label class="focus">请输入店铺详细地址</label>
+                            <label class="focus valid"></label>
+                        </div>
+                    </div>
+                    <div class="item col-xs-12">
+                        <span class="intelligent-label f-fl"><b class="ftx04">*</b>邮箱地址：</span>
+                        <div class="f-fl item-ifo">
+                            <input type="text" class="txt03 f-r3 required" tabindex="2" id="email" data-valid="isNonEmpty" data-error="邮箱地址不能为空"/>
+                            <span class="ie8 icon-close close hide"></span>
+                            <label class="icon-sucessfill blank hide"></label>
+                            <label class="focus">请输入您的邮箱地址</label>
+                            <label class="focus valid"></label>
                         </div>
                     </div>
                     <div class="item col-xs-12">
@@ -140,7 +152,7 @@
                             <input type="text" maxlength="4" class="txt03 f-r3 f-fl required" tabindex="4" style="width:167px" id="randCode" data-valid="isNonEmpty" data-error="验证码不能为空" /> 
                             <span class="ie8 icon-close close hide"></span>
                             <label class="f-size12 c-999 f-fl f-pl10">
-                            	<img src="images/yzm.jpg" />                               
+                                <img src="createImage" class="codeimg" alt="验证码" title="点击更换" onclick="this.src='createImage?'+(new Date()).getTime();"/>
                             </label>                        
                             <label class="icon-sucessfill blank hide" style="left:380px"></label>
                             <label class="focusa">看不清？<a href="javascript:;" class="c-blue">换一张</a></label>   
@@ -237,7 +249,18 @@
 <script>
 $(function(){	
 	//第一页的确定按钮
-	$("#btn_part1").click(function(){						
+	$("#btn_part1").click(function(){
+	    var storename = $("#storename").val();//店铺名称
+	    var storetype = $("#storetype").val();//店铺类型
+	    var storemaster = $("#storemaster").val();//店铺负责人
+	    var storemember = $("#storemember").val();//经营许可号
+	    var phone = $("#phone").val();//电话号
+	    var storesheng = $("#storesheng").val();//所在省
+	    var storeshi = $("#storeshi").val();//所在市
+	    var adress = $("#adress").val();//详细地址
+	    var email = $("#email").val();//邮箱
+	    var password = $("#password");//密码
+	    var randcode = $("#randCode");//验证码
 		if(!verifyCheck._click()) return;
 		$(".part1").hide();
 		$(".part2").show();
@@ -269,6 +292,32 @@ $(function(){
         for (var i = 0; i < data.length; i++) {
             var op = $("<option>"+data[i].cuisineName+"</option>");
             $("#storetype").append(op);
+        }
+    });
+	$.post("getCity",function (data) {
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].type == 1){
+                var op = $("<option>"+data[i].cityname+"</option>");
+                $("#storesheng").append(op);
+            }
+        }
+    })
+    $("#storesheng").blur(function () {
+        var name = $("#storesheng").val();
+        alert(name);
+        if (name.length == 0){
+
+        } else {
+            $.post("getCityId", {"name": name}, function (id) {
+                $.post("getCity", function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].pid == id) {
+                            var op = $("<option>" + data[i].cityname + "</option>");
+                            $("#storeshi").append(op);
+                        }
+                    }
+                })
+            })
         }
     });
 });

@@ -36,6 +36,12 @@ public class LoginController {
         return "register";
     }
     @ResponseBody
+    @RequestMapping("/getCityId")
+    public int getCityId(String name){
+        int id = cityService.getCityId(name);
+        return id;
+    }
+    @ResponseBody
     @RequestMapping("/getCity")
     public List<City> getcity(){
         List<City> all = cityService.findAll();

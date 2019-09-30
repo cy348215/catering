@@ -8,4 +8,12 @@
         from
         city
     </select>
+    <select id="getCityId" resultType="int" parameterType="string">
+        select
+        id
+        from
+        city
+        where
+        cityname=#{name}
+    </select>
 </mapper>
