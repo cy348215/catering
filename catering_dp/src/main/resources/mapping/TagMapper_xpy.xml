@@ -12,4 +12,12 @@
         from
         tag
     </select>
+    <select id="findByName" parameterType="string" resultType="int">
+        select
+        cuisine_id
+        from
+        tag
+        where
+        cuisine_name=#{name}
+    </select>
 </mapper>

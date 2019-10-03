@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catering.mapper.MerchantProfileMapper_xpy">
+    <resultMap id="MerchanProfileResult" type="com.catering.pojo.MerchantProfile">
+        <id property="merchantId" column="merchant_id"/>
+        <result property="merchantName" column="merchant_name"/>
+        <result property="merchantPrincipal" column="merchant_principal"/>
+        <result property="merchantNumber" column="merchant_number"/>
+        <result property="merchartEmail" column="merchart_email"/>
+        <result property="phone" column="phone"/>
+        <result property="createtime" column="createtime"/>
+        <result property="level" column="level"/>
+        <result property="point" column="point"/>
+        <result property="lastupdatetime" column="lastupdatetime"/>
+        <result property="type" column="type"/>
+        <result property="commendCount" column="commend_count"/>
+        <result property="collectCount" column="collect_count"/>
+        <result property="heat" column="heat"/>
+        <result property="bussinesstime" column="bussinesstime"/>
+        <result property="merchantAddress" column="merchant_address"/>
+        <result property="countryId" column="country_id"/>
+        <result property="provinceId" column="province_id"/>
+        <result property="cityId" column="city_id"/>
+        <result property="memberid" column="memberid"/>
+    </resultMap>
+    <select id="checkname" parameterType="string" resultMap="MerchanProfileResult">
+        select
+        *
+        from
+        merchant_profile
+        where
+        merchant_name=#{storename}
+    </select>
+    <select id="checkmember" parameterType="string" resultMap="MerchanProfileResult">
+        select
+        *
+        from
+        merchant_profile
+        where
+        merchant_number=#{storemember}
+    </select>
+    <select id="checkphone" parameterType="int" resultMap="MerchanProfileResult">
+        select
+        *
+        from
+        merchant_profile
+        where
+        phone=#{phone}
+    </select>
+    <select id="checkemail" parameterType="string" resultMap="MerchanProfileResult">
+        select
+        *
+        from
+        merchant_profile
+        where
+        merchart_email=#{email}
+    </select>
+    <insert id="saveMerchant" parameterType="com.catering.pojo.MerchantProfile">
+        insert
+        merchant_profile
+        values
+        (#{merchantProfile.merchantId},#{merchantProfile.merchantName},#{merchantProfile.merchantPrincipal},#{merchantProfile.merchantNumber},#{merchantProfile.merchartEmail},#{merchantProfile.phone},
+        #{merchantProfile.createtime},#{merchantProfile.level},#{merchantProfile.point},#{merchantProfile.lastupdatetime},#{merchantProfile.type},#{merchantProfile.commendCount},#{merchantProfile.collectCount},
+        #{merchantProfile.heat},#{merchantProfile.bussinesstime},#{merchantProfile.merchantAddress},#{merchantProfile.countryId},#{merchantProfile.provinceId},#{merchantProfile.cityId},
+        #{merchantProfile.memberid})
+    </insert>
+</mapper>

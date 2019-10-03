@@ -1,61 +1,36 @@
 package com.catering.controller;
 
-import com.catering.pojo.City;
-import com.catering.pojo.Tag;
-import com.catering.service.CityService_xpy;
-import com.catering.service.TagService_xpy;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.List;
 import java.util.Random;
 
 @Controller
-public class LoginController {
-    @Autowired
-    private TagService_xpy tagService;
-    @Autowired
-    private CityService_xpy cityService;
+public class LoginController_xpy {
+
     @RequestMapping("/login")
     public String login(){
         return "login";
     }
 
-    @RequestMapping("/register")
-    public String reg(){
-        return "register";
-    }
     @ResponseBody
-    @RequestMapping("/getCityId")
-    public int getCityId(String name){
-        int id = cityService.getCityId(name);
-        return id;
-    }
-    @ResponseBody
-    @RequestMapping("/getCity")
-    public List<City> getcity(){
-        List<City> all = cityService.findAll();
-        return all;
-    }
-    /**
-     * 查询所有的标签
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("/getTag")
-    public List<Tag> getTag(){
-        List<Tag> all = tagService.findAll();
-        return all;
+    @RequestMapping("/loginCode")
+    public int loginCode(String code,String username,String password, HttpServletRequest request){
+        String number = (String) request.getSession().getAttribute("number");
+        if (code.equals(number)){
+            return 1;
+        }
+        return 0;
     }
 
     /**

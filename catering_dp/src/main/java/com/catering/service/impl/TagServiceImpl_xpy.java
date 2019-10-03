@@ -16,4 +16,9 @@ public class TagServiceImpl_xpy implements TagService_xpy {
     public List<Tag> findAll() {
         return tagMapper.findAll();
     }
+
+    @Override
+    public int findByName(String name) {
+        return tagMapper.findByName(name);
+    }
 }

@@ -1,0 +1,46 @@
+package com.catering.mapper;
+
+import com.catering.pojo.MerchantProfile;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+@Mapper
+public interface MerchantProfileMapper_xpy {
+    /**
+     * 检查店名是否重复
+     * @param storename
+     * @return
+     */
+    public MerchantProfile checkname(String storename);
+
+    /**
+     * 检查许可证编号
+     * @param storemember
+     * @return
+     */
+    public MerchantProfile checkmember(String storemember);
+
+    /**
+     * 检查电话号
+     * @param phone
+     * @return
+     */
+    public MerchantProfile checkphone(String phone);
+
+    /**
+     * 检查邮箱
+     * @param email
+     * @return
+     */
+    public MerchantProfile checkemail(String email);
+
+    /**
+     * 添加店铺
+     * @param merchantProfile
+     * @return
+     */
+    public int saveMerchant(@Param(("merchantProfile")) MerchantProfile merchantProfile);
+
+}

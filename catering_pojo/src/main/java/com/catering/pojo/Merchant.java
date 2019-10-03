@@ -16,6 +16,16 @@ public class Merchant implements Serializable {
 
     private String lastlogintime;
 
+    private int isLogin;
+
+    public int getIsLogin() {
+        return isLogin;
+    }
+
+    public void setIsLogin(int isLogin) {
+        this.isLogin = isLogin;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {

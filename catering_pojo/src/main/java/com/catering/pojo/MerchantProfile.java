@@ -16,7 +16,7 @@ public class MerchantProfile implements Serializable {
 
     private String merchartEmail;
 
-    private Integer phone;
+    private String phone;
 
     private String createtime;
 
@@ -44,15 +44,9 @@ public class MerchantProfile implements Serializable {
 
     private Integer cityId;
 
+    private String memberid;
+
     private static final long serialVersionUID = 1L;
-
-    public Integer getMerchantId() {
-        return merchantId;
-    }
-
-    public void setMerchantId(Integer merchantId) {
-        this.merchantId = merchantId;
-    }
 
     public String getMerchantName() {
         return merchantName;
@@ -86,12 +80,24 @@ public class MerchantProfile implements Serializable {
         this.merchartEmail = merchartEmail == null ? null : merchartEmail.trim();
     }
 
-    public Integer getPhone() {
+    public Integer getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void setMemberid(String memberid) {
+        this.memberid = memberid;
     }
 
     public String getCreatetime() {
@@ -197,4 +203,5 @@ public class MerchantProfile implements Serializable {
     public void setCityId(Integer cityId) {
         this.cityId = cityId;
     }
+
 }
