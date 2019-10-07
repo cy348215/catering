@@ -128,21 +128,7 @@
                 'images/ver-3.png'
             ],
             success:function () {
-                //alert('执行登录函数');
                 location.href = "index";
-                var username = $("#").val();
-                var password = $("#").val();
-
-                /*$(".login").css({
-                    "left":"0",
-                    "opacity":"1"
-                });
-                $(".verBox").css({
-                    "left":"404px",
-                    "opacity":"0"
-                });
-                $(".tips").html('你是不是不知道账号密码！？？？');
-                $("#logo").attr("src",'images/login-err.png')*/
             },
             error:function () {
                 //alert('错误什么都不执行')
@@ -166,7 +152,7 @@
                 var username = $(".username").val();
                 var password = $(".password").val();
                 $.post("loginCode",{"code":code,"username":username,"password":password},function (data) {
-                    if (data) {
+                    if (data == 4) {
                         $(".login").css({
                             "left":"-404px",
                             "opacity":"0"
@@ -175,7 +161,24 @@
                             "left":"0",
                             "opacity":"1"
                         })
-                    } else {
+                    }
+                    if (data == 5){
+                        alert("此账号已登录");
+                    }
+                    if (data == 3){
+                        alert("密码错误");
+                        $(".password").val("");
+                    }
+                    if (data == 2){
+                        alert("此账号已被锁定，请联系管理员");
+                    }
+                    if (data == 1){
+                        alert("此账号不存在");
+                        $(".username").val("");
+                        $(".password").val("");
+                        $(".code").val("");
+                    }
+                    if (data == 0) {
                         alert("验证码有误");
                         $(".code").val("");
                     }

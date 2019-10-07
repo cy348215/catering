@@ -54,4 +54,9 @@ public class MerchantProfileServiceImpl_xpy implements MerchantProfileService_xp
         int i = merchantProfileMapper.saveMerchant(merchantProfile);
         return i>0?true:false;
     }
+
+    @Override
+    public MerchantProfile findById(int id) {
+        return merchantProfileMapper.findById(id);
+    }
 }

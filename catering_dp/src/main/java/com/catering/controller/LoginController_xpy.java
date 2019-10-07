@@ -1,5 +1,16 @@
 package com.catering.controller;
 
+import com.catering.pojo.Merchant;
+import com.catering.pojo.MerchantProfile;
+import com.catering.service.MerchantProfileService_xpy;
+import com.catering.service.MerchantService_xpy;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +28,10 @@ import java.util.Random;
 
 @Controller
 public class LoginController_xpy {
-
+    @Autowired
+    private MerchantService_xpy merchantService;
+    @Autowired
+    private MerchantProfileService_xpy merchantProfileService;
     @RequestMapping("/login")
     public String login(){
         return "login";
@@ -27,7 +41,38 @@ public class LoginController_xpy {
     @RequestMapping("/loginCode")
     public int loginCode(String code,String username,String password, HttpServletRequest request){
         String number = (String) request.getSession().getAttribute("number");
-        if (code.equals(number)){
+        System.out.println(number);
+        if (code.equalsIgnoreCase(number)){
+            Merchant merchant = merchantService.findMerchantByName(username);
+            if (merchant != null){
+                if (merchant.getIsLogin() == 1){
+                    try {
+                        Subject subject = SecurityUtils.getSubject();//从安全管理器中获取主体对象
+                        UsernamePasswordToken token=new UsernamePasswordToken(username,password); //构建令牌对象
+                        subject.login(token);
+                        if(subject.isAuthenticated()){//判断是否正确登录
+                            //用户信息与权限信息存储
+                            System.out.println("登陆成功");
+                            MerchantProfile profile = merchantProfileService.findById(merchant.getId());
+                            request.getSession().setAttribute("user",profile);
+                            request.getSession().setAttribute("user1",merchant);
+                            return 4;
+                        }
+                    }catch (UnknownAccountException e) {
+                        System.out.println("用户名问题");
+                    }catch (IncorrectCredentialsException e) {
+                        System.out.println("密码错误");
+                        return 3;
+                    }catch (AuthenticationException e){
+                        e.printStackTrace();
+                        System.out.println("登录失败");
+                    }
+                } else if (merchant.getIsLogin() == 2){
+                    return 5;
+                } else {
+                    return 2;
+                }
+            }
             return 1;
         }
         return 0;
@@ -72,5 +117,13 @@ public class LoginController_xpy {
             code+=str.charAt(index);
         }
         return code;
+    }
+
+    @RequestMapping("/loginOut")
+    public String loginOut(HttpServletRequest request){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        request.getSession().invalidate();
+        return "redirect:login";
     }
 }
