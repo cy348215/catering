@@ -1,13 +1,7 @@
 package com.catering.controller;
 
-import com.catering.pojo.City;
-import com.catering.pojo.Merchant;
-import com.catering.pojo.MerchantProfile;
-import com.catering.pojo.Tag;
-import com.catering.service.CityService_xpy;
-import com.catering.service.MerchantProfileService_xpy;
-import com.catering.service.MerchantService_xpy;
-import com.catering.service.TagService_xpy;
+import com.catering.pojo.*;
+import com.catering.service.*;
 import com.catering.utils.MailUtils;
 import com.catering.utils.SimpleMD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +26,7 @@ import java.util.Random;
 @Controller
 public class regController_xpy {
     @Autowired
-    private TagService_xpy tagService;
+    private StoreTypeService_xpy storeTypeService;
     @Autowired
     private CityService_xpy cityService;
     @Autowired
@@ -114,7 +108,7 @@ public class regController_xpy {
             merchantProfile.setCommendCount(0);
             merchantProfile.setCollectCount(0);
             merchantProfile.setHeat(0);
-            merchantProfile.setType(tagService.findByName(storetype));
+            merchantProfile.setType(storeTypeService.findByName(storetype));
             merchantProfile.setMerchantAddress(address);
             merchantProfile.setCountryId(0);
             merchantProfile.setProvinceId(cityService.getCityId(storesheng));
@@ -131,8 +125,8 @@ public class regController_xpy {
      */
     @ResponseBody
     @RequestMapping("/getTag")
-    public List<Tag> getTag(){
-        List<Tag> all = tagService.findAll();
+    public List<StoreType> getTag(){
+        List<StoreType> all = storeTypeService.findAll();
         return all;
     }
     /**

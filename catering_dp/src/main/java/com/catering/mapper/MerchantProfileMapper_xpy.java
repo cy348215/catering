@@ -43,4 +43,10 @@ public interface MerchantProfileMapper_xpy {
      */
     public int saveMerchant(@Param(("merchantProfile")) MerchantProfile merchantProfile);
 
+    /**
+     * 根据id查询店铺信息
+     * @param id
+     * @return
+     */
+    public MerchantProfile findById(int id);
 }

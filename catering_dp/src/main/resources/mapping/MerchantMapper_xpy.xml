@@ -23,5 +23,33 @@
         merchant
         where
         username=#{username}
+        and
+        isLogin=1
+        or
+        isLogin=2
     </select>
+    <select id="findPermissionById" parameterType="int" resultType="com.catering.pojo.StorePermission">
+    SELECT
+    sp.*
+    FROM
+    merchant m,
+    store_merchant_role smr,
+    store_role sr,
+    store_role_permission srp,
+    store_permission sp
+    WHERE
+    m.id=smr.merchant_id
+    AND smr.role_id=sr.id
+    AND sr.id=srp.role_id
+    AND srp.permission_id=sp.id
+    AND m.id=#{id}
+    </select>
+    <update id="updatePassword" parameterType="java.util.Map">
+        update
+        merchant
+        set
+        password=#{password}
+        where
+        id=#{id}
+    </update>
 </mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catering.mapper.MenuMapper_xpy">
+    <select id="findCount" parameterType="int" resultType="int">
+        select
+        count(m.id)
+        from
+        memu m,
+        merchant_menu mm
+        where
+        m.id=mm.greens_id
+        and
+        mm.shop_id=#{id}
+    </select>
+</mapper>

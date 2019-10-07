@@ -65,4 +65,12 @@
         #{merchantProfile.heat},#{merchantProfile.bussinesstime},#{merchantProfile.merchantAddress},#{merchantProfile.countryId},#{merchantProfile.provinceId},#{merchantProfile.cityId},
         #{merchantProfile.memberid})
     </insert>
+    <select id="findById" parameterType="int" resultMap="MerchanProfileResult">
+        select
+        *
+        from
+        merchant_profile
+        where
+        merchant_id=#{id}
+    </select>
 </mapper>
