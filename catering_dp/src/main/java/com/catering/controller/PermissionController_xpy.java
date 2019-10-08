@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class PermissionController {
+public class PermissionController_xpy {
     @Autowired
     private PermissionService permissionService;
     @RequestMapping("/index")

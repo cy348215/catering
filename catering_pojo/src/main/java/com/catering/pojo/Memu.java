@@ -26,7 +26,17 @@ public class Memu implements Serializable {
 
     private String heat;
 
+    private int merchantId;
+
     private static final long serialVersionUID = 1L;
+
+    public int getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(int merchantId) {
+        this.merchantId = merchantId;
+    }
 
     public Integer getId() {
         return id;
