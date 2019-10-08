@@ -41,7 +41,7 @@
                         <div class="f-fl item-ifo">
                             <input  type="text" maxlength="20" class="txt03 f-r3 required" tabindex="1" data-valid="isNonEmpty||between:3-20||isUname" data-error="店铺名称不能为空||店铺名称长度3-20位||只能输入中文、字母、数字、下划线，且以中文或字母开头" id="storename" />                            <span class="ie8 icon-close close hide"></span>
                             <label class="icon-sucessfill blank hide"></label>
-                            <label class="focus"><span>3-20位，中文、字母、数字、下划线的组合，以中文或字母开头</span></label>
+                            <label class="focus"><span id="sp1">3-20位，中文、字母、数字、下划线的组合，以中文或字母开头</span></label>
                             <label class="focus valid"></label>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                     <div class="item col-xs-12">
                         <span class="intelligent-label f-fl"><b class="ftx04">*</b>店铺负责人：</span>
                         <div class="f-fl item-ifo">
-                            <input  type="text" maxlength="20" class="txt03 f-r3 required" tabindex="1" data-valid="isNonEmpty||between:3-20||isUname" data-error="负责人不能为空||负责人长度2-20位||以中文或字母开头" id="storemaster" />                            <span class="ie8 icon-close close hide"></span>
+                            <input type="text" maxlength="10" class="txt03 f-r3 required" tabindex="1" data-valid="isNonEmpty||between:2-10||isZh" data-error="真实姓名不能为空||真实姓名长度2-10位||只能输入中文" id="storemaster" />                        <span class="ie8 icon-close close hide"></span>
                             <label class="icon-sucessfill blank hide"></label>
                             <label class="focus"><span>请输入负责人姓名</span></label>
                             <label class="focus valid"></label>
@@ -68,7 +68,7 @@
                         <div class="f-fl item-ifo">
                             <input  type="text" maxlength="20" class="txt03 f-r3 required" tabindex="1" data-valid="isNonEmpty||between:13||isUname" data-error="营业执照编号不能为空||营业执照编号长度13位||只能输入字母、数字、下划线" id="storemember" />                            <span class="ie8 icon-close close hide"></span>
                             <label class="icon-sucessfill blank hide"></label>
-                            <label class="focus"><span>13位，字母、数字、下划线的组合，以数字或字母开头</span></label>
+                            <label class="focus" id="sp2"><span>13位，字母、数字、下划线的组合，以数字或字母开头</span></label>
                             <label class="focus valid"></label>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                             <input type="text" class="txt03 f-r3 required" keycodes="tel" tabindex="2" data-valid="isNonEmpty||isPhone" data-error="手机号码不能为空||手机号码格式不正确" maxlength="11" id="phone" /> 
                             <span class="ie8 icon-close close hide"></span>                           
                             <label class="icon-sucessfill blank hide"></label>
-                            <label class="focus">请填写11位有效的手机号码</label>
+                            <label class="focus" id="sp3">请填写11位有效的手机号码</label>
                             <label class="focus valid"></label>
                         </div>
                     </div>
@@ -112,9 +112,11 @@
                     <div class="item col-xs-12">
                         <span class="intelligent-label f-fl"><b class="ftx04">*</b>邮箱地址：</span>
                         <div class="f-fl item-ifo">
-                            <input type="text" class="txt03 f-r3 required" tabindex="2" id="email" data-valid="isNonEmpty||Email" data-error="邮箱地址不能为空||请输入正确的邮箱格式"/>
+                            <input type="text" class="txt03 f-r3 required" tabindex="2" id="email" data-valid="isNonEmpty" data-error="邮箱地址不能为空"/>
                             <span class="ie8 icon-close close hide"></span>
                             <label class="icon-sucessfill blank hide"></label>
+                            <label class="focus" id="sp4">请输入您的邮箱地址</label>
+                            <label class="focus valid"></label>
                         </div>
                     </div>
                     <div class="item col-xs-12">
@@ -144,19 +146,6 @@
                             <label class="focus valid"></label>                          
                         </div>
                     </div>
-                    <div class="item col-xs-12">
-                        <span class="intelligent-label f-fl"><b class="ftx04">*</b>验证码：</span>    
-                        <div class="f-fl item-ifo">
-                            <input type="text" maxlength="4" class="txt03 f-r3 f-fl required" tabindex="4" style="width:167px" id="randCode" data-valid="isNonEmpty" data-error="验证码不能为空" /> 
-                            <span class="ie8 icon-close close hide"></span>
-                            <label class="f-size12 c-999 f-fl f-pl10">
-                            	<img src="images/yzm.jpg" />                               
-                            </label>                        
-                            <label class="icon-sucessfill blank hide" style="left:380px"></label>
-                            <label class="focusa">看不清？<a href="javascript:;" class="c-blue">换一张</a></label>   
-                            <label class="focus valid" style="left:370px"></label>                        
-                        </div>
-                    </div>
                     <div class="item col-xs-12" style="height:auto">
                         <span class="intelligent-label f-fl">&nbsp;</span>  
                         <p class="f-size14 required"  data-valid="isChecked" data-error="请先同意条款"> 
@@ -172,11 +161,11 @@
                     </div> 
                 </div>
                 <div class="part2" style="display:none">
-                	<div class="alert alert-info" style="width:700px">短信已发送至您手机，请输入短信中的验证码，确保您的手机号真实有效。</div>                    
+                	<div class="alert alert-info" style="width:700px">验证码已发送到您的邮箱，请输入验证码，确保您的邮箱地址真实有效。</div>
                     <div class="item col-xs-12 f-mb10" style="height:auto">
-                        <span class="intelligent-label f-fl">手机号：</span>    
-                        <div class="f-fl item-ifo c-blue">
-                            15824450934
+                        <span class="intelligent-label f-fl">邮箱地址：</span>
+                        <div id="phone1" class="f-fl item-ifo c-blue">
+
                         </div>
                     </div>
                     <div class="item col-xs-12">
@@ -187,7 +176,7 @@
                             <span class="btn btn-gray f-r3 f-ml5 f-size13" id="verifyYz" style="width:97px;">发送验证码</span>
                             <span class="ie8 icon-close close hide" style="right:130px"></span>
                             <label class="icon-sucessfill blank hide"></label>
-                            <label class="focus"><span>请查收手机短信，并填写短信中的验证码（此验证码3分钟内有效）</span></label>   
+                            <label class="focus"><span>请查收邮箱信息，并填写信息的验证码（此验证码3分钟内有效）</span></label>
                             <label class="focus valid"></label>                        
                         </div>
                     </div>
@@ -205,17 +194,17 @@
                             <input type="text" maxlength="10" class="txt03 f-r3 required" tabindex="1" data-valid="isNonEmpty||between:2-10||isZh" data-error="真实姓名不能为空||真实姓名长度2-10位||只能输入中文" id="adminNo" />   
                             <span class="ie8 icon-close close hide"></span>                         
                             <label class="icon-sucessfill blank hide"></label>
-                            <label class="focus">2-10位，中文真实姓名</label>
+                            <label class="focus">请再次输入负责人姓名</label>
                             <label class="focus valid"></label>
                         </div>
                     </div>
                     <div class="item col-xs-12">
                         <span class="intelligent-label f-fl"><b class="ftx04">*</b>身份证号：</span>    
                         <div class="f-fl item-ifo">
-                            <input type="text" class="txt03 f-r3 required" tabindex="2" data-valid="isNonEmpty||isCard" data-error="身份证号不能为空||身份证号码格式不正确" maxlength="18" id="phone" />    
+                            <input type="text" class="txt03 f-r3 required" tabindex="2" data-valid="isNonEmpty||isCard" data-error="身份证号不能为空||身份证号码格式不正确" maxlength="18" id="memberid" />
                             <span class="ie8 icon-close close hide"></span>                        
                             <label class="icon-sucessfill blank hide"></label>
-                            <label class="focus">请填写18位有效的手机号码</label>
+                            <label class="focus">请填写18位有效的身份证号码</label>
                             <label class="focus valid"></label>
                         </div>
                     </div>
@@ -227,8 +216,8 @@
                     </div>
                 </div>  
                 <div class="part4 text-center" style="display:none">
-                	<h3>恭喜cz82465，您已注册成功，现在开始您的投资之旅吧！</h3>
-                    <p class="c-666 f-mt30 f-mb50">页面将在 <strong id="times" class="f-size18">10</strong> 秒钟后，跳转到 <a href="http://www.17sucai.com/" class="c-blue">用户中心</a></p>
+                	<h3>您的注册信息已经提交，请关注您的邮箱，我们会将结果发送至您的邮箱！</h3>
+                    <p class="c-666 f-mt30 f-mb50">页面将在 <strong id="times" class="f-size18">10</strong> 秒钟后，跳转到 <a href="register" class="c-blue">注册中心</a></p>
                 </div>          
             </div>
         </div>
@@ -245,39 +234,153 @@
     <center><a class="btn btn-blue btn-lg f-size12 b-b0 b-l0 b-t0 b-r0 f-pl50 f-pr50 f-r3" href="javascript:closeClause();">已阅读并同意此条款</a></center>
 </div>
 <script>
-$(function(){	
-	//第一页的确定按钮
-	$("#btn_part1").click(function(){						
-		if(!verifyCheck._click()) return;
-		$(".part1").hide();
-		$(".part2").show();
-		$(".step li").eq(1).addClass("on");
+$(function(){
+    var code = "";
+    var email = "";
+    var storemaster = "";
+    var storename = "";
+    var storetype = "";
+    var storemember = "";
+    var phone = "";
+    var storesheng = "";
+    var storeshi = "";
+    var adress = "";
+    var password = "";
+        //第一页的确定按钮
+	$("#btn_part1").click(function(){
+	    storename = $("#storename").val();//店铺名称
+        storetype = $("#storetype").val();//店铺类型
+	    storemaster = $("#storemaster").val();//店铺负责人
+        storemember = $("#storemember").val();//经营许可号
+	    phone = $("#phone").val();//电话号
+	    storesheng = $("#storesheng").val();//所在省
+	    storeshi = $("#storeshi").val();//所在市
+	    adress = $("#adress").val();//详细地址
+	    email = $("#email").val();//邮箱
+	    password = $("#password");//密码
+        $.post("checkstorename",{"storename":storename},function (data1) {
+            if (data1 == true){
+                $.post("checkstoremember",{"storemember":storemember},function (data2){
+                    if (data2 == true){
+                        $.post("checkphone",{"phone":phone},function (data3) {
+                            if (data3 == true){
+                                $.post("checkemail",{"email":email},function (data4) {
+                                    if (data4 == true){
+                                        //if(!verifyCheck._click()) return;
+                                        $(".part1").hide();
+                                        $(".part2").show();
+                                        $(".step li").eq(1).addClass("on");
+                                        var phon = $("<font>"+email+"</font>");
+                                        $("#phone1").append(phon);
+
+                                    } else {
+                                        $("#sp4").empty();
+                                        var ss = $("<font>此邮箱已被使用</font>")
+                                        $("#sp4").append(ss);
+                                        $("#email").val("");
+                                    }
+                                });
+                            } else {
+                                $("#sp3").empty();
+                                var ss = $("<font>此手机号已被使用</font>")
+                                $("#sp3").append(ss);
+                                $("#phone").val("");
+                            }
+                        });
+                    } else {
+                        $("#sp2").empty();
+                        var ss = $("<font>此编号已被使用</font>")
+                        $("#sp2").append(ss);
+                        $("#storemember").val("");
+                    }
+                });
+            } else {
+
+                $("#sp1").empty();
+                var ss = $("<font>此名称已被使用</font>")
+                $("#sp1").append(ss);
+                $("#storename").val("");
+            }
+        });
 	});
+    var maxTime = 60;
+    function countDown() {
+        if (maxTime == 0){
+            code = ""
+        }else {
+            maxTime--;
+            setTimeout(countDown,1000);
+        }
+    }
+	//法送验证码
+    $("#verifyYz").click(function () {
+        $.post("sendCode",{"email":email},function (data) {
+            code = data;
+            alert("发送成功");
+            countDown();
+        });
+    });
 	//第二页的确定按钮
-	$("#btn_part2").click(function(){			
-		if(!verifyCheck._click()) return;
-		$(".part2").hide();
-		$(".part3").show();	
+	$("#btn_part2").click(function(){
+        if (code == $("#verifyNo").val()) {
+            //if (!verifyCheck._click()) return;
+            $(".part2").hide();
+            $(".part3").show();
+        } else {
+            alert("验证码有误");
+            $("#verifyNo").val("");
+        }
 	});	
 	//第三页的确定按钮
-	$("#btn_part3").click(function(){			
-		if(!verifyCheck._click()) return;
-		$(".part3").hide();
-		$(".part4").show();
-		$(".step li").eq(2).addClass("on");
-		countdown({
-			maxTime:10,
-			ing:function(c){
-				$("#times").text(c);
-			},
-			after:function(){
-				window.location.href="my.html";		
-			}
-		});		
+    var memberid = "";
+	$("#btn_part3").click(function(){
+	    alert("part3");
+	    if (storemaster == $("#adminNo").val()){
+	        alert("part33333");
+	        memberid = $("#memberid").val();
+            storename = $("#storename").val();//店铺名称
+            storetype = $("#storetype").val();//店铺类型
+            storemaster = $("#storemaster").val();//店铺负责人
+            storemember = $("#storemember").val();//经营许可号
+            phone = $("#phone").val();//电话号
+            storesheng = $("#storesheng").val();//所在省
+            storeshi = $("#storeshi").val();//所在市
+            adress = $("#adress").val();//详细地址
+            email = $("#email").val();//邮箱
+            password = $("#password").val();//密码
+            $.post("savestore",{"storename":storename,
+                "storetype":storetype, "storemaster":storemaster,
+                "storemember":storemember,"phone":phone,
+                "storesheng":storesheng,"storeshi":storeshi,
+                "adress":adress,"email":email,"password":password,"memberid":memberid
+            },function (data) {
+                if (data == true){
+                    //if(!verifyCheck._click()) return;
+                    $(".part3").hide();
+                    $(".part4").show();
+                    $(".step li").eq(2).addClass("on");
+                    countdown({
+                        maxTime:10,
+                        ing:function(c){
+                            $("#times").text(c);
+                        },
+                        after:function(){
+                            window.location.href="register";
+                        }
+                    });
+                } else {
+                    alert("注册失败");
+                }
+            })
+        } else {
+	        alert("两次输入的名称不一致");
+            $("#adminNo").val("");
+        }
+
 	});
 	$.post("getTag",function (data) {
         for (var i = 0; i < data.length; i++) {
-            var op = $("<option>"+data[i].cuisineName+"</option>");
+            var op = $("<option>"+data[i].name+"</option>");
             $("#storetype").append(op);
         }
     });
@@ -291,17 +394,20 @@ $(function(){
     })
     $("#storesheng").blur(function () {
         var name = $("#storesheng").val();
-        alert(name);
-        $.post("getCityId",{"name":name},function (id) {
-            $.post("getCity",function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].pid == id){
-                        var op = $("<option>"+data[i].cityname+"</option>");
-                        $("#storeshi").append(op);
+        if (name.length == 0){
+
+        } else {
+            $.post("getCityId", {"name": name}, function (id) {
+                $.post("getCity", function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].pid == id) {
+                            var op = $("<option>" + data[i].cityname + "</option>");
+                            $("#storeshi").append(op);
+                        }
                     }
-                }
+                })
             })
-        })
+        }
     });
 });
 function showoutc(){$(".m-sPopBg,.m-sPopCon").show();}

@@ -5,6 +5,10 @@
     <resultMap id="TagResult" type="com.catering.pojo.Tag">
         <id property="cuisineId" column="cuisine_id" />
         <result property="cuisineName" column="cuisine_name"/>
+        <result property="isMake" column="is_make"/>
+        <result property="isBoolean" column="is_boolean"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
     </resultMap>
     <select id="findAll" resultMap="TagResult">
         select
@@ -12,4 +16,37 @@
         from
         tag
     </select>
+    <select id="findByName" parameterType="string" resultType="int">
+        select
+        cuisine_id
+        from
+        tag
+        where
+        cuisine_name=#{name}
+    </select>
+    <select id="findAllMer" resultMap="TagResult" parameterType="int">
+        select
+        t.*
+        from
+        tag t,
+        type_tag tt
+        where
+        tt.tag_id=t.cuisine_id
+        and tt.merchant_id=#{id}
+    </select>
+    <insert id="saveTypeTag" parameterType="java.util.Map">
+        insert
+        type_tag
+        values
+        (default,#{mid},#{tid})
+    </insert>
+    <delete id="deleteTypeTag" parameterType="java.util.Map">
+        delete
+        from
+        type_tag
+        where
+        merchant_id=#{mid}
+        and
+        tag_id=#{tid}
+    </delete>
 </mapper>
