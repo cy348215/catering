@@ -33,29 +33,32 @@
 <div class="loginwrapper">
   <div class="wrap pr">
     <div class="loginbox">
-      <h1 class="hd">用户登录</h1>
+      <h1 class="hd">用户注册</h1>
+      <div class="tc" style="margin-top:-10px;"><img src="images/regtxt.png"></div>
+      <div class="boxbd mt20">
+        <label class="label">
+          <input type="text" name="user" value="" class="loginipt key user">
+          <span class="text">请输入您的邮箱</span>
+        </label>
+        <label class="label">
+          <input type="text" name="Nickname" value="" class="loginipt key Nickname">
+          <span class="text">请输入您的昵称</span>
+        </label>
+        <label class="label">
+          <input type="password" name="pwd" value="" class="loginipt key pwd">
+          <span class="text">请输入您的密码</span>
+        </label>
+        <button type="submit" name="login" value="" class="button btn-reg" onClick="location.href='mem.html'">立即注册</button>
+        <p class="mt20 tc">注册则表示同意<a href="#" class="o">《会员条款》</a></p>
+        <div class="ohter"><span class="ohtertxt">或</span></div>
+        <div class="Prompt" style="padding:0 0 10px">使用以上社交网络帐号登录</div>
+      </div> 
       <div class="tc">
         <a href="#" target="_blank" class="ico dou">豆</a>
         <a href="#" target="_blank" class="ico sina">新浪</a>
         <a href="#" target="_blank" class="ico qq">QQ</a>
       </div>
-      <div class="Prompt">使用以上社交网络帐号登录</div>
-      
-      <div class="boxbd">
-        <div class="ohter"><span class="ohtertxt">或</span></div>
-        <label class="label">
-          <input type="text" name="user" value="" class="loginipt user">
-          <span class="text">请输入您的邮箱</span>
-        </label>
-        <label class="label">
-          <input type="password" name="pwd" value="" class="loginipt pwd">
-          <span class="text">请输入您的密码</span>
-        </label>
-        <button type="submit" name="login" value="" class="button btn-login" onClick="location.href='mem.html'">登录</button>
-        <p class="mt20"><label for="remember"><input name="" type="checkbox" id="remember" value="" checked> 记住我</label><a href="forgot.html" class="fr"> 忘记密码？</a></p>
-        <p class="mt10 tr">还没有账号？<a href="reg.html" class="o">注册</a></p>
-      </div>
-      
+      <p class="boxbd tr">已有帐号？<a href="login.html" class="o">注册</a></p>
     </div>    
   </div>
 </div>
