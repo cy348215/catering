@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>商家回复</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/adminStyle.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script src="js/public.js"></script>
+</head>
+<body>
+ <div class="wrap">
+  <div class="page-title">
+    <span class="modular fl"><i class="user"></i><em>
+      <font th:if="${comm.type == '订单评价'}">订单评价</font>
+      <font th:if="${comm.type == '系统消息'}">订单评价</font>
+      <font th:if="${comm.type == '商品评价'}">订单评价</font>
+      <font th:if="${comm.type == '投诉'}">订单评价</font>
+    </em></span>
+  </div>
+  <dl>
+   <dt class="R-userTitle"><font th:text="${comm.account}"></font></dt>
+   <dd class="R-userCont"><font th:text="${comm.content}"></font></dd>
+   <dt class="R-adminTitle"><font th:text="${session.user.merchantName}"></font></dt>
+  </dl>
+  <hr/>
+  <div>
+   <textarea id="ttt"  th:value="${comm.reply}" class="textarea block" style="padding:1em;"></textarea>
+   <input id="inId" type="hidden" th:value="${comm.id}"/>
+   <input id="typeId" type="hidden" th:value="${comm.type}"/>
+   <input id="bt" type="button" value="回复 " class="tdBtn" style="margin:8px 0;"/>
+  </div>
+ </div>
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+ $(function () {
+  $("#bt").click(function () {
+   var reply = $("#ttt").val();
+   var id = $("#inId").val();
+   var type = $("#typeId").val();
+   $.post("saveComment",{"reply":reply,"id":id},function (data) {
+    if (data > 0){
+     if (type == "订单评价"){
+      location.href="indent_message";
+     }
+     if (type == "系统消息"){
+      location.href="system_message";
+     }
+     if (type == "投诉"){
+      location.href="complaint_message";
+     }
+     if (type == "商品评价"){
+      location.href="product_message";
+     }
+    } else {
+     alert("回复失败");
+    }
+   })
+  });
+ })
+</script>
+</html>

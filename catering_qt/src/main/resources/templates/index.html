@@ -15,16 +15,21 @@
 <link href="favicon.ico" rel="SHORTCUT ICON">
 <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
 </head>
+<style type="text/css">
+  a.hand:hover {
+    cursor:pointer
+  }
+</style>
 <body>
   <div class="indexban" style="background-image:url(images/img1.jpg);">
     <div class="wrap">
       <a href="index.html" class="logo indent">logo</a>
-      <div class="medium-right"><a href="login.html">登陆</a><a href="reg.html">注册</a><a href="#">发布我的饭局</a></div>
+      <div class="medium-right"><a href="login.html">立即登陆</a><a href="reg.html">注册</a><a href="#">发布我的饭局</a></div>
       <div class="txt"><span class="hd">美食与生活的完美演绎</span><a href="#">早餐</a><a href="#">午餐</a><a href="#">晚餐</a><a href="#">一键搞定</a></div>
     </div>
     <div class="p1-hero-search-form">
       <div class="wrap clearfix">
-        <form action="#" method="post" class="search_form clearfix">
+        <form action="#" method="post" class="search_form clearfix" style=" width:523px;">
           <div class="box-wrapper">
             <input type="text" class="input-large eat" autocomplete="off" id="eat" name="eat" placeholder="您想要吃什么？">
             <span id="enter_location_error_message" class="bad hide">请告诉我您要吃什么？</span>
@@ -37,9 +42,9 @@
           </div>
           <button type="submit" class="button search-button" id="submit_search">搜索</button>
         </form>
-        <div class="hot-key fl">热门搜索： <a id="tag1" th:href="@{searchTag(cuisineName=)}" ></a><a id="tag2" href="active.html" ></a>
-          <a id="tag3" href="active.html" ></a><a id="tag4" href="active.html" ></a>
-          <a id="tag5" href="active.html" ></a><a id="tag6" href="active.html" ></a>
+        <div class="hot-key fl">热门搜索： <a id="tag1" onclick="t1()" class="hand"></a><a id="tag2" onclick="t2()" class="hand"></a>
+          <a id="tag3" onclick="t3()" class="hand"></a><a id="tag4" onclick="t4()" class="hand"></a>
+          <a id="tag5" onclick="t5()" class="hand"></a><a id="tag6" onclick="t6()" class="hand"></a>
       </div>
     </div>
   </div>
@@ -161,6 +166,31 @@
 
 <script src="js/chosen.jquery.js"></script>
 <script type="text/javascript">
+  function t1(){
+    var tag=$("#tag1").text();
+    location.href="searchTag?tag="+tag;
+  }
+  function t2(){
+    var tag=$("#tag2").text();
+    location.href="searchTag?tag="+tag;
+  }
+  function t3(){
+    var tag=$("#tag3").text();
+    location.href="searchTag?tag="+tag;
+  }
+  function t4(){
+    var tag=$("#tag4").text();
+    location.href="searchTag?tag="+tag;
+  }
+
+  function t5(){
+    var tag=$("#tag5").text();
+    location.href="searchTag?tag="+tag;
+  }
+  function t6(){
+    var tag=$("#tag6").text();
+    location.href="searchTag?tag="+tag;
+  }
   $.post("findTag",function (data) {
       var tag1=data[1];
       var tag2=data[2];

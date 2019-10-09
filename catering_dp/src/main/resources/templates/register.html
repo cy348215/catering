@@ -380,7 +380,7 @@ $(function(){
 	});
 	$.post("getTag",function (data) {
         for (var i = 0; i < data.length; i++) {
-            var op = $("<option>"+data[i].cuisineName+"</option>");
+            var op = $("<option>"+data[i].name+"</option>");
             $("#storetype").append(op);
         }
     });

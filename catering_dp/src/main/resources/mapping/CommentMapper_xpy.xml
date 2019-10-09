@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catering.mapper.CommentMapper_xpy">
+    <resultMap id="commentResult" type="com.catering.pojo.Comment">
+        <id property="id" column="id"/>
+        <result property="type" column="type"/>
+        <result property="account" column="account"/>
+        <result property="createTime" column="create_time"/>
+        <result property="state" column="state"/>
+        <result property="content" column="content"/>
+        <result property="reply" column="reply"/>
+        <result property="dealTime" column="deal_time"/>
+        <result property="merchantId" column="merchant_id"/>
+        <result property="orderNumber" column="order_number"/>
+        <result property="menuId" column="menu_id"/>
+        <association property="memu" javaType="memu" column="menu_id" select="com.catering.mapper.MenuMapper_xpy.findById"></association>
+    </resultMap>
+    <select id="findAllById" resultMap="commentResult" parameterType="java.util.Map">
+        select
+        *
+        from
+        comment
+        where
+        id=#{id}
+        and
+        merchant_id=#{mid}
+    </select>
+    <select id="findAllByType" resultMap="commentResult" parameterType="java.util.Map">
+        select
+        *
+        from
+        comment
+        where
+        type=#{type}
+        and
+        merchant_id=#{mid}
+    </select>
+    <select id="getCountType" parameterType="java.util.Map" resultType="int">
+        select
+        count(id)
+        from
+        comment
+        where
+        type=#{type}
+        and
+        merchant_id=#{mid}
+    </select>
+    <update id="updateComment" parameterType="comment">
+        update
+        comment
+        set
+        state=#{comment.state},reply=#{comment.reply},deal_time=#{comment.dealTime}
+        where
+        id=#{comment.id}
+    </update>
+    <delete id="deleteComment" parameterType="int">
+        delete
+        from
+        comment
+        where
+        id=#{id}
+    </delete>
+</mapper>

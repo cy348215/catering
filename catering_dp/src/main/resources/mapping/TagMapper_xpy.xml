@@ -24,4 +24,29 @@
         where
         cuisine_name=#{name}
     </select>
+    <select id="findAllMer" resultMap="TagResult" parameterType="int">
+        select
+        t.*
+        from
+        tag t,
+        type_tag tt
+        where
+        tt.tag_id=t.cuisine_id
+        and tt.merchant_id=#{id}
+    </select>
+    <insert id="saveTypeTag" parameterType="java.util.Map">
+        insert
+        type_tag
+        values
+        (default,#{mid},#{tid})
+    </insert>
+    <delete id="deleteTypeTag" parameterType="java.util.Map">
+        delete
+        from
+        type_tag
+        where
+        merchant_id=#{mid}
+        and
+        tag_id=#{tid}
+    </delete>
 </mapper>

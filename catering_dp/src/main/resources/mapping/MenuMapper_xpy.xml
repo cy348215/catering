@@ -2,15 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.catering.mapper.MenuMapper_xpy">
+    <resultMap id="memuResult" type="com.catering.pojo.Memu">
+        <id property="id" column="id"/>
+        <result property="dishId" column="dish_id"/>
+        <result property="dishPrice" column="dish_price"/>
+        <result property="type" column="type"/>
+        <result property="invent" column="invent"/>
+        <result property="state" column="state"/>
+        <result property="label" column="label"/>
+        <result property="img1" column="img1"/>
+        <result property="updatetime" column="updatetime"/>
+        <result property="heat" column="heat"/>
+        <result property="merchantId" column="merchant_id"/>
+    </resultMap>
     <select id="findCount" parameterType="int" resultType="int">
         select
-        count(m.id)
+        count(id)
         from
-        memu m,
-        merchant_menu mm
+        memu
         where
-        m.id=mm.greens_id
-        and
-        mm.shop_id=#{id}
+        merchant_id=#{id}
+    </select>
+    <select id="findById" parameterType="int" resultMap="memuResult">
+        select
+        *
+        from
+        memu
+        where
+        id=#{id}
     </select>
 </mapper>
