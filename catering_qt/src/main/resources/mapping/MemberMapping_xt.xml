@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.catering.mapper.memberMapper_xt">
+<mapper namespace="com.catering.mapper.MemberMapperXt">
     <resultMap id="MemberMap" type="com.catering.pojo.Member" >
         <id column="id" property="id"/>
         <result column="username" property="username" />
@@ -50,12 +50,12 @@
     </select>
     <!--// 根据name查询是否存在此会员
     public int findMemberByName(String username);-->
-    <select id="findMemberByName" resultMap="MemberMap">
+    <select id="findMemberByName" resultMap="MemberMap" parameterType="string">
         select * from member where username = #{name}
     </select>
     <!--// 根据邮箱查询是否存在此
     public int findMemberByEmail(String email);-->
-    <select id="findMemberByEmail" resultMap="MemberMap">
+    <select id="findMemberByEmail" resultMap="MemberMap" parameterType="string">
         select * from member where email = #{email}
     </select>
     <!--// 增加会员信息
@@ -69,7 +69,7 @@
         insert
           member_profile(id,nickname,name,gender,level,avatar_url,mobile_code,mobile,email,description,country,province,city,district,address,register_time,point)
           values
-        (#{memProfile.id},#{memProfile.nickname},#{memProfile.name},#{memProfile.gender},#{memProfile.level},#{memProfile.avatar_url},#{memProfile.mobile_code},#{memProfile.mobile},#{memProfile.email},#{memProfile.description},#{memProfile.country},#{memProfile.province},#{memProfile.city},#{memProfile.district},#{memProfile.address},#{memProfile.register_time},#{memProfile.point})
+        (#{id},#{nickname},#{name},#{gender},#{level},#{avatarUrl},#{mobileCode},#{mobile},#{email},#{description},#{country},#{province},#{city},#{district},#{address},#{registerTime},#{point})
     </insert>
    <!-- // 对比登录是否成功
     public int findMember(Map map);-->
@@ -79,7 +79,12 @@
     <!--// 更改登录状态（1启用 2 禁用 3 已登录）
     public int updataMemberStateById(int id);
     -->
-    <update id="updataMemberStateById" parameterType="int">
-         update admin_user set status= #{status} where id = #{id}
+    <update id="updataMemberStateById" parameterType="map">
+         update member set state= #{state} where id = #{id}
     </update>
+<!--    // 根据username 查询id-->
+<!--    public int findMemberIdByUsername(String username);-->
+    <select id="findMemberIdByUsername" parameterType="string" resultType="int">
+        select id from member where username = #{username};
+    </select>
 </mapper>

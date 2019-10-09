@@ -1,5 +1,6 @@
 <!doctype html>
-<html><head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="keywords" content="">
 <meta name="description" content="mezz">
@@ -34,20 +35,15 @@
               <option>地点</option>
             </select>
           </div>
-          <div class="box-wrapper bd0">
-            <select data-placeholder="就餐人数" style="width:150px;" class="chosen-select-no-single" tabindex="9">
-              <option>就餐人数</option>
-              <option>2人</option>
-              <option>2人</option>
-            </select>
-          </div>
           <button type="submit" class="button search-button" id="submit_search">搜索</button>
         </form>
-        <div class="hot-key fl">热门搜索： <a href="active.html">早餐</a><a href="active.html">午餐</a><a href="active.html">晚餐</a><a href="active.html">西餐</a><a href="active.html">午餐</a><a href="active.html">西餐</a><a href="active.html">西餐</a></div>
+        <div class="hot-key fl">热门搜索： <a id="tag1" th:href="@{searchTag(cuisineName=)}" ></a><a id="tag2" href="active.html" ></a>
+          <a id="tag3" href="active.html" ></a><a id="tag4" href="active.html" ></a>
+          <a id="tag5" href="active.html" ></a><a id="tag6" href="active.html" ></a>
       </div>
     </div>
   </div>
-  
+  </div>
   <div class="wrap">
     <div class="row-space tc"><a href="active.html"><img src="images/txt1.png"></a></div>
     
@@ -154,8 +150,7 @@
     </div>
     <div class="gotop">&#xe608;</div>
   </div>
-  <div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>  
-    
+  <div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>
 </body>
 <script src="js/jquery.js"></script>
 <script src="js/Action.js"></script>
@@ -166,6 +161,20 @@
 
 <script src="js/chosen.jquery.js"></script>
 <script type="text/javascript">
+  $.post("findTag",function (data) {
+      var tag1=data[1];
+      var tag2=data[2];
+      var tag3=data[3];
+      var tag4=data[4];
+      var tag5=data[5];
+      var tag6=data[6];
+      $("#tag1").append("<a>"+tag1+"</a>");
+      $("#tag2").append("<a>"+tag2+"</a>");
+      $("#tag3").append("<a>"+tag3+"</a>");
+      $("#tag4").append("<a>"+tag4+"</a>");
+      $("#tag5").append("<a>"+tag5+"</a>");
+      $("#tag6").append("<a>"+tag6+"</a>");
+  })
     var config = {
 		'.chosen-select-no-single' : {disable_search_threshold:10}
 	}

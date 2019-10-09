@@ -22,14 +22,14 @@ public class MemberServiceImpl_Xt implements MemberServiceXt {
 
     @Override
     public boolean findMemberByName(String username) {
-        int count = memberMapperXt.findMemberByName(username);
-        return count>0?true:false;
+        Member member = memberMapperXt.findMemberByName(username);
+        return member!=null?true:false;
     }
 
     @Override
     public boolean findMemberByEmail(String email) {
-        int count = memberMapperXt.findMemberByEmail(email);
-        return count>0?true:false;
+        Member member = memberMapperXt.findMemberByEmail(email);
+        return member!=null?true:false;
     }
 
     @Override
@@ -45,17 +45,23 @@ public class MemberServiceImpl_Xt implements MemberServiceXt {
     }
 
     @Override
-    public boolean findMember(String username,String password) {
+    public Member findMember(String username,String password) {
         Map<String ,String> map = new HashMap<>();
         map.put("username",username);
         map.put("password",password);
         Member member = memberMapperXt.findMember(map);
-        return false;
+        return member;
     }
 
     @Override
-    public boolean updataMemberStateById(int id) {
-        int count = memberMapperXt.updataMemberStateById(id);
-        return count>0?true:false;
+    public int updataMemberStateById(Map<String,Integer> map) {
+
+        int count = memberMapperXt.updataMemberStateById(map);
+        return count;
+    }
+
+    @Override
+    public int findMemberIdByUsername(String username) {
+        return memberMapperXt.findMemberIdByUsername(username);
     }
 }
