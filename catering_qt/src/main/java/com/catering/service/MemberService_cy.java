@@ -32,5 +32,59 @@ public interface MemberService_cy {
      * @return
      */
     public List<String> searchMer(List<Integer> list1);
-
+    /**
+     * 通过店铺id查出所有店铺所有信息
+     * @param map
+     * @return
+     */
+    public List<String> searchMer1(int i);
+    /**
+     * 查出所有店铺
+     * @return
+     */
+    public List<String> searchTag1();
+    /**
+     * 查出所有前十个标签
+     */
+    public List<String> findTag1();
+    /**
+     * 查出有限的地点
+     * @return
+     */
+    public List<String> findCity();
+    /**
+     * 查出所有的地点
+     * @return
+     */
+    public List<String> findCity1();
+    /**
+     *查询店铺图片
+     */
+    public List<String> findImg1();
+    /**
+     *查询店铺图片
+     */
+    public List<String> findImg2();
+    /**
+     *查询店铺图片
+     */
+    public List<String> findImg3();
+    /**
+     * 通过图片查id
+     * @param img1
+     * @return
+     */
+    public int searchInt1(String img1);
+    /**
+     * 通过图片查id
+     * @param img2
+     * @return
+     */
+    public int searchInt2(String img2);
+    /**
+     * 通过图片查id
+     * @param img3
+     * @return
+     */
+    public int searchInt3(String img3);
 }

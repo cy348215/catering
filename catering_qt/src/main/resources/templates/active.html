@@ -22,20 +22,23 @@
   a.hand:hover {
     cursor:pointer
   }
+  .Condition .classfy{ width:709px;}
+  .Condition .place{ width:709px;}
+  .clearfix .logo{ width:260px; height:74px; background:url(../img/logo.png) no-repeat center;background-size: 170px;  position:absolute; left:170px;top:-10px; z-index:100;}
 </style>
 <body>
 <div class="head">
   <div class="wrap clearfix">
-    <a href="index.html" class="logo indent">logo</a>
+    <a href="index" class="logo indent">logo</a>
     <div class="headr fr">
       <form action="active.html" method="post" class="headsearch">
         <label class="label">
           <input type="text" value="" name="" class="key">
-          <span class="text">搜索地址、名称、时间等</span>
+          <span class="text">搜索地址、名称等</span>
         </label>
         <button type="submit" class="button btn-search">&#xe628;</button>
       </form>
-      <a href="#" target="voiceList"><em><img src="images/sb.png"></em>  &nbsp;&nbsp;发布我的饭局</a>
+      <a href="http://localhost:8088/login" target="voiceList"><em><img src="images/sb.png"></em>  &nbsp;&nbsp;商家中心</a>
       <div class="user">
         <span class="clearfix"><span class="userimg"><img src="upload/img12.png"><i></i></span>
         <a href="javascript:;" class="fr" target="voiceList">设计--麻  <em>&#xe607;</em></a></span>
@@ -55,25 +58,22 @@
 <div class="activewrap wrap clearfix">
   <div class="section fl">
     <div class="Condition clearfix">
-      <div class="item classfy">
-        <h1>类别</h1>
-        <a href="#">中餐</a><a href="#" class="current">西餐</a><a href="#">意餐</a>
+      <div class="item classfy" >
+        <h1><b>类别</b></h1>
+        <span th:each="t:${tag1}"><a href="#" th:text="${t}"></a></span>
       </div>
-      <div class="item time">
-        <h1>时间</h1>
-        <input id="data" class="Wdate" type="text" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/> - <input id="" class="Wdate" type="text" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/>
-      </div>
+
       <div class="item place">
-        <h1>地点</h1>
-        <a href="#">北京市</a><a href="#">上海市</a><a href="#">天津市</a><a href="#" class="current">重庆市</a><a href="#">吉林省</a><a href="#">河北省 </a>      </div>
+        <h1><b>地点</b></h1>
+        <span th:each="c:${city}"><a href="#" th:text="${c}"></a></span>   </div>
 
     </div>
 
     <div class="sortbar mt10 clearfix">
       <ul class="nav-pills">
-        <li class="current"><a href="active.html?id=1" title="全部">全部</a></li>
+        <li class="current"><a href="searchTag1" title="全部">全部</a></li>
         <li><a href="active.html?id=2" title="时间">时间<em class="ico time"></em></a></li>
-        <li><a href="active.html?id=3" title="菜金从高到低">菜金<em class="ico price"></em></a></li>
+        <li><a href="active.html?id=3" title="菜金从高到低">均价/人<em class="ico price"></em></a></li>
       </ul>
       <div class="pagination-sort fr">
         <span class="page-info"><strong>1</strong>/33</span>
@@ -86,14 +86,16 @@
       <ul class="active-list" >
         <li>
           <div class="img">
-            <a href="detail.html"><img th:src="${m.merchantFeature.img2}" style="width: 730px;height: 220px;"></a>
+            <a onclick="img222()"><img th:src="${m.merchantFeature.img2}" style="width: 730px;height: 220px;"></a>
+            <input th:value="${m.merchantFeature.img2}" type="hidden" id="img222">
+            <input th:value="${m.merchantFeature.img1}" type="hidden" id="img111">
             <div class="bottominfo">
               <span class="label"><a href="javascript:;">活动玩法</a><a href="javascript:;">活动标签</a><a href="javascript:;">活动标签</a></span><a href="Sign_up.html" class="Sign_up">我要报名</a>
             </div>
           </div>
           <div class="active-info">
             <div class="user">
-              <a href="#" class="userimg"><img th:src="${m.merchantFeature.img1}" style="height:95px;width:120px;"></a>
+              <a onclick="img111()" class="userimg"><img th:src="${m.merchantFeature.img1}" style="height:95px;width:120px;"></a>
               <a href="#" th:text="${m.merchantName}" style="font-weight:bold;font-size: 16px;"></a><em class="user-level"></em><em class="user-level"></em><em class="user-level"></em>
             </div>
             <div class="txt"><span th:text="${m.merchantFeature.intro}"></span></div>
@@ -198,13 +200,21 @@
     </div>
     <div class="gotop">&#xe608;</div>
   </div>
-  <div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>  
+  <div class="foot tc">Copyright © 2003-2015 私厨, All Rights Reserved</div>
 <script src="js/jquery.js"></script>
 <script src="date/WdatePicker.js"></script>
 <script src="js/Action.js"></script>
 
 <script src="js/chosen.jquery.js"></script>
 <script type="text/javascript">
+  function img111(){
+    var img1=$("#img111").val();
+    location.href="findShop?img1="+img1;
+  }
+  function img222(){
+    var img1=$("#img222").val();
+    location.href="findShop?img2="+img1;
+  }
   function closeMap() {
     $('#map').css('display', 'none');
   }
