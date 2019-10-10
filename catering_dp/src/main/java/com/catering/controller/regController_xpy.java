@@ -36,7 +36,6 @@ public class regController_xpy {
     @Autowired
     private MerchantService_xpy merchantService;
 
-
     @RequestMapping("/register")
     public String reg(){
         return "register";
@@ -114,6 +113,7 @@ public class regController_xpy {
             merchantProfile.setProvinceId(cityService.getCityId(storesheng));
             merchantProfile.setCityId(cityService.getCityId(storeshi));
             merchantProfile.setMemberid(memberid);
+
             b = merchantProfileService.saveMerchant(merchantProfile);
         }
         System.out.println(b);
