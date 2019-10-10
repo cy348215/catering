@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catering.mapper.MemberMapperXt">
+    <resultMap id="MemberMap" type="com.catering.pojo.Member" >
+        <id column="id" property="id"/>
+        <result column="username" property="username" />
+        <result column="email" property="email"  />
+        <result column="password" property="password"  />
+        <result column="state" property="state" />
+        <result column="lastlogintime" property="lastlogintime" />
+    </resultMap>
+    <resultMap id="MemberProMap" type="com.catering.pojo.MemberProfile" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="INTEGER" />
+        <result column="level" property="level" jdbcType="INTEGER" />
+        <result column="avatar_url" property="avatarUrl" jdbcType="VARCHAR" />
+        <result column="mobile_code" property="mobileCode" jdbcType="VARCHAR" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="description" property="description" jdbcType="VARCHAR" />
+        <result column="country" property="country" jdbcType="INTEGER" />
+        <result column="province" property="province" jdbcType="INTEGER" />
+        <result column="city" property="city" jdbcType="INTEGER" />
+        <result column="district" property="district" jdbcType="INTEGER" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="register_time" property="registerTime" jdbcType="VARCHAR" />
+        <result column="point" property="point" jdbcType="INTEGER" />
+    </resultMap>
+    <resultMap id="MemberTagMap" type="com.catering.pojo.MemberTag" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="member_id" property="memberId" jdbcType="INTEGER" />
+        <result column="tag_id" property="tagId" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    </resultMap>
+    <resultMap id="MemberFavMap" type="com.catering.pojo.MemberFav" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="member_id" property="memberId" jdbcType="INTEGER" />
+        <result column="content_id" property="contentId" jdbcType="INTEGER" />
+        <result column="fav_type" property="favType" jdbcType="INTEGER" />
+        <result column="fav_time" property="favTime" jdbcType="VARCHAR" />
+        <result column="fav_ip" property="favIp" jdbcType="VARCHAR" />
+    </resultMap>
+    <!--// 根据id查询会员信息
+    public Member findMemberById(int id);-->
+    <select id="findMemberById" resultType="com.catering.pojo.Member" parameterType="int">
+        select * from member where id = #{id}
+    </select>
+    <!--// 根据name查询是否存在此会员
+    public int findMemberByName(String username);-->
+    <select id="findMemberByName" resultMap="MemberMap" parameterType="string">
+        select * from member where username = #{name}
+    </select>
+    <!--// 根据邮箱查询是否存在此
+    public int findMemberByEmail(String email);-->
+    <select id="findMemberByEmail" resultMap="MemberMap" parameterType="string">
+        select * from member where email = #{email}
+    </select>
+    <!--// 增加会员信息
+    public Member addMember(Member member);-->
+    <insert id="addMember" parameterType="member">
+        insert  member values (default ,#{username} ,#{email} ,#{password} ,default ,#{lastlogintime})
+    </insert>
+    <!--// 增加会员详细信息
+    public MemberProfile addMemberPro(MemberProfile memberProfile);-->
+    <insert id="addMemberPro" parameterType="memberProfile">
+        insert
+          member_profile(id,nickname,name,gender,level,avatar_url,mobile_code,mobile,email,description,country,province,city,district,address,register_time,point)
+          values
+        (#{id},#{nickname},#{name},#{gender},#{level},#{avatarUrl},#{mobileCode},#{mobile},#{email},#{description},#{country},#{province},#{city},#{district},#{address},#{registerTime},#{point})
+    </insert>
+   <!-- // 对比登录是否成功
+    public int findMember(Map map);-->
+    <select id="findMember" resultMap="MemberMap" parameterType="map">
+        select * from member where username = #{username} and  password = #{password}
+    </select>
+    <!--// 更改登录状态（1启用 2 禁用 3 已登录）
+    public int updataMemberStateById(int id);
+    -->
+    <update id="updataMemberStateById" parameterType="map">
+         update member set state= #{state} where id = #{id}
+    </update>
+<!--    // 根据username 查询id-->
+<!--    public int findMemberIdByUsername(String username);-->
+    <select id="findMemberIdByUsername" parameterType="string" resultType="int">
+        select id from member where username = #{username};
+    </select>
+</mapper>
