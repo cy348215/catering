@@ -2,7 +2,6 @@ package com.catering.controller;
 
 import com.catering.pojo.Tag;
 import com.catering.service.MemberService_cy;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +15,23 @@ import java.util.Map;
 public class MemberController_cy {
     @Autowired
     private MemberService_cy memberService_cy;
+
     @RequestMapping("index")
     public String index(){
         return "index";
+    }
+
+    @RequestMapping("/active1")
+    public String active1(){
+        return "active1";
+    }
+    @RequestMapping("map1")
+    public String map1(){
+        return "map1";
+    }
+    @RequestMapping("mapPosition")
+    public String mapPosition(){
+        return "mapPosition";
     }
 
     /**
