@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catering.mapper.ReservationMapper_xt">
+    <resultMap id="merMap" type="com.catering.pojo.MerchantProfile">
+        <id property="merchantId" column="merchant_id"></id>
+        <result property="merchantName" column="merchant_name"></result>
+        <result property="merchantPrincipal" column="merchant_principal"></result>
+        <result property="merchantNumber" column="merchant_number"></result>
+        <result property="merchartEmail" column="merchart_email"></result>
+        <result property="phone" column="phone"></result>
+        <result property="createtime" column="createtime"></result>
+        <result property="level" column="level"></result>
+        <result property="point" column="point"></result>
+        <result property="lastupdatetime" column="lastupdatetime"></result>
+        <result property="type" column="type"></result>
+        <result property="commendCount" column="commend_count"></result>
+        <result property="heat" column="heat"></result>
+        <result property="bussinesstime" column="bussinesstime"></result>
+        <result property="merchantAddress" column="merchant_address"></result>
+        <result property="countryId" column="country_id"></result>
+        <result property="provinceId" column="province_id"></result>
+        <result property="cityId" column="city_id"></result>
+        <result property="memberid" column="memberid"></result>
+        <result property="personPrice" column="person_price"></result>
+        <association property="merchantFeature" javaType="MerchantFeature" select="com.catering.mapper.MemberMapper_cy.findFea" column="merchant_id">
+        </association>
+    </resultMap>
+    <resultMap id="memuMap" type="com.catering.pojo.Memu">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="dish_id" jdbcType="VARCHAR" property="dishId" />
+        <result column="dish_price" jdbcType="VARCHAR" property="dishPrice" />
+        <result column="type" jdbcType="INTEGER" property="type" />
+        <result column="invent" jdbcType="INTEGER" property="invent" />
+        <result column="state" jdbcType="INTEGER" property="state" />
+        <result column="label" jdbcType="VARCHAR" property="label" />
+        <result column="img1" jdbcType="VARCHAR" property="img1" />
+        <result column="updatetime" jdbcType="VARCHAR" property="updatetime" />
+        <result column="heat" jdbcType="VARCHAR" property="heat" />
+        <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+    </resultMap>
+    <resultMap id="indentMap" type="com.catering.pojo.Indent" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="merchant_id" property="merchantId" jdbcType="INTEGER" />
+        <result column="member_id" property="memberId" jdbcType="INTEGER" />
+        <result column="price" property="price" jdbcType="REAL" />
+        <result column="ordertime" property="ordertime" jdbcType="VARCHAR" />
+        <result column="endtime" property="endtime" jdbcType="VARCHAR" />
+        <result column="ordernumber" property="ordernumber" jdbcType="INTEGER" />
+        <result column="commentid" property="commentid" jdbcType="INTEGER" />
+        <result column="state" property="state" jdbcType="INTEGER" />
+        <result column="dingprice" property="dingprice" jdbcType="REAL" />
+        <result column="eattime" property="eattime" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="findMerchantProById" resultMap="merMap" parameterType="int">
+        select * from merchant_profile where merchant_id = #{id}
+    </select>
+    <select id="findAllMemuById" resultMap="memuMap" parameterType="int">
+        select * from memu where merchant_id = #{id}
+    </select>
+    <select id="findMemuById" resultMap="memuMap" parameterType="int">
+        select * from memu where id = #{id}
+    </select>
+    <insert id="addIndentMemu" parameterType="map">
+        insert indent_menu values (#{indentId},#{memuId},#{count});
+    </insert>
+    <insert id="addIndent" parameterType="indent">
+        insert indent
+        values
+        (default ,#{merchantId},#{memberId},#{price},#{ordertime},#{endtime},#{ordernumber},#{commentid},#{state},#{dingprice},#{eattime},#{remark});
+    </insert>
+    <select id="findIndentMenuXt" parameterType="map" resultType="int">
+        SELECT m_count FROM indent_menu where indent_id=#{indentId} and mune_id=#{menuId};
+    </select>
+</mapper>

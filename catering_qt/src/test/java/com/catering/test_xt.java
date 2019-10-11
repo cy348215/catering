@@ -1,7 +1,9 @@
 package com.catering;
 
 import com.catering.mapper.MemberMapperXt;
+import com.catering.mapper.ReservationMapper_xt;
 import com.catering.pojo.Member;
+import com.catering.pojo.MerchantProfile;
 import com.catering.service.MemberServiceXt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,8 +24,28 @@ public class test_xt {
     @Resource
     MemberServiceXt memberServiceXt;
 
+    @Autowired
+    ReservationMapper_xt reservationMapper_xt;
 
+    @Test
+    public void test6(){
+        Map<String ,Integer > map = new HashMap<>();
+        map.put("indentId",1);
+        map.put("menuId",1);
+        int id = 1;
+        int i = reservationMapper_xt.findIndentMenuXt(map);
+        System.out.println("i = " + i);
+    }
 
+    @Test
+    public void test5(){
+        Map<String ,Integer > map = new HashMap<>();
+        map.put("indentId",1);
+        map.put("memuId",2);
+        int id = 1;
+        int i = reservationMapper_xt.addIndentMemu(map);
+        System.out.println("i = " + i);
+    }
     @Test
     public void test4(){
         String username = "admin";

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>我要点餐</title>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/css.css" rel="stylesheet">
+    <link href="css/chosen.css" rel="stylesheet">
+    <link href="favicon.ico" rel="SHORTCUT ICON">
+    <!--
+    Author: DeathGhost
+    Author URI: http://www.deathghost.cn
+    -->
+</head>
+<body>
+<header>
+
+</header>
+<div class="head">
+    <div class="wrap clearfix">
+        <a href="index.html" class="logo indent">logo</a>
+        <div class="headr fr">
+            <form action="active.html" method="post" class="headsearch">
+                <label class="label">
+                    <input type="text" value="" name="" class="key">
+                    <span class="text">搜索地址、名称、时间等</span>
+                </label>
+                <button type="submit" class="button btn-search">&#xe628;</button>
+            </form>
+            <a href="#"><em><img src="images/sb.png"></em> &nbsp;&nbsp;发布我的饭局</a>
+            <div class="user">
+        <span class="clearfix"><span class="userimg"><img src="upload/img12.png"><i></i></span>
+        <a href="javascript:;" class="fr">设计--麻  <em>&#xe607;</em></a></span>
+                <ul class="topslide">
+                    <li><em>&#xe627;</em><a href="mem.html">个人设置</a></li>
+                    <li><em>&#xe63d;</em><a href="Message.html">消息中心<s></s></a></li>
+                    <li><em>&#xe63c;</em><a href="Dinner.html">订单管理</a></li>
+                    <li><em>&#xe63e;</em><a href="fans.html">我的好友</a></li>
+                    <li><em>&#xe611;</em><a href="logout">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Start content-->
+<div class="container" style="height: 1000px">
+    <div>
+        <h1>欢迎来到订单确认界面</h1>
+    </div>
+    <div class="row" style="height: 300px ;background-color: yellowgreen">
+        商家信息：
+    </div>
+    <div style="height: 300px;margin-top: 20px;background-color: yellow">
+        这条订单信息（状态）
+    </div>
+    <div style="height: 300px;border-color: antiquewhite">
+        <h1>进行订单定金支付或者返回商家首页</h1>
+        <button id="button1">确定支付</button>
+        <button id="button2">我想在看看</button>
+    </div>
+</div>
+<div class="footmenu">
+    <div class="wrap clearfix">
+        <div class="item bd0">
+            <h1 class="hd">产品理念</h1>
+            <ul>
+                <li><a href="#">食品安全</a></li>
+                <li><a href="#">订购流程</a></li>
+                <li><a href="#">修改订单</a></li>
+                <li><a href="#">冷链配送</a></li>
+                <li><a href="#">全程冷链</a></li>
+            </ul>
+        </div>
+        <div class="item">
+            <h1 class="hd">产品理念</h1>
+            <ul>
+                <li><a href="#">食品安全</a></li>
+                <li><a href="#">订购流程</a></li>
+                <li><a href="#">修改订单</a></li>
+                <li><a href="#">冷链配送</a></li>
+                <li><a href="#">全程冷链</a></li>
+            </ul>
+        </div>
+        <div class="item">
+            <h1 class="hd">产品理念</h1>
+            <ul>
+                <li><a href="#">食品安全</a></li>
+                <li><a href="#">订购流程</a></li>
+                <li><a href="#">修改订单</a></li>
+                <li><a href="#">冷链配送</a></li>
+                <li><a href="#">全程冷链</a></li>
+            </ul>
+        </div>
+        <div class="item">
+            <h1 class="hd">产品理念</h1>
+            <ul>
+                <li><a href="#">食品安全</a></li>
+                <li><a href="#">订购流程</a></li>
+                <li><a href="#">修改订单</a></li>
+                <li><a href="#">冷链配送</a></li>
+                <li><a href="#">全程冷链</a></li>
+            </ul>
+        </div>
+        <div class="fr">
+            <img src="images/img2.jpg">
+            <img src="images/img3.jpg">
+        </div>
+    </div>
+    <div class="gotop">&#xe608;</div>
+</div>
+<div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>
+</body>
+<script type="text/javascript">
+    $("#button1").click(function () {
+        var mymessage=confirm("想要提交订单吗？需要交定金哟！！");
+        if (mymessage == true){
+            return true;
+        } else {
+            return false;
+        }
+    })
+
+
+</script>
+</html>

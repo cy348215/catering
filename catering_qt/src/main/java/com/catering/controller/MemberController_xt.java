@@ -39,8 +39,14 @@ public class MemberController_xt {
     @RequestMapping("/logout")
     public String logout(HttpSession session){
         try {
-            Member memeber = (Member) session.getAttribute("memeber");
-            memeber.setState(1);
+            Member member = (Member) session.getAttribute("member");
+            System.out.println("退出登录的member = " + member);
+            Integer state = 1;
+            Integer id = member.getId();
+            Map<String ,Integer> map = new HashMap<>();
+            map.put("id",id);
+            map.put("state",state);
+            int i = memberServiceXt.updataMemberStateById(map);
             Subject subject = SecurityUtils.getSubject();
             subject.logout();
 
@@ -71,11 +77,15 @@ public class MemberController_xt {
             }
             if (count == 1){
                 System.out.println("账户启用");
+                int ids = memberServiceXt.findMemberIdByUsername(username);
+                member.setId(ids);
                 request.getSession().setAttribute("member",member);
+                System.out.println("member = " + member);
                 Map<String ,Integer> map = new HashMap<>();
                 int state = 3;
                 map.put("id",id);
                 map.put("state",state);
+
                 int i = memberServiceXt.updataMemberStateById(map);
                 System.out.println("i = " + i);
                 return "redirect:index";
