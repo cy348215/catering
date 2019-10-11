@@ -34,6 +34,19 @@
         <result property="intro" column="intro"></result>
         <result property="feature" column="feature"></result>
     </resultMap>
+    <resultMap id="memuMap" type="com.catering.pojo.Memu">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="dish_id" jdbcType="VARCHAR" property="dishId" />
+        <result column="dish_price" jdbcType="VARCHAR" property="dishPrice" />
+        <result column="type" jdbcType="INTEGER" property="type" />
+        <result column="invent" jdbcType="INTEGER" property="invent" />
+        <result column="state" jdbcType="INTEGER" property="state" />
+        <result column="label" jdbcType="VARCHAR" property="label" />
+        <result column="img1" jdbcType="VARCHAR" property="img1" />
+        <result column="updatetime" jdbcType="VARCHAR" property="updatetime" />
+        <result column="heat" jdbcType="VARCHAR" property="heat" />
+        <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+    </resultMap>
     <select id="findTag" resultType="string">
         select cuisine_name from tag
     </select>
@@ -93,5 +106,8 @@
     </select>
     <select id="searchInt3" parameterType="string" resultType="int">
         select merchant_id from merchant_feature where img3=#{img3}
+    </select>
+    <select id="findDish" parameterType="int" resultMap="memuMap">
+        select * from memu where merchant_id=#{merchantId}
     </select>
 </mapper>
