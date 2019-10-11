@@ -1,10 +1,13 @@
 package com.catering.controller;
 
 import com.catering.pojo.Indent;
+import com.catering.pojo.MerchantFeature;
 import com.catering.pojo.MerchantProfile;
 import com.catering.service.IndentService_xpy;
+import com.catering.service.MerchantFeatureService_xpy;
 import com.catering.service.MerchantService_xpy;
 import com.catering.service.impl.MenuServiceImpl_xpy;
+import com.catering.service.impl.MerchantFeatureServiceImpl_xpy;
 import com.catering.utils.SimpleMD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -127,7 +127,8 @@ function GetCount() {
 //add to cart shoppage
 var data = {"total":0,"rows":[]};
 		var totalCost = 0;
-		
+
+
 		$(function(){
 			$('#cartcontent').datagrid({
 				singleSelect:true
@@ -157,7 +158,7 @@ var data = {"total":0,"rows":[]};
 				}
 			});
 		});
-		
+
 		function addProduct(name,price){
 			function add(){
 				for(var i=0; i<data.total; i++){

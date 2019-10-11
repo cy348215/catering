@@ -52,8 +52,46 @@
             </foreach>
         </where>
     </select>
+    <select id="searchMer1" parameterType="int" resultMap="merMap">
+        select * from merchant_profile
+       where merchant_id=#{i}
+    </select>
     <select id="findFea" parameterType="int" resultMap="feaMap">
         select * from merchant_feature
         where merchant_id=#{merchant_id}
+    </select>
+    <select id="searchTag1" resultMap="merMap">
+        select * from merchant_profile
+    </select>
+    <select id="findTag1" resultType="string">
+        select cuisine_name from tag limit 10
+    </select>
+    <select id="findCity" resultType="string">
+           SELECT cityname FROM city WHERE id BETWEEN 2 AND 28
+    </select>
+    <select id="findCity1" resultType="string">
+           SELECT cityname FROM city WHERE id BETWEEN 2 AND 100
+    </select>
+    <!--店铺图片-->
+    <select id="findImg1" resultType="string">
+       SELECT img1 FROM merchant_feature
+
+    </select>
+    <!--店铺图片-->
+    <select id="findImg2" resultType="string">
+       SELECT img2 FROM merchant_feature
+    </select>
+    <!--店铺图片-->
+    <select id="findImg3" resultType="string">
+       SELECT img3 FROM merchant_feature
+    </select>
+    <select id="searchInt1" parameterType="string" resultType="int">
+        select merchant_id from merchant_feature where img1=#{img1}
+    </select>
+    <select id="searchInt2" parameterType="string" resultType="int">
+        select merchant_id from merchant_feature where img2=#{img2}
+    </select>
+    <select id="searchInt3" parameterType="string" resultType="int">
+        select merchant_id from merchant_feature where img3=#{img3}
     </select>
 </mapper>
