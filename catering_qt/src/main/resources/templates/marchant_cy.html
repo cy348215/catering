@@ -99,8 +99,8 @@
             <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
           </div>
         </div>
-      </div>
-      <div class="shopcontent">
+      </div>  
+      <div class="shopcontent" style="height: 360px;">
         <div class="title2 cf">
           <ul class="title-list fr cf ">
             <li class="on">菜谱</li>
@@ -115,6 +115,7 @@
             <!--case1-->
             <div class="menutab show" >
               <ul class="products">
+
                 <li th:each="d:${dish}">
                   <a  target="_blank" title="酸辣土豆丝">
                     <img th:src="${d.img1}" class="foodsimgsize">

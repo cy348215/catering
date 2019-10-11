@@ -117,5 +117,9 @@ public class MemberServiceImpl_cy implements MemberService_cy {
         List<Memu> dish = memberMapper_cy.findDish(merchantId);
         return dish;
     }
+    @Override
+    public MerchantFeature findMerchantFeaByIdXt(int id) {
+        return memberMapper_cy.findMerchantFeaByIdXt(id);
+    }
 
 }

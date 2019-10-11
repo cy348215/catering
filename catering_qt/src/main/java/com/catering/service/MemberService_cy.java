@@ -95,4 +95,10 @@ public interface MemberService_cy {
      * @return
      */
     public List<Memu> findDish(int merchantId);
+    /**
+     * 根据id查询店铺特色
+     * @param id
+     * @return
+     */
+    public MerchantFeature findMerchantFeaByIdXt(int id);
 }
