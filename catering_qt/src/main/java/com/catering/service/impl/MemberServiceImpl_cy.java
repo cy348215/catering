@@ -1,6 +1,7 @@
 package com.catering.service.impl;
 
 import com.catering.mapper.MemberMapper_cy;
+import com.catering.pojo.Memu;
 import com.catering.pojo.MerchantFeature;
 import com.catering.pojo.Tag;
 import com.catering.service.MemberService_cy;
@@ -109,6 +110,12 @@ public class MemberServiceImpl_cy implements MemberService_cy {
     public int searchInt3(String img3) {
         int i = memberMapper_cy.searchInt3(img3);
         return i;
+    }
+
+    @Override
+    public List<Memu> findDish(int merchantId) {
+        List<Memu> dish = memberMapper_cy.findDish(merchantId);
+        return dish;
     }
 
 }

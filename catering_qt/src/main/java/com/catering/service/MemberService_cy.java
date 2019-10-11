@@ -1,5 +1,6 @@
 package com.catering.service;
 
+import com.catering.pojo.Memu;
 import com.catering.pojo.MerchantFeature;
 import com.catering.pojo.Tag;
 
@@ -87,4 +88,11 @@ public interface MemberService_cy {
      * @return
      */
     public int searchInt3(String img3);
+
+    /**
+     * 通过id查菜谱
+     * @param merchantId
+     * @return
+     */
+    public List<Memu> findDish(int merchantId);
 }

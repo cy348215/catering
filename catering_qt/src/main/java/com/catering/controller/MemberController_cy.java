@@ -1,5 +1,6 @@
 package com.catering.controller;
 
+import com.catering.pojo.Memu;
 import com.catering.pojo.MerchantFeature;
 import com.catering.pojo.Tag;
 import com.catering.service.MemberService_cy;
@@ -84,6 +85,7 @@ public class MemberController_cy {
         List<String> tag1 = memberService_cy.findTag1();
         model.addAttribute("tag1",tag1);
         model.addAttribute("mer", mer);
+        System.out.println(mer);
         List<String> city = memberService_cy.findCity();
         model.addAttribute("city",city);
         return "active";
@@ -138,16 +140,22 @@ public class MemberController_cy {
             int i = memberService_cy.searchInt1(img1);
             List<String> strings = memberService_cy.searchMer1(i);
             System.out.println("strings = " + strings);
+            List<Memu> dish = memberService_cy.findDish(i);
+            model.addAttribute("dish",dish);
             model.addAttribute("strings",strings);
         }else if(img2!=null){
             int i = memberService_cy.searchInt2(img2);
             List<String> strings = memberService_cy.searchMer1(i);
             System.out.println("strings = " + strings);
+            List<Memu> dish = memberService_cy.findDish(i);
+            model.addAttribute("dish",dish);
             model.addAttribute("strings",strings);
         }else if(img3!=null){
             int i = memberService_cy.searchInt3(img3);
             List<String> strings = memberService_cy.searchMer1(i);
             System.out.println("strings = " + strings);
+            List<Memu> dish = memberService_cy.findDish(i);
+            model.addAttribute("dish",dish);
             model.addAttribute("strings",strings);
         }
         return "marchant_cy";
