@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>标签管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/adminStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+ <div class="wrap">
+  <div class="page-title">
+    <span class="modular fl"><i></i><em>标签列表</em></span>
+   </div>
+  
+  <table class="list-style">
+   <tr>
+    <th>标签名称</th>
+    <th>是否已应用</th>
+    <th>操作</th>
+   </tr>
+   <tr th:each="at:${allTag}">
+    <td class="center" th:text="${at.cuisineName}"></td>
+    <td class="center" th:if="${at.isBoolean == 1}"><img src="images/yes.gif"/></td>
+    <td class="center" th:if="${at.isBoolean == 0}"><img src="images/no.gif"/> </td>
+    <td class="center" th:if="${at.isBoolean == 1}"><a th:href="@{deleteTypeTag(tid=${at.cuisineId})}" class="block" title="移除"><img src="images/icon_trash.gif"/></a></td>
+    <td class="center" th:if="${at.isBoolean == 0}"><a th:href="@{saveTypeTag(tid=${at.cuisineId})}" class="block" title="配置"><img src="images/icon_edit.gif"/></a></td>
+   </tr>
+  </table>
+  
+  <!-- BatchOperation -->
+ </div>
+</body>
+</html>

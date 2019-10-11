@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <title>hi</title>
+</head>
+<body>
+hi 你好吗？
+<table class="table table-hover">
+    <thead>
+    <tr >
+        <th width="30">#</th>
+        <th width="30"><input type="checkbox" id="all" name="all"></th>
+        <th>账号</th>
+        <th>名称</th>
+        <th>邮箱地址</th>
+        <th width="100">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>2</td>
+        <td>2<input type="checkbox" name="ids"></td>
+        <td>2</td>
+        <td>2</td>
+        <td>2</td>
+        <td>
+            <button type="button" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></button>
+            <a type="button" class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i></a>
+            <a type="button" class="btn btn-danger btn-xs" ><i class=" glyphicon glyphicon-remove"></i></a>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="6" align="center">
+            <a class="btn btn-default">首页</a>
+            <a class="btn btn-default">上一页</a>
+            <a class="btn btn-default">下一页</a>
+            <a class="btn btn-default">末页</a>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+
+</body>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</html>

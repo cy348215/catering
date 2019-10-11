@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catering.mapper.MerchantMapper_xpy">
+    <insert id="saveMerchant" parameterType="com.catering.pojo.Merchant">
+        insert
+        merchant
+        values
+        (default,#{merchant.username},#{merchant.email},#{merchant.password},#{merchant.lastlogintime},0)
+    </insert>
+    <select id="findMerchant" parameterType="string" resultType="int">
+        select
+        id
+        from
+        merchant
+        where
+        username=#{username}
+    </select>
+    <select id="findMerchantByName" parameterType="string" resultType="com.catering.pojo.Merchant">
+        select
+        *
+        from
+        merchant
+        where
+        username=#{username}
+        and
+        isLogin=1
+        or
+        isLogin=2
+    </select>
+    <select id="findPermissionById" parameterType="int" resultType="com.catering.pojo.StorePermission">
+    SELECT
+    sp.*
+    FROM
+    merchant m,
+    store_merchant_role smr,
+    store_role sr,
+    store_role_permission srp,
+    store_permission sp
+    WHERE
+    m.id=smr.merchant_id
+    AND smr.role_id=sr.id
+    AND sr.id=srp.role_id
+    AND srp.permission_id=sp.id
+    AND m.id=#{id}
+    </select>
+    <update id="updatePassword" parameterType="java.util.Map">
+        update
+        merchant
+        set
+        password=#{password}
+        where
+        id=#{id}
+    </update>
+</mapper>
