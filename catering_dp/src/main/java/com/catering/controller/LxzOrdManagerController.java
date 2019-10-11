@@ -4,6 +4,7 @@ import com.catering.mapper.MemberProfileMapperLxz;
 import com.catering.pojo.Indent;
 import com.catering.pojo.MemberProfile;
 import com.catering.pojo.Memu;
+import com.catering.pojo.MerchantProfile;
 import com.catering.service.impl.IndentServiceImplLxz;
 import com.catering.service.impl.MemberprofileImpl;
 import com.catering.service.impl.MemuServiceImplLxz;
@@ -35,7 +36,8 @@ public class LxzOrdManagerController {
     @RequestMapping("/ordlist")
     public String ordList(HttpServletRequest request){
         HttpSession session=request.getSession();
-        List<Indent> indents=indentServiceImplLxz.fingAllIndent();
+        MerchantProfile user = (MerchantProfile) session.getAttribute("user");
+        List<Indent> indents=indentServiceImplLxz.fingAllIndent(user.getMerchantId());
         session.setAttribute("indents",indents);
         for (Indent indent:indents) {
             int mId=indent.getMemberId();
@@ -46,9 +48,10 @@ public class LxzOrdManagerController {
     }
     //订单详情
     @RequestMapping("/order_detail")
-    public String order_detail(Model model,int id,int did){
+    public String order_detail(Model model,int id,int did,HttpServletRequest request){
+        MerchantProfile user = (MerchantProfile) request.getSession().getAttribute("user");
         List<Memu> memuList=memuServiceImplLxz.findMemuByDid(did);
-        Indent indent=indentServiceImplLxz.findIndentByDid(did);
+        Indent indent=indentServiceImplLxz.findIndentByDid(did,user.getMerchantId());
         Double sumPrice=memuServiceImplLxz.sumPrice(did);
         model.addAttribute("indent",indent);
         model.addAttribute("sumPrice",sumPrice);
