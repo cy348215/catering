@@ -12,6 +12,8 @@ public interface MemuMapperLxz {
     int findCount();
     List<Memu> findMemuByDid(int did);
     Double sumPrice(int did);
+    boolean delMemu(int id);
+    List<Memu> findRcycle();
 
 
 }

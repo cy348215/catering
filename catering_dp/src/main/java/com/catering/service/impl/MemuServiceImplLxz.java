@@ -39,4 +39,14 @@ public class MemuServiceImplLxz implements MemuServiceLxz {
     public Double sumPrice(int did) {
         return memuMapperLxz.sumPrice(did);
     }
+
+    @Override
+    public boolean delMemu(int id) {
+        return memuMapperLxz.delMemu(id);
+    }
+
+    @Override
+    public List<Memu> findRcycle() {
+        return memuMapperLxz.findRcycle();
+    }
 }

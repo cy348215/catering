@@ -65,11 +65,6 @@ public class LxzOrdManagerController {
     public String drawBack(){
         return "drawBack";
     }
-    //审核订单
-    @RequestMapping("/ordcheck_1")
-    public String ordcheck_1(){
-        return "ordcheck_1";
-    }
     //添加菜品
     @RequestMapping("/addmenu")
     public String addMenu(){
@@ -121,6 +116,19 @@ public class LxzOrdManagerController {
         boolean bool=indentServiceImplLxz.revIndent(id);
         return bool;
     }
-
+    //菜单回收站
+    @RequestMapping("/recycle")
+    public String recycle(Model model){
+        List<Memu> memus=memuServiceImplLxz.findRcycle();
+        model.addAttribute("memus1",memus);
+        return "recycle";
+    }
+    //删除菜单
+    @ResponseBody
+    @RequestMapping("/deleteMemu")
+    public boolean deleteMemu(int id){
+        boolean bool=memuServiceImplLxz.delMemu(id);
+        return bool;
+    }
 }
 

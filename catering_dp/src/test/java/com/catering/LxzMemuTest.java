@@ -34,6 +34,10 @@ public class LxzMemuTest {
         System.out.println(bool);
     }
     @Test
+    public void findAllMemu(){
+        System.out.println(lxzMemuMapper.findAllMemu());
+    }
+    @Test
     public void findCuisine(){
         System.out.println(tagMapperLxz.findCuisine());
     }
