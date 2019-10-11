@@ -11,11 +11,11 @@
     <result property="state" column="state"/>
     <result property="endtime" column="endtime"/>
 </resultMap>
-     <select id="fingAllIndent" resultMap="indentMap">
-         select * from indent order by id desc
+     <select id="fingAllIndent" resultMap="indentMap" parameterType="int">
+         select * from indent where merchant_id=#{id} order by id desc
      </select>
-    <select id="findIndentByDid" parameterType="int" resultMap="indentMap">
-        select * from indent where id=#{dId}
+    <select id="findIndentByDid" parameterType="java.util.Map" resultMap="indentMap">
+        select * from indent where merchant_id=#{id} and id=#{dId}
     </select>
     <update id="revIndent" parameterType="int">
         update indent set state=3 where id=#{id}
