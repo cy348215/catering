@@ -1,0 +1,84 @@
+<!DOCTYPE html >
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>hi</title>
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 数据列表</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-inline" role="form" style="float:left;" action="findus" method="post">
+                <div class="form-group has-feedback">
+                    <div class="input-group">
+                        <div class="input-group-addon">查询条件</div>
+                        <input class="form-control has-success" type="text" name="username" placeholder="请输入查询条件">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询</button>
+            </form>
+            <form action="pldelUser" method="post">
+                <button type="submit" class="btn btn-danger"  style="float:right;margin-left:10px;"><i class=" glyphicon glyphicon-remove"></i> 删除</button>
+                <button type="button" class="btn btn-primary" style="float:right;" onclick="window.location.href='adduser'"><i class="glyphicon glyphicon-plus"></i> 新增</button>
+                <br>
+                <hr style="clear:both;">
+                <div class="table-responsive">
+                    <table  class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th width="30">#</th>
+                            <th width="30"><input type="checkbox" id="all" name="all"></th>
+                            <th>订单号</th>
+                            <th>总金额</th>
+                            <th>下单时间</th>
+                            <th>用餐时间</th>
+                            <th>状态</th>
+                            <th width="100">操作（详情）</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td><input type="checkbox" name="ids"></td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>
+                                <a href="ordcheck_1" class="btn btn-primary btn-lg active" role="button">审核</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="6" align="center">
+                                <a class="btn btn-default">首页</a>
+                                <a class="btn btn-default">上一页</a>
+                                <a class="btn btn-default">下一页</a>
+                                <a class="btn btn-default">末页</a>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </form>
+</div>
+</div>
+</div>
+
+
+
+</body>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</html>
