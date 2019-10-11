@@ -5,7 +5,6 @@ import com.catering.pojo.MemberProfile;
 import com.catering.service.MemberServiceXt;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,13 +51,12 @@ public class RegController_xt {
                 // 注册人员信息
                 member.setState(3);
                 boolean boo = memberServiceXt.addMember(member);
-
                 int id = memberServiceXt.findMemberIdByUsername(username);
                 memberProfile.setId(id);
-
+                member.setId(id);
+                System.out.println("member = " + member);
                 boolean boo2 = memberServiceXt.addMemberPro(memberProfile);
-                request.getSession().setAttribute("memeber",member);
-
+                request.getSession().setAttribute("member",member);
                 if (boo == true && boo2 == true){
                     count = 3; // 成功了
                     return count;
