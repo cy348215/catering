@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class MemberController_cy {
+public class  MemberController_cy {
     @Autowired
     private MemberService_cy memberService_cy;
 
