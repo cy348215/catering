@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
 <![endif]-->
 <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
-<link href="favicon.ico" rel="SHORTCUT ICON">7
+<link href="favicon.ico" rel="SHORTCUT ICON">
   <link href="style/style.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="js/public.js"></script>
   <script type="text/javascript" src="js/jquery.js"></script>
@@ -29,29 +29,34 @@
 <div class="head">
   <div class="wrap clearfix">
     <a href="index" class="logo indent">logo</a>
-    <div class="headr fr">
-      <form action="active.html" method="post" class="headsearch">
+    <div class="headr fr"  >
+      <form action="active.html" method="post" class="headsearch" style="position:relative;left: -400px;">
         <label class="label">
           <input type="text" value="" name="" class="key">
           <span class="text">搜索地址、名称等</span>
         </label>
         <button type="submit" class="button btn-search">&#xe628;</button>
       </form>
-      <a href="http://localhost:8088/login" target="voiceList"><em><img src="images/sb.png"></em>  &nbsp;&nbsp;商家中心</a>
+    </div>
+      <!--未登录-->
+      <div class="medium-right" th:if="${session.islogin==false}"  style="position: absolute;right: 200px;top: 25px;"><a href="login" style="position: relative; right: 100px;">立即登陆</a><a href="reg" style="position: relative; right: 50px;">注册</a><a href="http://localhost:8088/login">商家中心</a></div>
+      <!--已登录-->
+    <div class="headr fr" style="position: relative;left: 400px;" th:if="${session.islogin==true}">
+      <a href="http://localhost:8088/login" target="voiceList">  &nbsp;&nbsp;商家中心</a>
       <div class="user">
-        <span class="clearfix"><span class="userimg"><img src="upload/img12.png"><i></i></span>
-        <a href="javascript:;" class="fr" target="voiceList">设计--麻  <em>&#xe607;</em></a></span>
-        <ul class="topslide">
+          <span class="clearfix" ><span class="userimg"><img src="upload/img12.png"><i></i></span>
+          <a href="javascript:;" class="fr" target="voiceList" style="position: absolute;left: 55px;width: 150px;" th:text="${session.member.username}"><em>&#xe607;</em></a></span>
+        <ul class="topslide" style="position: absolute; left: 30px;">
           <li><em>&#xe627;</em><a href="mem.html" target="voiceList">个人设置</a></li>
           <li><em>&#xe63d;</em><a href="Message.html" target="voiceList">消息中心<s></s></a></li>
           <li><em>&#xe63c;</em><a href="Dinner.html" target="voiceList">订单管理</a></li>
           <li><em>&#xe63e;</em><a href="fans.html" target="voiceList">我的好友</a></li>
-          <li><em>&#xe611;</em><a href="index.html" target="voiceList">退出</a></li>
+          <li><em>&#xe611;</em><a href="logout" target="voiceList">退出</a></li>
         </ul>
+      </div>
       </div>
     </div>
   </div>
-</div>
 
 <section class="Shop-index">
   <article>
@@ -86,7 +91,7 @@
           <p><span>WIFI：</span>免费WIFI</p>
           <p><span>价格：</span><span th:text="${s.personPrice}" style="font-weight:normal;"></span>元/人</p>
           <div class="Button">
-            <a href="#ydwm"><span class="DCbutton">查看菜谱点菜</span></a>
+            <a th:href="@{findMerchand(merchantId=${s.merchantId})}"><span class="DCbutton">查看菜谱点菜</span></a>
           </div>
           <div class="otherinfor">
             <a href="#" class="icoa"><img src="images/collect.png">收藏店铺（1293）</a>
@@ -186,15 +191,16 @@
           <div class="menutab">
             <div class="shopdetails">
               <div class="shopmaparea">
-                <img src="upload/testimg.jpg"><!--此处占位图调用动态地图后将其删除即可-->
+                <iframe src="map2"   width="440" height="302" frameborder="0" scrolling="no"  ></iframe></div>
+                <div class="shopdetailsT">
+                  <p><span>店铺：</span><span th:text="${s.merchantName}" style="font-weight:normal;"></span></p>
+                  <p><span>地址：</span><span th:text="${s.merchantAddress}" style="font-weight:normal;"></span></p>
+                  <p><span>电话：</span><span th:text="${s.phone}" style="font-weight:normal;"></span></p>
+                  <p><span>营业时间：</span><span th:text="${s.bussinesstime}" style="font-weight:normal;"></span></p>
+                  <p><span>店铺介绍：</span><span th:text="${s.merchantFeature.intro}" style="font-weight:normal;"></span></p>
+                </div>
               </div>
-              <div class="shopdetailsT">
-                <p><span>店铺：外婆家</span></p>
-                <p><span>地址：</span>陕西省西安市雁塔区丈八北路***号</p>
-                <p><span>电话：</span>029-88888888</p>
-                <p><span>乘车路线：</span>300路、115路、14路、800路到西辛庄站下车往东100米</p>
-                <p><span>店铺介绍：</span>***于2005年3月28日开业，立于西安市碑林区***于2005年3月28日开业，立于西安市碑林区***于2005年3月28日开业，立于西安市碑林区***于2005年3月28日开业，立于西安市碑林区***</p>
-              </div>
+
             </div>
           </div>
           <!--case5-->

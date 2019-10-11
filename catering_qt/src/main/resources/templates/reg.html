@@ -16,20 +16,16 @@
 </head>
 <style type="text/css">
   .clearfix .logo{ width:260px; height:74px; background:url(../img/logo.png) no-repeat center;background-size: 170px;  position:absolute; left:170px;top:-10px;  z-index:100;}
+  .headr1>a{ display:inline-block; margin:0 6px; float:left;padding-left:30px;padding-right:30px;padding-top: 25px;}
 </style>
 <body>
 <div class="head">
   <div class="wrap clearfix">
     <a href="index" class="logo indent">logo</a>
-    <div class="headr fr">
-      <form action="active.html" method="post" class="headsearch">
-        <label class="label">
-          <input type="text" value="" name="" class="key">
-          <span class="text">搜索地址、名称、时间等</span>
-        </label>
-        <button type="submit" class="button btn-search">&#xe628;</button>
-      </form>
-      <a href="login">登录</a><a href="reg">注册</a><a href="http://localhost:8088/login">商家中心</a>
+    <div class="headr1 fr">
+      <a href="index" >首页</a>
+      <a href="http://localhost:8088/login" >商家中心</a>
+      <a href="#">管理中心</a>
     </div>
   </div>
 </div>
@@ -61,7 +57,7 @@
         <div class="ohter"><span class="ohtertxt">或</span></div>
         <div class="Prompt" style="padding:0 0 10px">使用以上社交网络帐号登录</div>
       </div>
-      <p class="boxbd tr">已有帐号？<a href="reg" class="o">注册</a></p>
+      <p class="boxbd tr">已有账号？<a href="login" class="o">去登陆</a></p>
     </div>    
   </div>
 </div>
@@ -97,7 +93,6 @@
       if (username.length == 0 || password.length == 0 || email.length == 0 ){
         alert("请填写完整资料")
       } else {
-        alert("去注册")
         $.post("regMember",{"username":username ,"password":password ,"email":email },function (data) {
           if (data == 1){
             alert("已有人在您的前面注册了此用户名")
@@ -105,7 +100,7 @@
             alert("已有人在您前面使用此邮箱进行了注册");
           } else if (data == 3){
             alert("注册成功。。为您跳转首页");
-            location.href = "index";
+            location.href = "index1";
           } else {
             alert("注册失败")
           }

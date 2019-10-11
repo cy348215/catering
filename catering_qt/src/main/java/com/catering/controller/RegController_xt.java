@@ -56,8 +56,10 @@ public class RegController_xt {
                 member.setId(id);
                 System.out.println("member = " + member);
                 boolean boo2 = memberServiceXt.addMemberPro(memberProfile);
-                request.getSession().setAttribute("member",member);
                 if (boo == true && boo2 == true){
+                    request.getSession().invalidate();//清除session
+                    request.getSession().setAttribute("member",member);
+                    request.getSession().setAttribute("islogin",true);
                     count = 3; // 成功了
                     return count;
                 } else {

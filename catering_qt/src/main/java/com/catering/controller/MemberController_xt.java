@@ -37,7 +37,7 @@ public class MemberController_xt {
     }
 
     @RequestMapping("/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpServletRequest request,HttpSession session){
         try {
             Member member = (Member) session.getAttribute("member");
             System.out.println("退出登录的member = " + member);
@@ -48,6 +48,7 @@ public class MemberController_xt {
             map.put("state",state);
             int i = memberServiceXt.updataMemberStateById(map);
             Subject subject = SecurityUtils.getSubject();
+            request.getSession().invalidate();//清除session
             subject.logout();
 
         } catch (Exception e) {
@@ -102,6 +103,8 @@ public class MemberController_xt {
             }
 
         }else {
+            request.getSession().invalidate();//清除session
+            request.getSession().setAttribute("islogin",true);
             return "login";
         }
 

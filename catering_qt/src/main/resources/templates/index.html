@@ -25,7 +25,24 @@
   <div class="indexban" style="background-image:url(images/img1.jpg);">
     <div class="wrap">
       <a href="index" class="logo indent">logo</a>
-      <div class="medium-right"><a href="login">立即登陆</a><a href="reg">注册</a><a href="http://localhost:8088/login">商家中心</a></div>
+      <!--未登录-->
+      <div class="medium-right" th:if="${session.islogin==false}" ><a href="login">立即登陆</a><a href="reg">注册</a><a href="http://localhost:8088/login">商家中心</a></div>
+      <!--已登录-->
+      <div class="headr fr" th:if="${session.islogin==true}">
+      <a href="http://localhost:8088/login" target="voiceList" style="padding-top: 11px;">  &nbsp;&nbsp;<span style="color:#fafafa;">商家中心</span></a>
+      <div class="user" style="padding-top: 11px;">
+        <span class="clearfix" ><span class="userimg"><img src="upload/img12.png"><i></i></span>
+        <a href="javascript:;" class="fr" target="voiceList" ><span style="color:#fafafa;position: absolute;left: 55px;width: 150px;" th:text="${session.member.username}"></span> &nbsp;&nbsp; &nbsp;&nbsp;<em>&#xe607;</em></a></span>
+        <ul class="topslide" style="position: absolute; left: 30px;opacity:0.8;
+filter:alpha(opacity=40);">
+          <li><em>&#xe627;</em><a href="mem.html" target="voiceList">个人设置</a></li>
+          <li><em>&#xe63d;</em><a href="Message.html" target="voiceList">消息中心<s></s></a></li>
+          <li><em>&#xe63c;</em><a href="Dinner.html" target="voiceList">订单管理</a></li>
+          <li><em>&#xe63e;</em><a href="fans.html" target="voiceList">我的好友</a></li>
+          <li><em>&#xe611;</em><a href="logout" target="voiceList">退出</a></li>
+        </ul>
+      </div>
+      </div>
       <div class="txt"><span class="hd">美食与生活的完美演绎</span><a href="#">早餐</a><a href="#">午餐</a><a href="#">晚餐</a><a href="#">一键搞定</a></div>
     </div>
     <div class="p1-hero-search-form">
