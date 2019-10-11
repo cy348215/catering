@@ -1,6 +1,8 @@
 package com.catering.service;
 
+import com.catering.pojo.Memu;
 import com.catering.pojo.MerchantFeature;
+import com.catering.pojo.Tag;
 
 import java.util.List;
 import java.util.Map;
@@ -87,6 +89,12 @@ public interface MemberService_cy {
      */
     public int searchInt3(String img3);
 
+    /**
+     * 通过id查菜谱
+     * @param merchantId
+     * @return
+     */
+    public List<Memu> findDish(int merchantId);
     /**
      * 根据id查询店铺特色
      * @param id

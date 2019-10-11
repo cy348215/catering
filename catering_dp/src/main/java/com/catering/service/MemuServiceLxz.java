@@ -10,4 +10,6 @@ public interface MemuServiceLxz {
     int calcMaxMemu(int rows);
     List<Memu> findMemuByDid(int did);
     Double sumPrice(int did);
+    boolean delMemu(int id);
+    List<Memu> findRcycle();
 }

@@ -8,7 +8,7 @@
 <body>
  <div class="wrap">
   <div class="page-title">
-    <span class="modular fl"><i class="order"></i><em>订单编号：2015041803225</em></span>
+    <span class="modular fl"><i class="order"></i><em>订单编号：<font th:text="${indent.ordernumber}"></font></em></span>
   </div>
   <dl class="orderDetail">
    <dt class="order-h">订单详情</dt>
@@ -30,8 +30,10 @@
     <ul th:each="i:${indent}">
      <li>
       <span class="h-cont h-right">付款状态：</span>
-      <span class="h-cont h-left" th:if="${i.state==1}">未付款</span>
-      <span class="h-cont h-left" th:if="${i.state==2}">已付款</span>
+      <span class="h-cont h-left" th:if="${i.state==2}">已付订金</span>
+      <span class="h-cont h-left" th:if="${i.state==3}">准备中</span>
+      <span class="h-cont h-left" th:if="${i.state==4}">交易完成</span>
+      <span class="h-cont h-left" th:if="${i.state==5}">交易失败</span>
      </li>
      <li>
       <span class="h-cont h-right">下单时间：</span>

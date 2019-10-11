@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catering.mapper.MemberProfileMapper_xpy">
+    <resultMap id="MemberProMap" type="com.catering.pojo.MemberProfile" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="INTEGER" />
+        <result column="level" property="level" jdbcType="INTEGER" />
+        <result column="avatar_url" property="avatarUrl" jdbcType="VARCHAR" />
+        <result column="mobile_code" property="mobileCode" jdbcType="VARCHAR" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="description" property="description" jdbcType="VARCHAR" />
+        <result column="country" property="country" jdbcType="INTEGER" />
+        <result column="province" property="province" jdbcType="INTEGER" />
+        <result column="city" property="city" jdbcType="INTEGER" />
+        <result column="district" property="district" jdbcType="INTEGER" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="register_time" property="registerTime" jdbcType="VARCHAR" />
+        <result column="point" property="point" jdbcType="INTEGER" />
+    </resultMap>
+    <select id="query" resultMap="MemberProMap" parameterType="java.util.Map">
+        SELECT
+        *
+        FROM
+        member_profile
+        WHERE
+        CONCAT(nickname,mobile,email) LIKE "%"#{tiao}"%"
+        AND register_time LIKE "%"#{time}"%"
+    </select>
+    <select id="findAllByState" resultMap="MemberProMap" parameterType="int">
+        select
+        mp.*
+        from
+        member_profile mp,
+        member m
+        where
+        m.state=#{state}
+    </select>
+    <select id="findAll" resultMap="MemberProMap">
+        select
+        *
+        from
+        member_profile
+    </select>
+    <select id="findById" resultMap="MemberProMap" parameterType="int">
+        select
+        *
+        from
+        member_profile
+        where
+        id=#{id}
+    </select>
+    <select id="findMember" parameterType="int" resultType="com.catering.pojo.Member">
+        select
+        *
+        from
+        member
+        where
+        id=#{id}
+    </select>
+    <insert id="saveMember" parameterType="com.catering.pojo.Member">
+        insert
+        member
+        values
+        (default,#{username},#{email},#{password},#{state},#{lastlogintime})
+    </insert>
+    <insert id="savePro" parameterType="com.catering.pojo.MemberProfile">
+        insert
+        member_profile
+        (id,nickname,name,gender,mobile,email,address,register_time)
+        values
+        (#{id},#{nickname},#{name},#{gender},#{mobile},#{email},#{address},#{registerTime})
+    </insert>
+    <update id="updateMemberPass" parameterType="com.catering.pojo.Member">
+        update
+        member
+        set
+        password=#{password}
+        where
+        id=#{id}
+    </update>
+    <update id="updateMemberState" parameterType="com.catering.pojo.Member">
+        update
+        member
+        set
+        state=#{state}
+        where
+        id=#{id}
+    </update>
+    <update id="updatePro" parameterType="com.catering.pojo.MemberProfile">
+        update
+        member_profile
+        set
+        nickname=#{nickname},gender=#{gender},mobile=#{mobile},email=#{email},address=#{address}
+        where
+        id=#{id}
+    </update>
+    <delete id="delMember" parameterType="int">
+        delete
+        from
+        member
+        where
+        id=#{id}
+    </delete>
+    <delete id="delPro" parameterType="int">
+        delete
+        from
+        member_profile
+        where
+        id=#{id}
+    </delete>
+    <select id="findByName" parameterType="string" resultType="com.catering.pojo.Member">
+        select
+        *
+        from
+        member
+        where
+        username=#{name}
+    </select>
+</mapper>    

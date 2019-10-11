@@ -22,7 +22,7 @@
         values(default,#{dishId},#{dishPrice},#{type},#{label},#{img1})
     </insert>
     <select id="findAllMemu"  resultMap="memuMap">
-        select * from memu
+        select * from memu where state !=6 or state is null
     </select>
     <select id="findCount" resultType="int">
         select count(id) from memu
@@ -45,4 +45,11 @@
         and
         i.indent_id=#{did}
     </select>
+    <update id="delMemu" parameterType="int">
+        update memu set state=6 where id=#{id}
+    </update>
+    <select id="findRcycle" resultMap="memuMap">
+        select * from memu where state=6;
+    </select>
+    
 </mapper>

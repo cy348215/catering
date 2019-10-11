@@ -3,7 +3,6 @@ package com.catering.service.impl;
 import com.catering.mapper.MerchantProfileMapper_xpy;
 import com.catering.pojo.MerchantProfile;
 import com.catering.service.MerchantProfileService_xpy;
-import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

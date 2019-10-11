@@ -99,8 +99,8 @@
             <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
           </div>
         </div>
-      </div>
-      <div class="shopcontent">
+      </div>  
+      <div class="shopcontent" style="height: 360px;">
         <div class="title2 cf">
           <ul class="title-list fr cf ">
             <li class="on">菜谱</li>
@@ -113,49 +113,17 @@
         <div class="menutab-wrap">
           <a name="ydwm">
             <!--case1-->
-            <div class="menutab show">
+            <div class="menutab show" >
               <ul class="products">
-                <li>
-                  <a href="detailsp.html" target="_blank" title="酸辣土豆丝">
-                    <img src="upload/01.jpg" class="foodsimgsize">
+
+                <li th:each="d:${dish}">
+                  <a  target="_blank" title="酸辣土豆丝">
+                    <img th:src="${d.img1}" class="foodsimgsize">
                   </a>
                   <a href="#" class="item">
                     <div>
-                      <p>酸辣土豆丝</p>
-                      <p class="AButton">拖至购物车:￥50.00</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="detailsp.html" target="_blank" title="酸辣土豆丝">
-                    <img src="upload/02.jpg" class="foodsimgsize">
-                  </a>
-                  <a href="#" class="item">
-                    <div>
-                      <p>酸辣土豆丝</p>
-                      <p class="AButton">拖至购物车:￥50.00</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="detailsp.html" target="_blank" title="酸辣土豆丝">
-                    <img src="upload/04.jpg" class="foodsimgsize">
-                  </a>
-                  <a href="#" class="item">
-                    <div>
-                      <p>酸辣土豆丝</p>
-                      <p class="AButton">拖至购物车:￥50.00</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="detailsp.html" target="_blank" title="酸辣土豆丝">
-                    <img src="upload/03.jpg" class="foodsimgsize">
-                  </a>
-                  <a href="#" class="item">
-                    <div>
-                      <p>酸辣土豆丝</p>
-                      <p class="AButton">拖至购物车:￥50.00</p>
+                      <p th:text="${d.dishId}"></p>
+                      <p class="AButton">拖至购物车:￥<p th:text="${d.dishPrice}">.00</p></p>
                     </div>
                   </a>
                 </li>

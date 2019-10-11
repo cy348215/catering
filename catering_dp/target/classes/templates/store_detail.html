@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>站点设置</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/adminStyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+ <div class="wrap">
+  <div class="page-title">
+    <span class="modular fl"><i class="settings"></i><em>店铺信息</em></span>
+  </div>
+  <table class="noborder">
+   <tr>
+    <td style="width:15%;text-align:right;"><b>店铺名称：</b></td>
+    <td><input id="storename" type="text" class="textBox length-long" th:value="${session.user.merchantName}"/></td>
+   </tr>
+   <tr>
+    <td style="text-align:right;"><b>负责人：</b></td>
+    <td th:text="${session.user.merchantPrincipal}"></td>
+   </tr>
+   <tr>
+    <td style="text-align:right;"><b>联系电话：</b></td>
+    <td><input id="phone" type="text" th:value="${session.user.phone}" class="textBox length-long"/></td>
+   </tr>
+   <tr>
+    <td style="text-align:right;"><b>邮箱地址：</b></td>
+    <td><input id="email" type="text" th:value="${session.user.merchartEmail}" class="textBox length-middle"/></td>
+   </tr>
+   <tr>
+    <td style="text-align:right;"><b>注册时间：</b></td>
+    <td th:text="${session.user.createtime}"></td>
+   </tr>
+   <tr>
+    <td style="text-align:right;"><b>店铺等级：</b></td>
+    <td th:text="${session.user.level}"></td>
+   </tr>
+   <tr>
+    <td style="text-align:right;"><b>上次登录时间：</b></td>
+    <td  th:text="${session.user.lastupdatetime}"></td>
+   </tr>
+
+   <tr>
+    <td style="text-align:right;"><b>店铺简介：</b></td>
+    <td th:if="${session.feature != null}">
+     <textarea id="intro" class="textarea" th:value="${session.feature.intro}"></textarea>
+    </td>
+    <td th:if="${session.feature == null}">
+     <textarea id="intro" class="textarea"></textarea>
+    </td>
+   </tr>
+   <tr>
+    <td style="text-align:right;"></td>
+    <td><input id="but" type="button" value="保存" class="tdBtn"/></td>
+   </tr>
+  </table>
+ </div>
+</body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+ //$(function () {
+  alert("333");
+  $("#but").click(function () {
+   alert("but111");
+   var storename = $("#storename").val();
+   var phone = $("#phone").val();
+   var email = $("#email").val();
+   var intro = $("#intro").val();
+   if (storename.length == 0){
+    alert("店铺名称不能为空");
+   } else if (phone.length == 0){
+    alert("联系电话不能为空");
+   }  else if (email.length == 0){
+    alert("邮箱地址不能为空");
+   } else {
+    alert("22222");
+    $.post("savefeature",{"name":storename,"phone":phone,"email":email,"intro":intro},function (data) {
+      if(data>0){
+       alert("保存成功");
+      }else {
+       alert("保存失败");
+      }
+    })
+   }
+  })
+ //})
+</html>
