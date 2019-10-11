@@ -55,13 +55,14 @@
 </div>
 </div>
 <!--Start content-->
-<div class="container" style="height: 600px">
+<div class="container" style="height: 650px">
     <div class="row">
-        <div style="height: 60px ;float: left">
-            <h1>Hello!<font th:text="${session.member.username}"></font></h1>
+        <div style="height: 91px ;float: left;font-size:18px; color:gray; margin-left:100px; padding-top:8px;">
+            <h1 style="padding-bottom: 8px;">Hello!<font th:text="${session.member.username}"></font></h1>
             <p><h1>欢迎来到</h1><font style="size: 25px" th:text="${merchantPro.merchantName}"></font></p>
             <input type="hidden" th:value="${merchantPro.merchantId}" id="merchantId">
             <input type="hidden" th:value="${session.member.id}" id="memberId">
+            <input type="hidden" th:value="${indentId}" id="indentId">
         </div>
     </div>
 
@@ -100,7 +101,7 @@
             </table>
         </div>
     </div>
-    <div style="background-color: #dedef8;height:60px;width: 300px;margin-left: 60%">
+    <div style="background-color: #dedef8;height:60px;width: 292px ;margin-left: 67.15%; margin-top:2px;" >
         <h2>计算总价</h2>
         <input type="text" id="count" value="0">
         <button id="addIndent">提交生成订单</button>
@@ -162,13 +163,16 @@
         var count = $("#count").val();
         var merchantId =$("#merchantId").val();
         var memberId = $("#memberId").val();
-        location.href="addIndent?count="+count+"&merchantId="+merchantId+"&memberId="+memberId;
-    })
+        var indentId = $("#indentId").val();
+        alert(indentId);
+        location.href="addIndent?count="+count+"&merchantId="+merchantId+"&memberId="+memberId+"&indentId="+indentId;
+    });
     function oncliks(id) {
         var count =$("#count").val();
-        $.post("addIndexMenu", {"id": id}, function (data) {
+        var indentId = $("#indentId").val();
+        $.post("addIndexMenu", {"id": id,"indentId":indentId}, function (data) {
             var datas = eval(data);
-            alert(datas.dishId);
+            alert("添加 "+datas.dishId+" 到我的菜单");
             var trdiv = $("<tr></tr>");
             trdiv.attr("class", "trDiv");
             var tddiv1 = $("<td></td>")

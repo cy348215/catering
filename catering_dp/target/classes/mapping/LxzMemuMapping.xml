@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catering.mapper.MemuMapperLxz">
+    <resultMap id="memuMap" type="com.catering.pojo.Memu">
+        <id property="id" column="id"/>
+        <result property="dishId" column="dish_id"/>
+        <result property="dishPrice" column="dish_price"/>
+        <result property="type" column="type"/>
+        <result property="invent" column="invent"/>
+        <result property="state" column="state"/>
+        <result property="label" column="label"/>
+        <result property="state" column="state"/>
+        <result property="img1" column="img1"/>
+        <result property="updatetime" column="updatetime"/>
+        <result property="heat" column="heat"/>
+        <result property="merchantId" column="merchant_id"/>
+        <result property="invent" column="invent"/>
+    </resultMap>
+    <insert id="addMemu" parameterType="com.catering.pojo.Memu">
+        insert into memu(id,dish_id,dish_price,type,label,img1)
+        values(default,#{dishId},#{dishPrice},#{type},#{label},#{img1})
+    </insert>
+    <select id="findAllMemu"  resultMap="memuMap">
+        select * from memu where state !=6 or state is null
+    </select>
+    <select id="findCount" resultType="int">
+        select count(id) from memu
+    </select>
+    <select id="findMemuByDid" parameterType="int" resultMap="memuMap">
+        select m.* from
+        indent_menu i,
+        memu m
+        where
+        m.id=i.mune_id
+        and
+        i.indent_id=#{did}
+    </select>
+    <select id="sumPrice" parameterType="int" resultType="Double">
+        select sum(m.dish_price) from
+        indent_menu i,
+        memu m
+        where
+        m.id=i.mune_id
+        and
+        i.indent_id=#{did}
+    </select>
+    <update id="delMemu" parameterType="int">
+        update memu set state=6 where id=#{id}
+    </update>
+    <select id="findRcycle" resultMap="memuMap">
+        select * from memu where state=6;
+    </select>
+    
+</mapper>

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>产品列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="style/adminStyle.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/public.js"></script>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <div class="page-title">
+        <span class="modular fl"><i></i><em>产品列表</em></span>
+        <span class="modular fr"><a href="addmenu" class="pt-link-btn">+添加商品</a></span>
+    </div>
+    <div class="operate">
+        <form>
+            <select class="inline-select">
+                <option>A店铺</option>
+                <option>B店铺</option>
+            </select>
+            <input type="text" class="textBox length-long" placeholder="输入产品名称..."/>
+            <input type="button" value="查询" class="tdBtn"/>
+        </form>
+    </div>
+    <table class="list-style Interlaced">
+        <tr>
+            <th>商品编号</th>
+            <th>菜系</th>
+            <th height="60" width="90">产品</th>
+            <th>菜名</th>
+            <th>市场价</th>
+            <th>库存</th>
+            <th>热销</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="m:${memus}">
+            <td th:text="${m.id}" align="center"></td>
+            <td th:text="${m.label}" align="center"></td>
+            <td>
+                <img th:src="${m.getImg1()}" height="50" width="70" align="center"/>
+            </td>
+            <td th:text="${m.dishId}" align="center"></td>
+            <td th:text="${m.dishPrice}" align="center"></td>
+            <td th:text="${m.invent}" align="center" ></td>
+            <td th:if="${m.heat} ge '100'" align="center"><img src="images/yes.gif"/></td>
+            <td th:if="${m.heat} lt '100'" align="center"><img src="images/no.gif"/></td>
+            <td align="center">
+                <a title="查看" target="_blank"><img src="images/icon_view.gif"/></a>
+                <a title="修改" href=""><img src="images/icon_edit.gif"/></a>
+                <a title="删除" th:onclick="|delMemu(${m.id},'delMemu')|"><img src="images/icon_drop.gif"/></a>
+            </td>
+            <script type="text/javascript">
+                function delMemu(id) {
+                  if (confirm("确认删除此菜单")+id){
+                      $.post("deleteMemu",{"id":id},function (data) {
+                          if (data){
+                              alert("删除成功..");
+                              location.href="memulist";
+                          }
+                      })
+                  }
+                }
+            </script>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="6" align="center">
+                <a class="btn btn-default" th:href="@{memulist(page=1)}">首页</a>
+                <a class="btn btn-default" th:href="@{memulist(page=${currentPage-1})}">上一页</a>
+                <a class="btn btn-default" th:href="@{memulist(page=${currentPage+1})}">下一页</a>
+                <a class="btn btn-default" th:href="@{memulist(page=${maxPage})}">末页</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

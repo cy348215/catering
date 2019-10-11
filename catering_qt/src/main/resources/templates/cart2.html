@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>我要点餐</title>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/css.css" rel="stylesheet">
+    <link href="css/chosen.css" rel="stylesheet">
+    <link href="favicon.ico" rel="SHORTCUT ICON">
+    <!--
+    Author: DeathGhost
+    Author URI: http://www.deathghost.cn
+    -->
+</head>
+<body>
+<header>
+
+</header>
+<div class="head">
+    <div class="wrap clearfix">
+        <a href="index.html" class="logo indent">logo</a>
+        <div class="headr fr">
+            <form action="active.html" method="post" class="headsearch">
+                <label class="label">
+                    <input type="text" value="" name="" class="key">
+                    <span class="text">搜索地址、名称、时间等</span>
+                </label>
+                <button type="submit" class="button btn-search">&#xe628;</button>
+            </form>
+            <a href="#"><em><img src="images/sb.png"></em> &nbsp;&nbsp;发布我的饭局</a>
+            <div class="user">
+        <span class="clearfix"><span class="userimg"><img src="upload/img12.png"><i></i></span>
+        <a href="javascript:;" class="fr">设计--麻  <em>&#xe607;</em></a></span>
+                <ul class="topslide">
+                    <li><em>&#xe627;</em><a href="mem.html">个人设置</a></li>
+                    <li><em>&#xe63d;</em><a href="Message.html">消息中心<s></s></a></li>
+                    <li><em>&#xe63c;</em><a href="Dinner.html">订单管理</a></li>
+                    <li><em>&#xe63e;</em><a href="fans.html">我的好友</a></li>
+                    <li><em>&#xe611;</em><a href="logout">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Start content-->
+<div class="container" style="height: 600px">
+    <div class="row">
+        <div style="height: 60px ;float: left;font-size:18px; color:gray; margin-left:100px; padding-top:8px;">
+            <h1 style="padding-bottom: 8px;">Hello!<font th:text="${session.member.username}"></font></h1>
+            <p><h1>欢迎来到</h1><font style="size: 25px" th:text="${merchantPro.merchantName}"></font></p>
+            <input type="hidden" th:value="${merchantPro.merchantId}" id="merchantId">
+            <input type="hidden" th:value="${session.member.id}" id="memberId">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1"
+             style="background-color: #dedef8 ;height: 500px; overflow:auto ">
+            <table class="table table-striped" style="background-color: #dedef8">
+                <tr>
+                    <th>图片</th>
+                    <th>菜名</th>
+                    <th>价格</th>
+                    <th>库存</th>
+                    <th>标签</th>
+                    <th>热度</th>
+                    <th>操作</th>
+                </tr>
+                <tr th:each="am:${allMemu}">
+                    <td><img th:src="${am.img1}" style="width: 50px;height: 50px"></td>
+                    <td th:text="${am.dishId}"></td>
+                    <td><font style="color: red;size: 20px" th:text="${am.dishPrice}"></font></td>
+                    <td th:text="${am.invent}"></td>
+                    <td th:text="${am.label}"></td>
+                    <td th:text="${am.heat}"></td>
+                    <td><a th:onclick="oncliks([[${am.id}]])" th:id="${am.id}">添到订单</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3 col-md-offset-1"
+             style="background-color: #dedef8;height: 500px;overflow: auto">
+            <table class="table table-striped"id="menudiv">
+                <tr>
+                    <th>菜名</th>
+                    <th>价格</th>
+                    <th>操作</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="background-color: #dedef8;height:60px;width: 292px ;margin-left: 67.15%; margin-top:2px;" >
+        <h2>计算总价</h2>
+        <input type="text" id="count" value="0">
+        <button id="addIndent">提交生成订单</button>
+    </div>
+</div>
+<div class="footmenu">
+    <div class="wrap clearfix">
+        <div class="item bd0">
+            <h1 class="hd">产品理念</h1>
+            <ul>
+                <li><a href="#">食品安全</a></li>
+                <li><a href="#">订购流程</a></li>
+                <li><a href="#">修改订单</a></li>
+                <li><a href="#">冷链配送</a></li>
+                <li><a href="#">全程冷链</a></li>
+            </ul>
+        </div>
+        <div class="item">
+            <h1 class="hd">产品理念</h1>
+            <ul>
+                <li><a href="#">食品安全</a></li>
+                <li><a href="#">订购流程</a></li>
+                <li><a href="#">修改订单</a></li>
+                <li><a href="#">冷链配送</a></li>
+                <li><a href="#">全程冷链</a></li>
+            </ul>
+        </div>
+        <div class="item">
+            <h1 class="hd">产品理念</h1>
+            <ul>
+                <li><a href="#">食品安全</a></li>
+                <li><a href="#">订购流程</a></li>
+                <li><a href="#">修改订单</a></li>
+                <li><a href="#">冷链配送</a></li>
+                <li><a href="#">全程冷链</a></li>
+            </ul>
+        </div>
+        <div class="item">
+            <h1 class="hd">产品理念</h1>
+            <ul>
+                <li><a href="#">食品安全</a></li>
+                <li><a href="#">订购流程</a></li>
+                <li><a href="#">修改订单</a></li>
+                <li><a href="#">冷链配送</a></li>
+                <li><a href="#">全程冷链</a></li>
+            </ul>
+        </div>
+        <div class="fr">
+            <img src="images/img2.jpg">
+            <img src="images/img3.jpg">
+        </div>
+    </div>
+    <div class="gotop">&#xe608;</div>
+</div>
+<div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>
+</body>
+<script type="text/javascript">
+    $("#addIndent").click(function () {
+        var count = $("#count").val();
+        var merchantId =$("#merchantId").val();
+        var memberId = $("#memberId").val();
+        location.href="addIndent?count="+count+"&merchantId="+merchantId+"&memberId="+memberId;
+    })
+    function oncliks(id) {
+        var count =$("#count").val();
+        $.post("addIndexMenu", {"id": id}, function (data) {
+            var datas = eval(data);
+            alert(datas.dishId);
+            var trdiv = $("<tr></tr>");
+            trdiv.attr("class", "trDiv");
+            var tddiv1 = $("<td></td>")
+            tddiv1.attr("class", "tdDiv")
+            var tddiv2 = $("<td></td>")
+            tddiv2.attr("class", "tdDiv")
+            var tddiv3 = $("<td></td>")
+            tddiv3.attr("class", "tdDiv")
+            var goodname = $("<font></font>");
+            goodname.text(datas.dishId);
+            goodname.attr("class", "goodName");
+            var goodprice = $("<font></font>");
+            goodprice.text("￥" + datas.dishPrice);
+            goodprice.attr("class", "goodPrice");
+            var price = datas.dishPrice;
+            var goodhandle = $("<a href=\"javascript:;\" onclick='{if(confirm(\"确定要删除这个菜品吗?\")) {deleteCurrentRow(this); }else {}}'>删除</a>");
+            goodhandle.attr("id", datas.id);
+            goodhandle.attr("name",datas.dishId);
+            tddiv1.append(goodname);
+            tddiv2.append(goodprice);
+            tddiv3.append(goodhandle);
+            trdiv.append(tddiv1);
+            trdiv.append(tddiv2);
+            trdiv.append(tddiv3);
+            $("#menudiv").append(trdiv)
+            count=count-(-datas.dishPrice);
+            $("#count").val(count);
+        })
+    }
+    function deleteCurrentRow(obj){
+        var tr=obj.parentNode.parentNode;
+        var tbody=tr.parentNode;
+        alert(tr);
+        alert(tbody);
+        tbody.removeChild(tr);
+        var count = $("#count").val();
+    }
+
+</script>
+</html>

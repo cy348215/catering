@@ -10,7 +10,7 @@ public class Memu implements Serializable {
 
     private String dishId;
 
-    private String dishPrice;
+    private Double dishPrice;
 
     private Integer type;
 
@@ -24,7 +24,7 @@ public class Memu implements Serializable {
 
     private String updatetime;
 
-    private String heat;
+    private int heat;
 
     private int merchantId;
 
@@ -54,12 +54,12 @@ public class Memu implements Serializable {
         this.dishId = dishId == null ? null : dishId.trim();
     }
 
-    public String getDishPrice() {
+    public Double getDishPrice() {
         return dishPrice;
     }
 
-    public void setDishPrice(String dishPrice) {
-        this.dishPrice = dishPrice == null ? null : dishPrice.trim();
+    public void setDishPrice(Double dishPrice) {
+        this.dishPrice = dishPrice;
     }
 
     public Integer getType() {
@@ -110,11 +110,11 @@ public class Memu implements Serializable {
         this.updatetime = updatetime == null ? null : updatetime.trim();
     }
 
-    public String getHeat() {
+    public int getHeat() {
         return heat;
     }
 
-    public void setHeat(String heat) {
-        this.heat = heat == null ? null : heat.trim();
+    public void setHeat(int heat) {
+        this.heat = heat;
     }
 }

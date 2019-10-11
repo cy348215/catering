@@ -42,4 +42,18 @@ public interface ReservationService_xt {
      * @return
      */
     public int addIndent(Indent indent);
+
+    /**
+     * 根据订单id查询订单
+     * @param indentId
+     * @return
+     */
+    public Indent findIndentById(int indentId);
+
+    /**
+     * 根据indentid查询这个订单所拥有的菜品信息
+     * @param indentId
+     * @return
+     */
+    public List<Memu> findIndentAllMenuById2(int indentId);
 }
