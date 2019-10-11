@@ -52,4 +52,31 @@ public interface ReservationMapper_xt {
      */
     public int findIndentMenuXt(Map<String,Integer> map);
 
+    /**
+     * 根据订单id查询订单
+     * @param indentId
+     * @return
+     */
+    public Indent findIndentById(int indentId);
+
+    /**
+     * 根据indentid查询这个订单所拥有的菜品信息
+     * @param list
+     * @return
+     */
+    public List<Memu> findIndentAllMenuById(List list);
+
+    /**
+     * 根据id查询出memu id集合
+     * @param indentId
+     * @return
+     */
+    public List<Integer> findIndentMenuById(int indentId);
+
+    /**
+     * 根据indentid查询这个订单所拥有的菜品信息
+     * @param indentId
+     * @return
+     */
+    public List<Memu> findIndentAllMenuById2(int indentId);
 }

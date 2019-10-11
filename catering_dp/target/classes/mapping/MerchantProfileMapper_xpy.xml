@@ -23,7 +23,6 @@
         <result property="provinceId" column="province_id"/>
         <result property="cityId" column="city_id"/>
         <result property="memberid" column="memberid"/>
-        <result property="personPrice" column="person_price"/>
     </resultMap>
     <select id="checkname" parameterType="string" resultMap="MerchanProfileResult">
         select
@@ -64,7 +63,7 @@
         (#{merchantProfile.merchantId},#{merchantProfile.merchantName},#{merchantProfile.merchantPrincipal},#{merchantProfile.merchantNumber},#{merchantProfile.merchartEmail},#{merchantProfile.phone},
         #{merchantProfile.createtime},#{merchantProfile.level},#{merchantProfile.point},#{merchantProfile.lastupdatetime},#{merchantProfile.type},#{merchantProfile.commendCount},#{merchantProfile.collectCount},
         #{merchantProfile.heat},#{merchantProfile.bussinesstime},#{merchantProfile.merchantAddress},#{merchantProfile.countryId},#{merchantProfile.provinceId},#{merchantProfile.cityId},
-        #{merchantProfile.memberid},#{merchantProfile.personPrice})
+        #{merchantProfile.memberid})
     </insert>
     <select id="findById" parameterType="int" resultMap="MerchanProfileResult">
         select

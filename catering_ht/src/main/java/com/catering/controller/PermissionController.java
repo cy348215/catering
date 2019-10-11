@@ -13,23 +13,6 @@ import java.util.List;
 public class PermissionController {
     @Autowired
     private PermissionService permissionService;
-
-    @RequestMapping("/login")
-    public String login(){
-        return "login";
-    }
-    @RequestMapping("/index")
-    public String index(){
-        return "index";
-    }
-    @RequestMapping("/admin_info")
-    public String bar() {
-        return "admin_info";
-    }
-    @RequestMapping("/home")
-    public String home(){
-        return "home";
-    }
     @ResponseBody
     @RequestMapping("/permission")
     public List<AdminPermission> permissions(){

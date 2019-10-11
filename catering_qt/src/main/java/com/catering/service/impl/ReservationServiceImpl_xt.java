@@ -40,4 +40,14 @@ public class ReservationServiceImpl_xt implements ReservationService_xt {
     public int addIndent(Indent indent) {
         return reservationMapper_xt.addIndent(indent);
     }
+
+    @Override
+    public Indent findIndentById(int indentId) {
+        return reservationMapper_xt.findIndentById(indentId);
+    }
+
+    @Override
+    public List<Memu> findIndentAllMenuById2(int indentId) {
+        return reservationMapper_xt.findIndentAllMenuById2(indentId);
+    }
 }
