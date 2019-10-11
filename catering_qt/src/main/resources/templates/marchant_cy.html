@@ -117,10 +117,10 @@
               <ul class="products">
 
                 <li th:each="d:${dish}">
-                  <a  target="_blank" title="酸辣土豆丝">
+                  <a  th:href="@{findMerchand(merchantId=${s.merchantId})}" target="_blank" title="酸辣土豆丝">
                     <img th:src="${d.img1}" class="foodsimgsize">
                   </a>
-                  <a href="#" class="item">
+                  <a th:href="@{findMerchand(merchantId=${s.merchantId})}" class="item">
                     <div>
                       <p th:text="${d.dishId}"></p>
                       <p class="AButton">拖至购物车:￥<p th:text="${d.dishPrice}">.00</p></p>
@@ -201,17 +201,17 @@
   </article>
   <aside>
     <div class="cart" id="Topcart">
-      <span class="Ctitle Block FontW Font14"><a href="cart.html" target="_blank">我的购物车</a></span>
+      <span class="Ctitle Block FontW Font14"><a href="cart.html" target="_blank">我的订单</a></span>
       <table id="cartcontent" fitColumns="true">
         <thead>
         <tr>
-          <th width="33%" align="center" field="name">商品</th>
-          <th width="33%" align="center" field="quantity">数量</th>
-          <th width="33%" align="center" field="price">价格</th>
+          <th style="width: 33%;"  align="center" field="name">店铺</th>
+          <th style="width: 33%;"  align="center" field="quantity">数量</th>
+          <th style="width: 33%;"  align="center" field="price">价格</th>
         </tr>
         </thead>
       </table>
-      <p class="Ptc"><span class="Cbutton"><a href="cart.html" target="进入购物车">进入购物车</a></span><span class="total">共计金额: ￥0</span></p>
+      <p class="Ptc"><span class="Cbutton"><a  target="进入购物车">添加订单</a></span><span class="total">共计金额: ￥0</span></p>
     </div>
 
     <div class="Nearshop">
