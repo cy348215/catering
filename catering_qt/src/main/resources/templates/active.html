@@ -30,24 +30,29 @@
 <div class="head">
   <div class="wrap clearfix">
     <a href="index" class="logo indent">logo</a>
-    <div class="headr fr">
-      <form action="active.html" method="post" class="headsearch">
+    <div class="headr fr"  >
+      <form action="active.html" method="post" class="headsearch" style="position:relative;left: -400px;">
         <label class="label">
           <input type="text" value="" name="" class="key">
           <span class="text">搜索地址、名称等</span>
         </label>
         <button type="submit" class="button btn-search">&#xe628;</button>
       </form>
-      <a href="http://localhost:8088/login" target="voiceList"><em><img src="images/sb.png"></em>  &nbsp;&nbsp;商家中心</a>
+    </div>
+    <!--未登录-->
+    <div class="medium-right" th:if="${session.islogin==false}"  style="position: absolute;right: 200px;top: 25px;"><a href="login" style="position: relative; right: 100px;">立即登陆</a><a href="reg" style="position: relative; right: 50px;">注册</a><a href="http://localhost:8088/login">商家中心</a></div>
+    <!--已登录-->
+    <div class="headr fr" style="position: relative;left: 400px;" th:if="${session.islogin==true}">
+      <a href="http://localhost:8088/login" target="voiceList">  &nbsp;&nbsp;商家中心</a>
       <div class="user">
-        <span class="clearfix"><span class="userimg"><img src="upload/img12.png"><i></i></span>
-        <a href="javascript:;" class="fr" target="voiceList">设计--麻  <em>&#xe607;</em></a></span>
-        <ul class="topslide">
+          <span class="clearfix" ><span class="userimg"><img src="upload/img12.png"><i></i></span>
+          <a href="javascript:;" class="fr" target="voiceList" style="position: absolute;left: 55px;width: 150px;" th:text="${session.member.username}">设计--麻<em>&#xe607;</em></a></span>
+        <ul class="topslide" style="position: absolute; left: 30px;">
           <li><em>&#xe627;</em><a href="mem.html" target="voiceList">个人设置</a></li>
           <li><em>&#xe63d;</em><a href="Message.html" target="voiceList">消息中心<s></s></a></li>
           <li><em>&#xe63c;</em><a href="Dinner.html" target="voiceList">订单管理</a></li>
           <li><em>&#xe63e;</em><a href="fans.html" target="voiceList">我的好友</a></li>
-          <li><em>&#xe611;</em><a href="index.html" target="voiceList">退出</a></li>
+          <li><em>&#xe611;</em><a href="logout" target="voiceList">退出</a></li>
         </ul>
       </div>
     </div>
@@ -86,16 +91,14 @@
       <ul class="active-list" >
         <li>
           <div class="img">
-            <a onclick="img222()"><img th:src="${m.merchantFeature.img2}" style="width: 730px;height: 220px;"></a>
-            <input th:value="${m.merchantFeature.img2}" type="hidden" id="img222">
-            <input th:value="${m.merchantFeature.img1}" type="hidden" id="img111">
+            <a ><img th:src="${m.merchantFeature.img2}" th:onclick="img222([[${m.merchantFeature.img2}]])"  style="width: 730px;height: 220px;"></a>
             <div class="bottominfo">
               <span class="label"><a href="javascript:;">活动玩法</a><a href="javascript:;">活动标签</a><a href="javascript:;">活动标签</a></span><a href="Sign_up.html" class="Sign_up">我要报名</a>
             </div>
           </div>
           <div class="active-info">
             <div class="user">
-              <a onclick="img111()" class="userimg"><img th:src="${m.merchantFeature.img1}" style="height:95px;width:120px;"></a>
+              <a  class="userimg"><img th:src="${m.merchantFeature.img1}" th:onclick="img111([[${m.merchantFeature.img1}]])" style="height:95px;width:120px;"></a>
               <a href="#" th:text="${m.merchantName}" style="font-weight:bold;font-size: 16px;"></a><em class="user-level"></em><em class="user-level"></em><em class="user-level"></em>
             </div>
             <div class="txt"><span th:text="${m.merchantFeature.intro}"></span></div>
@@ -207,13 +210,11 @@
 
 <script src="js/chosen.jquery.js"></script>
 <script type="text/javascript">
-  function img111(){
-    var img1=$("#img111").val();
-    location.href="findShop?img1="+img1;
+  function img111(img111){
+    location.href="findShop?img1="+img111;
   }
-  function img222(){
-    var img1=$("#img222").val();
-    location.href="findShop?img2="+img1;
+  function img222(img222){
+    location.href="findShop?img2="+img222;
   }
   function closeMap() {
     $('#map').css('display', 'none');

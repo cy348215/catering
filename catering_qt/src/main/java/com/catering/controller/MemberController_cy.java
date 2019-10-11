@@ -3,12 +3,15 @@ package com.catering.controller;
 import com.catering.pojo.MerchantFeature;
 import com.catering.pojo.Tag;
 import com.catering.service.MemberService_cy;
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +22,15 @@ public class MemberController_cy {
     private MemberService_cy memberService_cy;
 
     @RequestMapping("index")
-    public String index() {
+    public String index(HttpServletRequest request) {
+        request.getSession().invalidate();//清除session
+        request.getSession().setAttribute("islogin",false);
         return "index";
     }
-
+    @RequestMapping("index1")
+    public String index1(HttpServletRequest request) {
+        return "index";
+    }
     @RequestMapping("/active1")
     public String active1() {
         return "active1";
@@ -32,13 +40,19 @@ public class MemberController_cy {
     public String map1() {
         return "map1";
     }
+    @RequestMapping("map2")
+    public String map2() {
+        return "map2";
+    }
 
     @RequestMapping("mapPosition")
     public String mapPosition() {
         return "mapPosition";
     }
     @RequestMapping("marchant_cy")
-    public String marchant_cy(){
+    public String marchant_cy(HttpServletRequest request){
+        request.getSession().invalidate();//清除session
+        request.getSession().setAttribute("islogin",false);
         return "marchant_cy";
     }
 
