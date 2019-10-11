@@ -80,7 +80,7 @@ public class MemberController_xt {
                 System.out.println("账户启用");
                 int ids = memberServiceXt.findMemberIdByUsername(username);
                 member.setId(ids);
-                request.getSession().setAttribute("member",member);
+
                 System.out.println("member = " + member);
                 Map<String ,Integer> map = new HashMap<>();
                 int state = 3;
@@ -89,7 +89,10 @@ public class MemberController_xt {
 
                 int i = memberServiceXt.updataMemberStateById(map);
                 System.out.println("i = " + i);
-                return "redirect:index";
+                request.getSession().invalidate();//清除session
+                request.getSession().setAttribute("islogin",true);
+                request.getSession().setAttribute("member",member);
+                return "redirect:index1";
             }else if (count == 2){
                 System.out.println("此账户已被禁用");
                 return "login";
@@ -103,8 +106,7 @@ public class MemberController_xt {
             }
 
         }else {
-            request.getSession().invalidate();//清除session
-            request.getSession().setAttribute("islogin",true);
+
             return "login";
         }
 
