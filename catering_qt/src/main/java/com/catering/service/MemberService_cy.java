@@ -1,7 +1,6 @@
 package com.catering.service;
 
 import com.catering.pojo.MerchantFeature;
-import com.catering.pojo.Tag;
 
 import java.util.List;
 import java.util.Map;
@@ -87,4 +86,11 @@ public interface MemberService_cy {
      * @return
      */
     public int searchInt3(String img3);
+
+    /**
+     * 根据id查询店铺特色
+     * @param id
+     * @return
+     */
+    public MerchantFeature findMerchantFeaByIdXt(int id);
 }

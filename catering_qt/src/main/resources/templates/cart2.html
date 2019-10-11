@@ -48,14 +48,13 @@
     </div>
 </div>
 <!--Start content-->
-<div class="container" style="height: 650px">
+<div class="container" style="height: 600px">
     <div class="row">
-        <div style="height: 91px ;float: left;font-size:18px; color:gray; margin-left:100px; padding-top:8px;">
+        <div style="height: 60px ;float: left;font-size:18px; color:gray; margin-left:100px; padding-top:8px;">
             <h1 style="padding-bottom: 8px;">Hello!<font th:text="${session.member.username}"></font></h1>
             <p><h1>欢迎来到</h1><font style="size: 25px" th:text="${merchantPro.merchantName}"></font></p>
             <input type="hidden" th:value="${merchantPro.merchantId}" id="merchantId">
             <input type="hidden" th:value="${session.member.id}" id="memberId">
-            <input type="hidden" th:value="${indentId}" id="indentId">
         </div>
     </div>
 
@@ -156,16 +155,13 @@
         var count = $("#count").val();
         var merchantId =$("#merchantId").val();
         var memberId = $("#memberId").val();
-        var indentId = $("#indentId").val();
-        alert(indentId);
-        location.href="addIndent?count="+count+"&merchantId="+merchantId+"&memberId="+memberId+"&indentId="+indentId;
-    });
+        location.href="addIndent?count="+count+"&merchantId="+merchantId+"&memberId="+memberId;
+    })
     function oncliks(id) {
         var count =$("#count").val();
-        var indentId = $("#indentId").val();
-        $.post("addIndexMenu", {"id": id,"indentId":indentId}, function (data) {
+        $.post("addIndexMenu", {"id": id}, function (data) {
             var datas = eval(data);
-            alert("添加 "+datas.dishId+" 到我的菜单");
+            alert(datas.dishId);
             var trdiv = $("<tr></tr>");
             trdiv.attr("class", "trDiv");
             var tddiv1 = $("<td></td>")

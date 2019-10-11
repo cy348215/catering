@@ -12,10 +12,25 @@
     <link href="css/css.css" rel="stylesheet">
     <link href="css/chosen.css" rel="stylesheet">
     <link href="favicon.ico" rel="SHORTCUT ICON">
+
+
     <!--
     Author: DeathGhost
     Author URI: http://www.deathghost.cn
     -->
+    <style>
+        .inforlist {
+            width: auto;
+            height: auto;
+            overflow: hidden;
+            padding: 8px 0;
+        }
+        .inforlist .Sum_infor .p2 span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #F00;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -49,20 +64,49 @@
 </div>
 <!--Start content-->
 <div class="container" style="height: 1000px">
-    <div>
-        <h1>欢迎来到订单确认界面</h1>
+    <div class="row" style="height: 330px ;">
+        <div class="col-md-3">
+            <td><img th:src="${merchantFea.img1}" style="width: 300px;height: 300px"></td>
+        </div>
+        <div class="col-md-6 col-md-offset-2" style="margin-top: 20px">
+            <font size="30px" style="color: #0b2e13" th:text="${merchantPro.merchantName}"></font><br/><br/>
+            <font style="color: #6c757d;" th:text="${merchantFea.intro}"></font><br>
+            <p >店家热度：<font size="10px" style="color: #74d2d9;size: 22px" th:text="${merchantPro.heat}"></font></p><br>
+            <p >经营时间段：<font style="color: #74d2d9;size: 22px" th:text="${merchantPro.bussinesstime}"></font></p><br>
+            <p size="25px" style="color: #0b2e13;size: 22px">此店特色：<span size="30px" style="color: red" th:text="${merchantFea.feature}"></span></p><br>
+        </div>
     </div>
-    <div class="row" style="height: 300px ;background-color: yellowgreen">
-        商家信息：
+    <br>
+    <div class="inforlist" style="height: 700px">
+        <span class="flow_title" style="color: #0066ff ;size: 25px"><h2>您的菜单</h2></span>
+        <div style="overflow: auto; border-color: #9fcdff ;height: 400px">
+            <table class="table table-hover">
+                <tr>
+                    <th>图片</th>
+                    <th>菜名</th>
+                    <th>价格</th>
+                    <th>库存</th>
+                    <th>标签</th>
+                    <th>热度</th>
+                </tr>
+                <tr th:each="am:${allMemu}">
+                    <td><img th:src="${am.img1}" style="width: 50px;height: 50px"></td>
+                    <td th:text="${am.dishId}"></td>
+                    <td><font style="color: red;size: 20px" th:text="${am.dishPrice}"></font></td>
+                    <td th:text="${am.invent}"></td>
+                    <td th:text="${am.label}"></td>
+                    <td th:text="${am.heat}"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="height: 300px;border-color: antiquewhite">
+            <p class="p2">合计：<span>￥<font color="red" size="23px" th:text="${indent.price}">元</font></span></p>
+            <input type="hidden" id="dingPrice" th:value="${indent.dingprice}">
+            <button id="button1" class="btn btn-primary">确定支付</button>
+            <button id="button2" class="btn btn-success">我想在看看</button>
+        </div>
     </div>
-    <div style="height: 300px;margin-top: 20px;background-color: yellow">
-        这条订单信息（状态）
-    </div>
-    <div style="height: 300px;border-color: antiquewhite">
-        <h1>进行订单定金支付或者返回商家首页</h1>
-        <button id="button1">确定支付</button>
-        <button id="button2">我想在看看</button>
-    </div>
+</div>
 </div>
 <div class="footmenu">
     <div class="wrap clearfix">
@@ -117,8 +161,9 @@
 </body>
 <script type="text/javascript">
     $("#button1").click(function () {
-        var mymessage=confirm("想要提交订单吗？需要交定金哟！！");
-        if (mymessage == true){
+        var dingPrice = $("#dingPrice").val();
+        var mymessage = confirm("想要提交订单吗？需要交"+dingPrice+"元订金哟！！");
+        if (mymessage == true) {
             return true;
         } else {
             return false;

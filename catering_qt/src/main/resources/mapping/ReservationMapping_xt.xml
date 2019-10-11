@@ -63,14 +63,52 @@
         select * from memu where id = #{id}
     </select>
     <insert id="addIndentMemu" parameterType="map">
-        insert indent_menu values (#{indentId},#{memuId},#{count});
+        insert indent_menu values (#{indentId},#{memuId});
     </insert>
     <insert id="addIndent" parameterType="indent">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         insert indent
         values
         (default ,#{merchantId},#{memberId},#{price},#{ordertime},#{endtime},#{ordernumber},#{commentid},#{state},#{dingprice},#{eattime},#{remark});
     </insert>
     <select id="findIndentMenuXt" parameterType="map" resultType="int">
         SELECT m_count FROM indent_menu where indent_id=#{indentId} and mune_id=#{menuId};
+    </select>
+    <select id="findIndentById" resultMap="indentMap" parameterType="int">
+        select * from indent where id = #{indentId}
+    </select>
+    <!--public Memu findIndentAllMenuById(int indentId);-->
+    <select id="findIndentAllMenuById" resultMap="memuMap" parameterType="list">
+        SELECT
+            *
+        from
+            memu
+        <where>
+            id in
+            <foreach collection="list" item="l" open="(" close=")" separator=",">
+                #{l}
+            </foreach>
+        </where>
+    </select>
+   <!-- public List<Integer> findIndentMenuById(int indentId);-->
+    <select id="findIndentMenuById" parameterType="int"  resultType="int">
+        SELECT
+                mune_id
+            FROM
+                indent_menu
+            where
+                indent_id = #{indentId}
+    </select>
+    <select id="findIndentAllMenuById2" resultMap="memuMap" parameterType="int">
+        SELECT
+        *
+        from
+        memu
+        where
+            id in
+            (SELECT mune_id
+            FROM `indent_menu` where indent_id = #{indentId})
     </select>
 </mapper>

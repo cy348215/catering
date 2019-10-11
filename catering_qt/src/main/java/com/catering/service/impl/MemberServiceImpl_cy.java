@@ -111,4 +111,9 @@ public class MemberServiceImpl_cy implements MemberService_cy {
         return i;
     }
 
+    @Override
+    public MerchantFeature findMerchantFeaByIdXt(int id) {
+        return memberMapper_cy.findMerchantFeaByIdXt(id);
+    }
+
 }

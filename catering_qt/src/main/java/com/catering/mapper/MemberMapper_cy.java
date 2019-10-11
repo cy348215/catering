@@ -1,5 +1,6 @@
 package com.catering.mapper;
 
+import com.catering.pojo.MemberFav;
 import com.catering.pojo.MerchantFeature;
 import com.catering.pojo.Tag;
 import org.apache.ibatis.annotations.Mapper;
@@ -100,4 +101,11 @@ public interface MemberMapper_cy {
      * @return
      */
     public int searchInt3(String img3);
+
+    /**
+     * 根据id查询店铺特色
+     * @param id
+     * @return
+     */
+    public MerchantFeature findMerchantFeaByIdXt(int id);
 }

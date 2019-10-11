@@ -94,4 +94,9 @@
     <select id="searchInt3" parameterType="string" resultType="int">
         select merchant_id from merchant_feature where img3=#{img3}
     </select>
+
+    <select id="findMerchantFeaByIdXt" parameterType="int" resultMap="feaMap">
+        select * from merchant_feature
+        where merchant_id=#{merchant_id}
+    </select>
 </mapper>
