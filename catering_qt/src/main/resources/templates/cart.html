@@ -17,35 +17,42 @@
     Author URI: http://www.deathghost.cn
     -->
 </head>
+<style type="text/css">
+    .clearfix .logo{ width:260px; height:74px; background:url(../img/logo.png) no-repeat center;background-size: 170px;  position:absolute; left:170px;top:-10px; z-index:100;}
+</style>
 <body>
 <header>
 
 </header>
-<div class="head">
-    <div class="wrap clearfix">
-        <a href="index.html" class="logo indent">logo</a>
-        <div class="headr fr">
-            <form action="active.html" method="post" class="headsearch">
-                <label class="label">
-                    <input type="text" value="" name="" class="key">
-                    <span class="text">搜索地址、名称、时间等</span>
-                </label>
-                <button type="submit" class="button btn-search">&#xe628;</button>
-            </form>
-            <a href="#"><em><img src="images/sb.png"></em> &nbsp;&nbsp;发布我的饭局</a>
-            <div class="user">
-        <span class="clearfix"><span class="userimg"><img src="upload/img12.png"><i></i></span>
-        <a href="javascript:;" class="fr">设计--麻  <em>&#xe607;</em></a></span>
-                <ul class="topslide">
-                    <li><em>&#xe627;</em><a href="mem.html">个人设置</a></li>
-                    <li><em>&#xe63d;</em><a href="Message.html">消息中心<s></s></a></li>
-                    <li><em>&#xe63c;</em><a href="Dinner.html">订单管理</a></li>
-                    <li><em>&#xe63e;</em><a href="fans.html">我的好友</a></li>
-                    <li><em>&#xe611;</em><a href="logout">退出</a></li>
-                </ul>
-            </div>
+<div class="wrap clearfix">
+    <a href="index" class="logo indent">logo</a>
+    <div class="headr fr"  >
+        <form action="active.html" method="post" class="headsearch" style="position:relative;left: -400px;">
+            <label class="label">
+                <input type="text" value="" name="" class="key">
+                <span class="text" style="position: absolute;left: -140px;top: 8px;" >搜索地址、名称等</span>
+            </label>
+            <button type="submit" class="button btn-search">&#xe628;</button>
+        </form>
+    </div>
+    <!--未登录-->
+    <div class="medium-right" th:if="${session.islogin==false}"  style="position: absolute;right: 200px;top: 25px;"><a href="login" style="position: relative; right: 100px;">立即登陆</a><a href="reg" style="position: relative; right: 50px;">注册</a><a href="http://localhost:8088/login">商家中心</a></div>
+    <!--已登录-->
+    <div class="headr fr" style="position: relative;left: 400px;" th:if="${session.islogin==true}">
+        <a href="http://localhost:8088/login" target="voiceList">  &nbsp;&nbsp;商家中心</a>
+        <div class="user">
+          <span class="clearfix" ><span class="userimg"><img src="upload/img12.png"><i></i></span>
+          <a href="javascript:;" class="fr" target="voiceList" style="position: absolute;left: 55px;width: 150px;" th:text="${session.member.username}">设计--麻<em>&#xe607;</em></a></span>
+            <ul class="topslide" style="position: absolute; left: 30px;">
+                <li><em>&#xe627;</em><a href="mem.html" target="voiceList">个人设置</a></li>
+                <li><em>&#xe63d;</em><a href="Message.html" target="voiceList">消息中心<s></s></a></li>
+                <li><em>&#xe63c;</em><a href="Dinner.html" target="voiceList">订单管理</a></li>
+                <li><em>&#xe63e;</em><a href="fans.html" target="voiceList">我的好友</a></li>
+                <li><em>&#xe611;</em><a href="logout" target="voiceList">退出</a></li>
+            </ul>
         </div>
     </div>
+</div>
 </div>
 <!--Start content-->
 <div class="container" style="height: 650px">

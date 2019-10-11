@@ -35,8 +35,7 @@ public class ReservationConroller_xt {
         return "confirm_order";
     }
     @RequestMapping("/findMerchand")
-    public String findMerchand (Model model){
-        int merchantId =5;
+    public String findMerchand (Model model,int merchantId){
         MerchantProfile merchantPro = reservationService_xt.findMerchantProById(merchantId);
         System.out.println("merchantPro = " + merchantPro);
         List<Memu> allMemu = reservationService_xt.findAllMemuById(merchantId);

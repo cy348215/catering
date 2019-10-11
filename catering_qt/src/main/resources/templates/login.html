@@ -16,20 +16,16 @@
 </head>
 <style type="text/css">
   .clearfix .logo{ width:260px; height:74px; background:url(../img/logo.png) no-repeat center;background-size: 170px;  position:absolute; left:170px;top:-10px; z-index:100;}
+  .headr1>a{ display:inline-block; margin:0 6px; float:left;padding-left:30px;padding-right:30px;padding-top: 25px;}
 </style>
 <body>
 <div class="head">
   <div class="wrap clearfix">
     <a href="index" class="logo indent">logo</a>
-    <div class="headr fr">
-      <form action="active.html" method="post" class="headsearch">
-        <label class="label">
-          <input type="text" value="" name="" class="key">
-          <span class="text">搜索地址、名称、时间等</span>
-        </label>
-        <button type="submit" class="button btn-search">&#xe628;</button>
-      </form>
-      <a href="login">登录</a><a href="reg">注册</a><a href="#">商家中心</a>
+    <div class="headr1 fr">
+      <a href="index" >首页</a>
+      <a href="http://localhost:8088/login" >商家中心</a>
+      <a href="#">管理中心</a>
     </div>
   </div>
 </div>
@@ -61,7 +57,7 @@
         </label><br>
         <button type="submit" id="memberLogin" name="login" value="" class="button btn-login">登录</button>
         <p class="mt20"><label for="remember"><input name="" type="checkbox" id="remember" value="" checked> 记住我</label><a href="forgot.html" class="fr"> 忘记密码？</a></p>
-        <p class="mt10 tr">还没有账号？<a href="reg" class="o">注册</a></p>
+        <p class="mt10 tr">还没有账号？<a href="reg" class="o">去注册</a></p>
       </div>
       </form>
     </div>    
