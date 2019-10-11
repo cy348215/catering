@@ -4,16 +4,16 @@
 .head{ height:76px; background:#FFF;}
 .head .logo{ width:224px; height:52px; margin-top:12px; background:url(../images/logo2.png) no-repeat center; float:left; display:block;}
 .headr{ padding-top:24px;}
-.headr>a{ display:inline-block; margin:0 6px; float:left;}
+.headr>a{ display:inline-block; margin:0 6px; float:left;padding-left:120px;padding-right:30px;}
 .headr .headsearch{ display:inline-block; width:379px; height:33px; vertical-align:middle; float:left;}
 .headsearch .label{ display:inline-block; width:329px; height:31px; border:1px solid #f2f2f2; position:relative; border-right:0; float:left;}
 .headsearch .label .key{ width:309px; height:100%; padding:0 10px; background:#FFF; border:0;}
-.headsearch .text{ width:309px; height:100%; padding:0 10px; position:absolute; left:0; top:0; font-size:14px; color:#ccc;}
+.headsearch .text{ width:400px; height:100%; padding:0 10px; position:absolute; left:0px; top:0; font-size:14px; color:#ccc;}
 .headsearch .btn-search{ width:49px; height:33px; line-height:33px; text-align:center; color:#FFF; font-size:20px; background:#ff4800; font-family:"myfont"; float:left}
 
 .indexban{ height:600px; width:100%; position:relative; background-position:center; background-repeat:no-repeat; z-index:99}
 .p1-hero-search-form{ background: #000; background: rgba(0,0,0,0.6); -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";position: absolute; bottom:0; left:0; right:0; padding:23px 0;}
-.search_form{ width:523px; height:44px; float:left; display:block; background:#FFF;}
+.search_form{ width:673px; height:44px; float:left; display:block; background:#FFF;}
 .box-wrapper { position: relative; display: inline-block; float:left; border-right:1px solid #ececec;}
 .input-large{ padding:10px 20px; height:24px; line-height:24px; border:0; font-size:14px; width:260px;}
 #enter_location_error_message { position: absolute; top: 100%; left: 0; width: 100%; background: #fff; background: rgba(255,255,255,0.8);
@@ -30,8 +30,8 @@
 .hot-key a{ display:inline-block; color:#FFF; margin:0 5px;}
 
 .indexban .wrap{ position:relative; z-index:100;}
-.indexban .logo{ width:260px; height:61px; background:url(../images/logo.png) no-repeat center; position:absolute; left:0; top:15px; z-index:100;}
-.indexban .medium-right{ position:absolute; left:925px; top:35px;}
+
+.indexban .medium-right{ position:absolute; left:925px; top:35px;width:200px;}
 .indexban .medium-right a{ display:inline-block; margin:0 5px; color:#FFF;}
 .indexban .txt{ width:100%; position:absolute; top:230px; left:0;  line-height:72px; text-align:center; color:#FFF; font-size:24px;}
 .indexban .txt .hd{ font-size:48px; letter-spacing:10px; display:block}
@@ -123,9 +123,9 @@ transition: opacity ease-in-out 200ms;}
 .mem-banner{ height:116px; background-color:#292929; background-position:center; background-repeat:no-repeat;}
 .headr .user{ display:inline-block; width:125px; float:left; margin-left:10px; height:50px; position:relative; z-index:1000;}
 .userimg{ position:relative; border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%; overflow:hidden;}
-.headr .userimg{ display:inline-block;  width:33px; height:33px; margin-top:-6px;  float:left;}
-.headr .userimg img{ width:33px; height:33px;}
-.headr .userimg i{ position:absolute; width:33px; height:33px; left:0; top:0; background:url(../images/userimg.png) no-repeat center;}
+.headr .userimg{ display:inline-block;  width:44px; height:44px; margin-top:-6px;  float:left;}
+.headr .userimg img{ width:44px; height:44px;}
+.headr .userimg i{ position:absolute; width:44px; height:44px; left:0; top:0;}
 .headr .user em{ font-family:"myfont"}
 .headr .user .topslide{ display:none;}
 .headr .user:hover .topslide{ position:absolute; width:100%; top:100%; left:0; background:#FFF; padding:10px 0; border-top:1px solid #f2f2f2; display:block;}
@@ -191,7 +191,7 @@ transition: opacity ease-in-out 200ms;}
 .btn-upfiles{ height:27px; width:107px; background:#ff4800; display:block; cursor:pointer; position:relative; overflow:hidden; text-align:center; color:#FFF; text-align:center; font-size:14px; line-height:27px}
 .btn-upfiles input{filter:alpha(opacity=0); position:absolute; background:#fff; font-size:27px; cursor:inherit; height:auto; width:auto;right:0; left:auto; opacity:0; top:0px; *font-size:30px}
 
-/*é¥­å±€ç®¡ç†*/
+/*Ã©Â¥Â­Ã¥Â±â‚¬Ã§Â®Â¡Ã§Ââ€ */
 .Participate .item{ position:relative; padding:30px 0; padding-left:100px; border-bottom:1px solid #e5e5e5; min-height:75px;}
 .Participate .item .user{ display:block; width:75px; height:75px; border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%; overflow:hidden; position:absolute; left:0; top:30px;}
 .Participate .item .hd{ height:35px; line-height:25px; color:#999}
@@ -206,7 +206,7 @@ transition: opacity ease-in-out 200ms;}
 .Participate .item .number{ height:20px; line-height:20px; position:absolute; left:20px; top:196px;} 
 .Participate .item .count{ color:#FC0}
 
-/*2015å¹´4æœˆ14æ—¥*/
+/*2015Ã¥Â¹Â´4Ã¦Å“Ë†14Ã¦â€”Â¥*/
 .Status-wrap .Status{ display:inline-block;  height:24px; line-height:24px; border:1px solid #ebebeb; padding:0 10px; text-align:center; text-decoration:none !important; margin-right:15px; float:left;}
 .Status-wrap span.Selected,.Status-wrap span.unSelected{ display:inline-block;  height:24px; line-height:24px; color:#219325; float:left;}
 .Status-wrap span.unSelected,.ff4800{ color:#ff4800;}
@@ -224,7 +224,7 @@ transition: opacity ease-in-out 200ms;}
 .Verified-bind-wrap .ID-card-photo{ width:120px; height:120px; background:#f6f6f6 url(../images/photo-bg.jpg) no-repeat center; margin-right:10px;}
 .Verified-bind-wrap .upfilebox{ width:185px;}
 .Verified-bind-wrap .demoimg{ width:120px; text-align:center; font-size:14px;}
-/*2015å¹´4æœˆ14æ—¥ end*/
+/*2015Ã¥Â¹Â´4Ã¦Å“Ë†14Ã¦â€”Â¥ end*/
 
 .registration{ padding:0 40px;}
 .registration .item{ width:50%; float:left; padding:40px 0;}
@@ -259,7 +259,7 @@ transition: opacity ease-in-out 200ms;}
 .Release-submit .btn-submit{ background:#ff4800; color:#FFF;}
 .Release-submit .btn-reset{ background:#ebebeb; color:#999}
 
-/*æ¶ˆæ¯ä¸­å¿ƒ*/
+/*Ã¦Â¶Ë†Ã¦ÂÂ¯Ã¤Â¸Â­Ã¥Â¿Æ’*/
 .plmain,.comment-list .np-post .child{ padding:15px; background:#f9f9f9; border:1px solid #f2f2f2;}
 .plmain .plm span{ color:#999;}
 .plmain .plm a{ color:#a0cd4e; display:inline-block; margin-left:5px;}
@@ -295,7 +295,7 @@ transition: opacity ease-in-out 200ms;}
 .page a.prev:hover em{ border-right-color:#FFF;}
 .page a.next:hover em{ border-left-color:#FFF;}
 
-/*æˆ‘çš„å¥½å‹*/
+/*Ã¦Ë†â€˜Ã§Å¡â€žÃ¥Â¥Â½Ã¥Ââ€¹*/
 .fans{ padding:20px 0; margin:0 5px;}
 .fans li{ padding:15px 35px 15px 130px; border-bottom:1px dotted #e6e6e6; height:75px; position:relative; }
 .fans .img{ width:75px; height:75px; border-radius:50%; -moz-border-radius:50%; -ms-border-radius:50%; -o-border-radius:50%; -webkit-border-radius:50%; position:absolute; left:35px; top:15px; }
@@ -400,10 +400,10 @@ margin: 3px; background: url(../images/sprite_s.png) no-repeat 0 0px;}
 .suc-header img{ display:inline-block; vertical-align:middle; margin-right:10px;}
 
 .Release-submit .Appbtn{ width:155px}
-/*2015å¹´4æœˆ14æ—¥*/
+/*2015Ã¥Â¹Â´4Ã¦Å“Ë†14Ã¦â€”Â¥*/
 .inputmail,.bind-wrap .ipt{ width:320px; height:32px; border:1px solid #dcdcdc; padding:0 5px; display:inline-block; vertical-align:middle;}
 .bind-wrap .code{ width:177px; margin-right:20px;}
-/*2015å¹´4æœˆ14æ—¥ end*/
+/*2015Ã¥Â¹Â´4Ã¦Å“Ë†14Ã¦â€”Â¥ end*/
 
 .applybox{ padding:20px;}
 .applybox h1{ height:85px; line-height:85px; color:#333; font-size:20px; text-align:center;}

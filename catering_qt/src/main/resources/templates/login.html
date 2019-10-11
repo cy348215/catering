@@ -12,62 +12,116 @@
 <![endif]-->
 <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
 <link href="favicon.ico" rel="SHORTCUT ICON">
-<title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
+<title>菜鸟餐饮联盟·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
 </head>
+<style type="text/css">
+  .clearfix .logo{ width:260px; height:74px; background:url(../img/logo.png) no-repeat center;background-size: 170px;  position:absolute; left:170px;top:-10px; z-index:100;}
+  .headr1>a{ display:inline-block; margin:0 6px; float:left;padding-left:30px;padding-right:30px;padding-top: 25px;}
+</style>
 <body>
 <div class="head">
   <div class="wrap clearfix">
-    <a href="index.html" class="logo indent">logo</a>
-    <div class="headr fr">
-      <form action="active.html" method="post" class="headsearch">
-        <label class="label">
-          <input type="text" value="" name="" class="key">
-          <span class="text">搜索地址、名称、时间等</span>
-        </label>
-        <button type="submit" class="button btn-search">&#xe628;</button>
-      </form>
-      <a href="login.html">登录</a><a href="reg.html">注册</a><a href="#">发布我的饭局</a>
+    <a href="index" class="logo indent">logo</a>
+    <div class="headr1 fr">
+      <a href="index" >首页</a>
+      <a href="http://localhost:8088/login" >商家中心</a>
+      <a href="#">管理中心</a>
     </div>
   </div>
 </div>
 <div class="loginwrapper">
   <div class="wrap pr">
     <div class="loginbox">
+      <form method="post" action="memberLogin" onsubmit="return check()">
       <h1 class="hd">用户登录</h1>
       <div class="tc">
         <a href="#" target="_blank" class="ico dou">豆</a>
         <a href="#" target="_blank" class="ico sina">新浪</a>
         <a href="#" target="_blank" class="ico qq">QQ</a>
       </div>
-      <div class="Prompt">使用以上社交网络帐号登录</div>
-      
       <div class="boxbd">
-        <div class="ohter"><span class="ohtertxt">或</span></div>
         <label class="label">
-          <input type="text" name="user" value="" class="loginipt user">
-          <span class="text">请输入您的邮箱</span>
-        </label>
+          <input type="text" name="username" id="username" value="" class="loginipt user" placeholder="请输入您的账号"  autocomplete="off">
+          <span id="sp1"></span>
+        </label><br>
         <label class="label">
-          <input type="password" name="pwd" value="" class="loginipt pwd">
-          <span class="text">请输入您的密码</span>
-        </label>
-        <button type="submit" name="login" value="" class="button btn-login" onClick="location.href='mem.html'">登录</button>
+          <input type="password" name="password" id="password" value="" class="loginipt pwd" placeholder="请输入您的密码"  autocomplete="off">
+          <span id="sp2"></span>
+        </label><br>
+        <label class="label">
+          <table align="center">
+            <img src="createImage" alt="验证码" title="点击更换" onclick="this.src='createImage?'+(new Date()).getTime();"/>
+            <input id="checkcode" class="loginipt user" name="checkcode" placeholder="请输入验证码" type="text" autocomplete="off"/>
+            <span id="checkcode_msg" class="required"></span>
+          </table>
+        </label><br>
+        <button type="submit" id="memberLogin" name="login" value="" class="button btn-login">登录</button>
         <p class="mt20"><label for="remember"><input name="" type="checkbox" id="remember" value="" checked> 记住我</label><a href="forgot.html" class="fr"> 忘记密码？</a></p>
-        <p class="mt10 tr">还没有账号？<a href="reg.html" class="o">注册</a></p>
+        <p class="mt10 tr">还没有账号？<a href="reg" class="o">去注册</a></p>
       </div>
-      
+      </form>
     </div>    
   </div>
 </div>
 <div class="foot2">
   <div class="wrap clearfix">
     <div class="txt fl">
-     <div class="foot-nav"> <a href="#">关于17素材</a>/<a href="#">加入我们</a>/<a href="#">联系我们</a>/<a href="#">媒体报道</a>/<a href="#">会员条款</a>/<a href="#">版权声明</a></div>
-     Copyright © 2003-2015 17素材, All Rights Reserved　
+     <div class="foot-nav"> <a href="#">菜鸟联盟餐饮</a>/<a href="#">加入我们</a>/<a href="#">联系我们</a>/<a href="#">媒体报道</a>/<a href="#">会员条款</a>/<a href="#">版权声明</a></div>
+     Copyright © 2019-2020 菜鸟联盟, All Rights Reserved　
     </div>
     <div class="orc fr"><img src="images/img2.jpg" width="63"><img src="images/img3.jpg" width="63"></div>
   </div>
 </div>
-<script src="js/jquery.js"></script>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/Action.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $("#username").focus(function () {
+      $("#sp1").empty();
+    });
+    $("#password").focus(function () {
+      $("#sp2").empty();
+    });
+    $("#checkcode").focus(function () {
+      $("#checkcode_msg").empty();
+    });
+
+  });
+  function check(){
+    var username = $("#username").val();
+    var password = $("#password").val();
+    var checkcode = $("#checkcode").val();
+    // 判断是否为空
+    if (username.length == 0 && username == ""){
+      var ff = $("<font color='red'>此账号不能为空</font>")
+      $("#sp1").append(ff);
+      return false;
+    } else if (password.length == 0){
+      var ff = $("<font color='red'>登录密码不能为空</font>");
+      $("#sp2").append(ff);
+      return false;
+    } else if (checkcode.length == 0){
+      var ff = $("<font color='red'>验证码不能为空</font>")
+      $("#checkcode_msg").append(ff);
+      return false;
+    } else {
+      $.post("state",{"username":username,"password":password,"checkcode": checkcode},function (data) {
+        if (data == 1){
+          return true;
+        }else if (data == 2) {
+          alert("已被封停")
+          return false;
+        } else if (data == 3) {
+          alert("此账户已在别处登录")
+          return false;
+        } else if (data == 4) {
+            alert("验证码有误");
+            return false;
+        }
+      })
+    }
+  }
+
+</script>
 </html>

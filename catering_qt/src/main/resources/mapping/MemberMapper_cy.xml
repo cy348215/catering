@@ -2,7 +2,96 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.catering.mapper.MemberMapper_cy">
+    <resultMap id="merMap" type="com.catering.pojo.MerchantProfile">
+        <id property="merchantId" column="merchant_id"></id>
+        <result property="merchantName" column="merchant_name"></result>
+        <result property="merchantPrincipal" column="merchant_principal"></result>
+        <result property="merchantNumber" column="merchant_number"></result>
+        <result property="merchartEmail" column="merchart_email"></result>
+        <result property="phone" column="phone"></result>
+        <result property="createtime" column="createtime"></result>
+        <result property="level" column="level"></result>
+        <result property="point" column="point"></result>
+        <result property="lastupdatetime" column="lastupdatetime"></result>
+        <result property="type" column="type"></result>
+        <result property="commendCount" column="commend_count"></result>
+        <result property="heat" column="heat"></result>
+        <result property="bussinesstime" column="bussinesstime"></result>
+        <result property="merchantAddress" column="merchant_address"></result>
+        <result property="countryId" column="country_id"></result>
+        <result property="provinceId" column="province_id"></result>
+        <result property="cityId" column="city_id"></result>
+        <result property="memberid" column="memberid"></result>
+        <result property="personPrice" column="person_price"></result>
+        <association property="merchantFeature" javaType="MerchantFeature" select="com.catering.mapper.MemberMapper_cy.findFea" column="merchant_id">
+        </association>
+    </resultMap>
+    <resultMap id="feaMap" type="com.catering.pojo.MerchantFeature">
+        <id property="merchantId" column="merchant_id"></id>
+        <result property="img1" column="img1"></result>
+        <result property="img2" column="img2"></result>
+        <result property="img3" column="img3"></result>
+        <result property="intro" column="intro"></result>
+        <result property="feature" column="feature"></result>
+    </resultMap>
     <select id="findTag" resultType="string">
         select cuisine_name from tag
+    </select>
+    <select id="searchTagId" parameterType="String" resultType="int">
+        select cuisine_id from tag where cuisine_name=#{tag}
+    </select>
+    <select id="searchMerId" parameterType="int" resultType="int">
+        select merchant_id from type_tag where tag_id=#{tagId}
+    </select>
+    <select id="searchMer" parameterType="list" resultMap="merMap">
+        select * from merchant_profile
+        <where>
+            merchant_id in
+            <foreach collection="list" item="l" open="(" close=")" separator=",">
+                #{l}
+            </foreach>
+        </where>
+    </select>
+    <select id="searchMer1" parameterType="int" resultMap="merMap">
+        select * from merchant_profile
+       where merchant_id=#{i}
+    </select>
+    <select id="findFea" parameterType="int" resultMap="feaMap">
+        select * from merchant_feature
+        where merchant_id=#{merchant_id}
+    </select>
+    <select id="searchTag1" resultMap="merMap">
+        select * from merchant_profile
+    </select>
+    <select id="findTag1" resultType="string">
+        select cuisine_name from tag limit 10
+    </select>
+    <select id="findCity" resultType="string">
+           SELECT cityname FROM city WHERE id BETWEEN 2 AND 28
+    </select>
+    <select id="findCity1" resultType="string">
+           SELECT cityname FROM city WHERE id BETWEEN 2 AND 100
+    </select>
+    <!--店铺图片-->
+    <select id="findImg1" resultType="string">
+       SELECT img1 FROM merchant_feature
+
+    </select>
+    <!--店铺图片-->
+    <select id="findImg2" resultType="string">
+       SELECT img2 FROM merchant_feature
+    </select>
+    <!--店铺图片-->
+    <select id="findImg3" resultType="string">
+       SELECT img3 FROM merchant_feature
+    </select>
+    <select id="searchInt1" parameterType="string" resultType="int">
+        select merchant_id from merchant_feature where img1=#{img1}
+    </select>
+    <select id="searchInt2" parameterType="string" resultType="int">
+        select merchant_id from merchant_feature where img2=#{img2}
+    </select>
+    <select id="searchInt3" parameterType="string" resultType="int">
+        select merchant_id from merchant_feature where img3=#{img3}
     </select>
 </mapper>

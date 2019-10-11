@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.catering.mapper.MerchantFeatureMapper_xpy">
+    <resultMap id="merfeaResylt" type="com.catering.pojo.MerchantFeature">
+        <id property="merchantId" column="merchant_id"/>
+        <result property="img1" column="img1"/>
+        <result property="img2" column="img2"/>
+        <result property="img3" column="img3"/>
+        <result property="intro" column="intro"/>
+        <result property="feature" column="feature"/>
+    </resultMap>
+    <select id="findById" resultMap="merfeaResylt" parameterType="int">
+        select
+        *
+        from
+        merchant_feature
+        where
+        merchant_id=#{id}
+    </select>
+    <insert id="saveFeature" parameterType="com.catering.pojo.MerchantFeature">
+        insert
+        merchant_feature
+        values
+        (#{feature.merchantId},#{feature.img1},#{feature.img2},#{feature.img3},#{feature.intro},,#{feature.feature})
+    </insert>
+    <update id="updateFeature" parameterType="com.catering.pojo.MerchantFeature">
+        update
+        merchant_feature
+        set
+        img1=#{feature.img1},img2=#{feature.img2},img3=#{feature.img3},intro=#{feature.intro},feature=#{feature.feature}
+        where
+        merchant_id=#{feature.merchantId}
+    </update>
+</mapper>

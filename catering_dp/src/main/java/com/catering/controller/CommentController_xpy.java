@@ -42,8 +42,6 @@ public class CommentController_xpy {
             page = maxpage;
         }
         List<Comment> all = commentService.findAllByType(page, rows, type,user.getMerchantId());
-        System.out.println("controller"+all);
-        System.out.println("maxpage"+maxpage);
         model.addAttribute("comment",all);
         model.addAttribute("page",page);
         model.addAttribute("maxpage",maxpage);
@@ -72,7 +70,7 @@ public class CommentController_xpy {
             page = maxpage;
         }
         List<Comment> all = commentService.findAllByType(page, rows, type,user.getMerchantId());
-        model.addAttribute("comment",all);
+         model.addAttribute("comment",all);
         model.addAttribute("page",page);
         model.addAttribute("maxpage",maxpage);
         return "product_message";

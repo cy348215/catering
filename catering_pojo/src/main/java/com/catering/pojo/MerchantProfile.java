@@ -40,11 +40,19 @@ public class MerchantProfile implements Serializable {
 
     private Integer countryId;
 
+
     private Integer provinceId;
 
     private Integer cityId;
 
     private String memberid;
+
+    private int personPrice;
+
+
+
+    private MerchantFeature merchantFeature;
+
 
     private static final long serialVersionUID = 1L;
 
@@ -202,6 +210,22 @@ public class MerchantProfile implements Serializable {
 
     public void setCityId(Integer cityId) {
         this.cityId = cityId;
+    }
+
+    public MerchantFeature getMerchantFeature() {
+        return merchantFeature;
+    }
+
+    public void setMerchantFeature(MerchantFeature merchantFeature) {
+        this.merchantFeature = merchantFeature;
+    }
+
+    public int getPersonPrice() {
+        return personPrice;
+    }
+
+    public void setPersonPrice(int personPrice) {
+        this.personPrice = personPrice;
     }
 
 }

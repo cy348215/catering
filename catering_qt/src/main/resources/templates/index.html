@@ -13,33 +13,54 @@
 <![endif]-->
 <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
 <link href="favicon.ico" rel="SHORTCUT ICON">
-<title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
+<title>私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
 </head>
+<style type="text/css">
+  a.hand:hover {
+    cursor:pointer
+  }
+  .indexban .logo{ width:260px; height:74px; background:url(../img/logo.png) no-repeat center;background-size: 170px; position:absolute; left:-30px; top:15px; z-index:100;}
+</style>
 <body>
   <div class="indexban" style="background-image:url(images/img1.jpg);">
     <div class="wrap">
-      <a href="index.html" class="logo indent">logo</a>
-      <div class="medium-right"><a href="login.html">登陆</a><a href="reg.html">注册</a><a href="#">发布我的饭局</a></div>
+      <a href="index" class="logo indent">logo</a>
+      <!--未登录-->
+      <div class="medium-right" th:if="${session.islogin==false}" ><a href="login">立即登陆</a><a href="reg">注册</a><a href="http://localhost:8088/login">商家中心</a></div>
+      <!--已登录-->
+      <div class="headr fr" th:if="${session.islogin==true}">
+      <a href="http://localhost:8088/login" target="voiceList" style="padding-top: 11px;">  &nbsp;&nbsp;<span style="color:#fafafa;">商家中心</span></a>
+      <div class="user" style="padding-top: 11px;">
+        <span class="clearfix" ><span class="userimg"><img src="upload/img12.png"><i></i></span>
+        <a href="javascript:;" class="fr" target="voiceList" ><span style="color:#fafafa;position: absolute;left: 55px;width: 150px;" th:text="${session.member.username}"></span> &nbsp;&nbsp; &nbsp;&nbsp;<em>&#xe607;</em></a></span>
+        <ul class="topslide" style="position: absolute; left: 30px;opacity:0.8;
+filter:alpha(opacity=40);">
+          <li><em>&#xe627;</em><a href="mem.html" target="voiceList">个人设置</a></li>
+          <li><em>&#xe63d;</em><a href="Message.html" target="voiceList">消息中心<s></s></a></li>
+          <li><em>&#xe63c;</em><a href="Dinner.html" target="voiceList">订单管理</a></li>
+          <li><em>&#xe63e;</em><a href="fans.html" target="voiceList">我的好友</a></li>
+          <li><em>&#xe611;</em><a href="logout" target="voiceList">退出</a></li>
+        </ul>
+      </div>
+      </div>
       <div class="txt"><span class="hd">美食与生活的完美演绎</span><a href="#">早餐</a><a href="#">午餐</a><a href="#">晚餐</a><a href="#">一键搞定</a></div>
     </div>
     <div class="p1-hero-search-form">
       <div class="wrap clearfix">
-        <form action="#" method="post" class="search_form clearfix">
+        <form action="#" method="post" class="search_form clearfix" style=" width:523px;">
           <div class="box-wrapper">
             <input type="text" class="input-large eat" autocomplete="off" id="eat" name="eat" placeholder="您想要吃什么？">
             <span id="enter_location_error_message" class="bad hide">请告诉我您要吃什么？</span>
           </div>
           <div class="box-wrapper">
-            <select data-placeholder="地点" style="width:150px;" class="chosen-select-no-single" tabindex="9">
-              <option>地点</option>
-              <option>地点</option>
+            <select id="city1" name="city1" data-placeholder="地点" style="width:150px;border:0;height: 44px;" tabindex="9">
             </select>
           </div>
           <button type="submit" class="button search-button" id="submit_search">搜索</button>
         </form>
-        <div class="hot-key fl">热门搜索： <a id="tag1" th:href="@{searchTag(cuisineName=)}" ></a><a id="tag2" href="active.html" ></a>
-          <a id="tag3" href="active.html" ></a><a id="tag4" href="active.html" ></a>
-          <a id="tag5" href="active.html" ></a><a id="tag6" href="active.html" ></a>
+        <div class="hot-key fl">热门搜索： <a id="tag1" onclick="t1()" class="hand"></a><a id="tag2" onclick="t2()" class="hand"></a>
+          <a id="tag3" onclick="t3()" class="hand"></a><a id="tag4" onclick="t4()" class="hand"></a>
+          <a id="tag5" onclick="t5()" class="hand"></a><a id="tag6" onclick="t6()" class="hand"></a>
       </div>
     </div>
   </div>
@@ -48,32 +69,32 @@
     <div class="row-space tc"><a href="active.html"><img src="images/txt1.png"></a></div>
     
     <div class="Activity clearfix">
-      <a href="#" class="item">
-        <div class="img"><img src="upload/img1.jpg"></div>
+      <a href="#"onclick="img1()" class="item">
+        <div class="img" id="img1"></div>
         <div class="txt">活动名称</div>
       </a>
       <div class="item large fr">
         <div id="full-screen-slider">
           <ul id="slides">
-            <li><a href="#" target="_blank"><img src="upload/img2.jpg"></a></li>
-            <li><a href="#" target="_blank"><img src="upload/img2.jpg"></a></li>
-            <li><a href="#" target="_blank"><img src="upload/img2.jpg"></a></li>
+            <li><a onclick="img21()" target="_blank" id="img21" ></a></li>
+            <li><a onclick="img22()" target="_blank" id="img22"></a></li>
+            <li><a onclick="img23()" target="_blank" id="img23"></a></li>
           </ul>
         </div>
       </div>
     </div>
     
     <div class="Activity mt36 clearfix">
-      <a href="#" class="item">
-        <div class="img"><img src="upload/img3.jpg"></div>
+      <a onclick="img3()" class="item">
+        <div class="img" id="img3"></div>
         <div class="txt" style="padding:10px 0">活动名称<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
       </a>
-      <a href="#" class="item mid">
-        <div class="img"><img src="upload/img4.jpg"></div>
+      <a onclick="img4()" class="item mid">
+        <div class="img" id="img4"></div>
         <div class="txt">活动名称</div>
       </a>
-      <a href="#" class="item mid last">
-        <div class="img"><img src="upload/img5.jpg"></div>
+      <a onclick="img5()" class="item mid last">
+        <div class="img" id="img5"></div>
         <div class="txt">活动名称</div>
       </a>
       
@@ -150,7 +171,7 @@
     </div>
     <div class="gotop">&#xe608;</div>
   </div>
-  <div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>
+  <div class="foot tc">Copyright © 2003-2015 私厨, All Rights Reserved</div>
 </body>
 <script src="js/jquery.js"></script>
 <script src="js/Action.js"></script>
@@ -161,6 +182,83 @@
 
 <script src="js/chosen.jquery.js"></script>
 <script type="text/javascript">
+  function img1(){
+    var img1=$(".img1").val();
+    location.href="findShop?img1="+img1;
+  }
+  function img21(){
+    var img1=$(".img21").val();
+    location.href="findShop?img1="+img1;
+  }
+  function img22(){
+    var img1=$(".img22").val();
+    location.href="findShop?img2="+img1;
+  }
+  function img23(){
+    var img1=$(".img23").val();
+    location.href="findShop?img3="+img1;
+  }
+  function img3(){
+    var img1=$(".img3").val();
+    location.href="findShop?img2="+img1;
+  }
+  function img4(){
+    var img1=$(".img4").val();
+    location.href="findShop?img2="+img1;
+  }
+  function img5(){
+    var img1=$(".img5").val();
+    location.href="findShop?img3="+img1;
+  }
+  $(function () {
+    $.post("findCity",{"type":0},function (data) {
+      for(var i=0;i<data.length;i++){
+        var option=$("<option >" + data[i] + "</option>");
+        $("#city1").append(option);
+      }
+    })
+    $.post("findImg",function (data) {
+        var option1 = $("<img style='width: 306px; height: 300px;'  src=" + data[1] + "/><input value='"+data[1]+"' class='img1' type='hidden'>");
+        var option21 = $("<img style='width: 758px; height: 300px;' src=" + data[2] + "/><input value='"+data[2]+"' class='img21' type='hidden'>");
+        var option22 = $("<img style='width: 758px; height: 300px;' src=" + data[7] + "/><input value='"+data[7]+"' class='img22' type='hidden'>");
+        var option23 = $("<img style='width: 758px; height: 300px;' src=" + data[12] + "/><input value='"+data[12]+"' class='img23' type='hidden'>");
+        var option3 = $("<img style='width: 306px; height: 300px;' src=" + data[8] + "/><input value='"+data[8]+"' class='img3' type='hidden'>");
+        var option4 = $("<img style='width: 360px; height: 300px;' src=" + data[9] + "/><input value='"+data[9]+"' class='img4' type='hidden'>");
+        var option5 = $("<img style='width: 360px; height: 300px;' src=" + data[10] + "/><input value='"+data[10]+"' class='img5' type='hidden'>");
+        $("#img1").append(option1);
+        $("#img21").append(option21);
+        $("#img22").append(option22);
+        $("#img23").append(option23);
+        $("#img3").append(option3);
+        $("#img4").append(option4);
+        $("#img5").append(option5);
+    })
+    })
+  function t1(){
+    var tag=$("#tag1").text();
+    location.href="searchTag?tag="+tag;
+  }
+  function t2(){
+    var tag=$("#tag2").text();
+    location.href="searchTag?tag="+tag;
+  }
+  function t3(){
+    var tag=$("#tag3").text();
+    location.href="searchTag?tag="+tag;
+  }
+  function t4(){
+    var tag=$("#tag4").text();
+    location.href="searchTag?tag="+tag;
+  }
+
+  function t5(){
+    var tag=$("#tag5").text();
+    location.href="searchTag?tag="+tag;
+  }
+  function t6(){
+    var tag=$("#tag6").text();
+    location.href="searchTag?tag="+tag;
+  }
   $.post("findTag",function (data) {
       var tag1=data[1];
       var tag2=data[2];
