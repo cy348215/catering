@@ -36,7 +36,6 @@
     <div class="loginbody">
 <div class="login-container">
 	<div class="center">
-	     <img src="images/logo1.png" />
 							</div>
 
 							<div class="space-6"></div>
@@ -57,8 +56,10 @@
 										<ul>
    <li class="frame_style form_error"><label class="user_icon"></label><input name="用户名" type="text"  id="username"/><i>用户名</i></li>
    <li class="frame_style form_error"><label class="password_icon"></label><input name="密码" type="password"   id="userpwd"/><i>密码</i></li>
-   <li class="frame_style form_error"><label class="Codes_icon"></label><input name="验证码" type="text"   id="Codes_text"/><i>验证码</i><div class="Codes_region"></div></li>
-   
+   <li class="frame_style form_error"><label class="Codes_icon"></label><input name="验证码" type="text"   id="Codes_text"/><i>验证码</i>
+	   <div class="Codes_region">
+		   <img src="createImage" alt="验证码" title="点击更换" onclick="this.src='createImage?'+(new Date()).getTime();"/>
+	   </div></li>
   </ul>
 													<div class="space"></div>
 
@@ -108,12 +109,33 @@ $('#login_btn').on('click', function(){
 		 });
 		  if(num>0){  return false;}	 	
           else{
-			  layer.alert('登录成功！',{
-               title: '提示框',				
-			   icon:1,		
-			  });
-	          location.href="index";
-			   layer.close(index);	
+          	var username = $("#username").val();
+          	var password = $("#userpwd").val();
+          	var code = $("#Codes_text").val();
+          	$.post("dealLogin",{"username":username,"password":password,"code":code},function (data) {
+				if (data == 1){
+					layer.alert('登录成功！',{
+						title: '提示框',
+						icon:1,
+					});
+					location.href="index";
+					layer.close(index);
+				}
+				if (data == 2){
+					layer.alert('验证码错误！',{
+						title: '提示框',
+						icon:1,
+					});
+					layer.close(index);
+				}
+				if (data == 0){
+					layer.alert('账号或密码有误！',{
+						title: '提示框',
+						icon:1,
+					});
+					layer.close(index);
+				}
+			});
 		  }		  		     						
 		
 	});

@@ -74,6 +74,7 @@
     <div class="row" style="height: 330px ;">
         <div class="col-md-3">
             <td><img th:src="${merchantFea.img1}" style="width: 300px;height: 300px"></td>
+            <input th:value="${merchantFea.merchantId}" type="hidden" id="pay">
         </div>
         <div class="col-md-6 col-md-offset-2" style="margin-top: 20px">
             <font size="30px" style="color: #0b2e13" th:text="${merchantPro.merchantName}"></font><br/><br/>
@@ -109,7 +110,7 @@
         <div style="height: 300px;border-color: antiquewhite">
             <p class="p2">合计：<span>￥<font color="red" size="23px" th:text="${indent.price}">元</font></span></p>
             <input type="hidden" id="dingPrice" th:value="${indent.dingprice}">
-            <button id="button1" class="btn btn-primary" onclick="">确定支付</button>
+            <button id="button1" class="btn btn-primary" onclick="pay()">确定支付</button>
             <button id="button2" class="btn btn-success">我想在看看</button>
         </div>
     </div>
@@ -167,6 +168,10 @@
 <div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>
 </body>
 <script type="text/javascript">
+    function pay(){
+        var merchantId=$("#pay").val();
+        location.href="?merchantId"+merchantId
+    }
     $("#button1").click(function () {
         var dingPrice = $("#dingPrice").val();
         var mymessage = confirm("想要提交订单吗？需要交"+dingPrice+"元订金哟！！");
