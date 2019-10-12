@@ -77,7 +77,7 @@ public class LxzOrdManagerController {
     @ResponseBody
     @RequestMapping("/resAddMenu")
     public boolean addMenuRes(String dishId,int type,Double dishPrice,String imgsrc,String cuisine){
-        String str="image1/"+imgsrc+".jpg";
+        String str="img/"+imgsrc+".jpg";
         boolean bool;
         Memu menu=new Memu();
         menu.setDishId(dishId);

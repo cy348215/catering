@@ -34,7 +34,7 @@
           <div class="col-sm-9"><font th:text="${mem.name}"></font>
           &nbsp;&nbsp;&nbsp;</div>
           </div>
-          <div class="form-group"><label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户名： </label>
+          <div class="form-group"><label class="col-sm-3 control-label no-padding-right" for="form-field-1">昵称： </label>
               <div class="col-sm-9"><input type="text" name="昵称" id="website-title" th:value="${mem.nickname}" class="col-xs-7 text_info nickName" disabled="disabled">
                   &nbsp;&nbsp;&nbsp;</div>
           </div>
@@ -66,8 +66,8 @@
           <div class="col-sm-9" > <span><font th:text="${mem.registerTime}"></font></span></div>
           </div>
           <div class="form-group"><label class="col-sm-3 control-label no-padding-right" for="form-field-1">账号状态： </label>
-              <div id="td-manage" class="col-sm-9" th:if="${mmm.state == 1}"><a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success">禁用</a></div>
-              <div id="td-manage" class="col-sm-9" th:if="${mmm.state == 0}"><a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="启用">启用</a></div>
+              <div id="td-manage" class="col-sm-9" th:if="${mmm.state != 3}"><a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success">禁用</a></div>
+              <div id="td-manage" class="col-sm-9" th:if="${mmm.state == 3}"><a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="启用">启用</a></div>
           </div>
           <input type="hidden" id="inp" th:value="${mmm.id}"/>
            <div class="Button_operation clearfix"> 

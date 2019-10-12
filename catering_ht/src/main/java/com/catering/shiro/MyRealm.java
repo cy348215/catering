@@ -37,7 +37,7 @@ public class MyRealm extends AuthorizingRealm {
         if (!StringUtils.isEmpty(primaryPrincipal)){
             Subject subject= SecurityUtils.getSubject();//主体对象
             String username=(String)subject.getPrincipal();//获取用户身份信息
-            List<AdminPermission> adminMenuInfo = (List<AdminPermission>) adminUserService.findAdminPer(adminUserService.findAdminByName(username).getId());
+            List<AdminPermission> adminMenuInfo = adminUserService.findAdminPer(adminUserService.findAdminByName(username).getId());
 //          权限去重
             Set<String> perms = new HashSet<>();
             for (AdminPermission perm: adminMenuInfo){
