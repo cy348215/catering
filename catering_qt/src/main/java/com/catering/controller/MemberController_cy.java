@@ -158,7 +158,17 @@ public class  MemberController_cy {
             model.addAttribute("dish",dish);
             model.addAttribute("strings",strings);
         }
+
         return "marchant_cy";
     }
-
+    @RequestMapping("findShop1")
+    public String findShop1(Model model,int merchantId){
+            int i=merchantId;
+            List<String> strings = memberService_cy.searchMer1(i);
+            System.out.println("strings = " + strings);
+            List<Memu> dish = memberService_cy.findDish(i);
+            model.addAttribute("dish",dish);
+            model.addAttribute("strings",strings);
+        return "marchant_cy";
+    }
 }

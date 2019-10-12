@@ -111,7 +111,7 @@
             <p class="p2">合计：<span>￥<font color="red" size="23px" th:text="${indent.price}">元</font></span></p>
             <input type="hidden" id="dingPrice" th:value="${indent.dingprice}">
             <button id="button1" class="btn btn-primary" onclick="pay()">确定支付</button>
-            <button id="button2" class="btn btn-success">我想在看看</button>
+            <button id="button2" class="btn btn-success" onclick="noPay()">我想再看看</button>
         </div>
     </div>
 </div>
@@ -168,9 +168,13 @@
 <div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>
 </body>
 <script type="text/javascript">
+    function noPay() {
+        var merchantId=$("#pay").val();
+        location.href="findShop1?merchantId="+merchantId;
+    }
     function pay(){
         var merchantId=$("#pay").val();
-        location.href="?merchantId"+merchantId
+        location.href="findShop1?merchantId"+merchantId
     }
     $("#button1").click(function () {
         var dingPrice = $("#dingPrice").val();
